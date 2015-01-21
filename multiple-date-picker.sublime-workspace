@@ -1,0 +1,1966 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jumbo",
+				"jumbotron"
+			],
+			[
+				"carou",
+				"carousel"
+			],
+			[
+				"med",
+				"media"
+			],
+			[
+				"four",
+				"four_month"
+			],
+			[
+				"two",
+				"two_weeks"
+			],
+			[
+				"testimo",
+				"testimonial"
+			],
+			[
+				"testi",
+				"testimonial"
+			],
+			[
+				"test",
+				"testimonial"
+			],
+			[
+				"one",
+				"one_on_one"
+			],
+			[
+				"top",
+				"top_businesses"
+			],
+			[
+				"infogr",
+				"infographics_content"
+			],
+			[
+				"acti",
+				"active"
+			],
+			[
+				"carouse",
+				"carousel_item"
+			],
+			[
+				"va",
+				"variables"
+			],
+			[
+				"like",
+				"linkedin"
+			],
+			[
+				"bootstr",
+				"bootstrap"
+			],
+			[
+				"incl",
+				"include	@include"
+			],
+			[
+				"mixin",
+				"mixins"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"Month",
+				"MonthlyBookingExplanation"
+			],
+			[
+				"boots",
+				"bootstrap/"
+			],
+			[
+				"image",
+				"image_id"
+			],
+			[
+				"bef",
+				"beforeCallback"
+			],
+			[
+				"polic",
+				"policy_form"
+			],
+			[
+				"hid",
+				"hideAddMore"
+			],
+			[
+				"obje",
+				"object"
+			],
+			[
+				"DEscribe",
+				"DescribeForm"
+			],
+			[
+				"SetP",
+				"SkillSetPriceForm"
+			],
+			[
+				"Descr",
+				"DescribeForm"
+			],
+			[
+				"educ",
+				"education_formset"
+			],
+			[
+				"Prefer",
+				"PreferenceForm"
+			],
+			[
+				"Prefe",
+				"PreferenceForm"
+			],
+			[
+				"Pref",
+				"PreferenceForm"
+			],
+			[
+				"TutorRegi",
+				"TutorRegistrationStep2:T"
+			],
+			[
+				"Reg",
+				"Registration"
+			],
+			[
+				"parsle",
+				"parsley"
+			],
+			[
+				"Policy",
+				"PolicyForm"
+			],
+			[
+				"WorEx",
+				"WorkExperienceFormSet"
+			],
+			[
+				"Edu",
+				"EducationFormset"
+			],
+			[
+				"Regis",
+				"RegistrationFormMixin"
+			],
+			[
+				"error",
+				"errors"
+			],
+			[
+				"discount",
+				"discount_price"
+			],
+			[
+				"read",
+				"readonly"
+			],
+			[
+				"certif",
+				"certificates"
+			],
+			[
+				"key",
+				"keyup"
+			],
+			[
+				"type",
+				"typeahead"
+			],
+			[
+				"teach",
+				"teachingMethodInput"
+			],
+			[
+				"des",
+				"descriptionInput"
+			],
+			[
+				"desCoun",
+				"descriptionCounter"
+			],
+			[
+				"certific",
+				"certificate_form"
+			],
+			[
+				"month",
+				"monthly_booking"
+			],
+			[
+				"monthly",
+				"monthly_booking"
+			],
+			[
+				"cal",
+				"calculatePrice"
+			],
+			[
+				"week",
+				"weekly_price"
+			],
+			[
+				"object",
+				"objects"
+			],
+			[
+				"cer",
+				"certificate_form"
+			],
+			[
+				"filte",
+				"filters"
+			],
+			[
+				"java",
+				"javascripts"
+			],
+			[
+				"notif",
+				"notifyServerOnQuizStart"
+			],
+			[
+				"finis",
+				"finished"
+			],
+			[
+				"callb",
+				"callbackTimer"
+			],
+			[
+				"Quiz",
+				"QuizService"
+			],
+			[
+				"five",
+				"fiver-table.scss"
+			],
+			[
+				"baco",
+				"background-color"
+			],
+			[
+				"terms",
+				"terms_and_conditions"
+			],
+			[
+				"Sche",
+				"ScheduleDaysClickHandler"
+			],
+			[
+				"impo",
+				"importer	module"
+			],
+			[
+				"add",
+				"add_geo	statement"
+			],
+			[
+				"Goog",
+				"GoogleV3	class"
+			],
+			[
+				"print",
+				"print_result	function"
+			],
+			[
+				"get",
+				"get_query_result	function"
+			],
+			[
+				"start",
+				"start_id"
+			],
+			[
+				"schedul",
+				"schedule_formset"
+			],
+			[
+				"sched",
+				"schedule_formset"
+			],
+			[
+				"forms",
+				"form_sets"
+			],
+			[
+				"selected",
+				"selected_days"
+			],
+			[
+				"selecte",
+				"selected_days"
+			],
+			[
+				"select",
+				"selected_days"
+			],
+			[
+				"selec",
+				"selected_days"
+			],
+			[
+				"formset",
+				"form_sets"
+			],
+			[
+				"sche",
+				"schedule_formset"
+			],
+			[
+				"sch",
+				"schedule_formset"
+			],
+			[
+				"multi",
+				"multiple_lang"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"bootstrap",
+				"bootstrap_label"
+			],
+			[
+				"pyt",
+				"Python27/"
+			],
+			[
+				"get_user",
+				"get_user_model	function"
+			],
+			[
+				"pro",
+				"production-django"
+			],
+			[
+				"ob",
+				"objects"
+			],
+			[
+				"home",
+				"homenav"
+			],
+			[
+				"ve",
+				"very-small-phones"
+			],
+			[
+				"smal",
+				"small-phones"
+			],
+			[
+				"st",
+				"style-2.css"
+			],
+			[
+				"fo",
+				"formset"
+			],
+			[
+				"numb",
+				"number1"
+			],
+			[
+				"Py",
+				"Python27/"
+			],
+			[
+				"class",
+				"classmethod"
+			],
+			[
+				"topic_",
+				"topic_id"
+			],
+			[
+				"filt",
+				"filter_by"
+			],
+			[
+				"pagi",
+				"paginate"
+			],
+			[
+				"py",
+				"python-env/"
+			],
+			[
+				"th",
+				"bootstrap-theme.min.css"
+			],
+			[
+				"Mongo",
+				"MongoApiService"
+			],
+			[
+				"Mon",
+				"MongoApiService"
+			],
+			[
+				"Medi",
+				"MediaProvider"
+			],
+			[
+				"brea",
+				"breadcrumbs"
+			],
+			[
+				"new",
+				"newItemName"
+			],
+			[
+				"newI",
+				"newItem"
+			],
+			[
+				"an",
+				"AndraLabs"
+			],
+			[
+				"input",
+				"input	input - submit"
+			],
+			[
+				"blo",
+				"blockquote"
+			],
+			[
+				"gree",
+				"greeting"
+			],
+			[
+				"greetin",
+				"greetings"
+			],
+			[
+				"que",
+				"query_params"
+			],
+			[
+				"D",
+				"DEFAULT_GUESTBOOK_NAME"
+			],
+			[
+				"sign",
+				"sign_query_params"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"rep",
+				"repeat-x"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"flas",
+				"flask_tracking  (module)"
+			],
+			[
+				"Visi",
+				"VisitForm"
+			],
+			[
+				"site",
+				"site_id"
+			],
+			[
+				"fore",
+				"foreach	blade-foreach"
+			],
+			[
+				"course",
+				"course_id"
+			],
+			[
+				"t",
+				"type=  (attribute)"
+			],
+			[
+				"reosl",
+				"resolve"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Run Skills Tests",
+	"command_palette":
+	{
+		"height": 185.0,
+		"selected_items":
+		[
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"oririg",
+				"Origami: Create Pane on the Right"
+			],
+			[
+				"orilef",
+				"Origami: Create Pane on the Left"
+			],
+			[
+				"orides",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"origlef",
+				"Origami: Create Pane on the Left"
+			],
+			[
+				"reins",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"grunt",
+				"Grunt"
+			],
+			[
+				"grun",
+				"Grunt: Kill Running Tasks"
+			],
+			[
+				"jshin",
+				"JSHint"
+			],
+			[
+				"jshi",
+				"JSHint"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
+			[
+				"ori",
+				"Origami: Create Pane Below"
+			],
+			[
+				"orig",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"livesty",
+				"LiveStyle: Apply Patch"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"SUBRIPY",
+				"SublimeREPL: Python - IPython"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"REIND",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ssdjano",
+				"Set Syntax: HTML (Django)"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"django runs",
+				"Django: Run Server"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"django",
+				"Django: Custom Command"
+			],
+			[
+				"runse",
+				"Django: Run Server"
+			],
+			[
+				"migra",
+				"Django: Migrate App"
+			],
+			[
+				"make",
+				"Django: Make Migration"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"runs",
+				"Django: Run Server"
+			],
+			[
+				"django run",
+				"Django: Run Server"
+			],
+			[
+				"migrate",
+				"Django: Migrate App"
+			],
+			[
+				"unzo",
+				"Origami: Unzoom Current Pane"
+			],
+			[
+				"ozo",
+				"Origami: Zoom Current Pane"
+			],
+			[
+				"djanrun",
+				"Django: Run Server"
+			],
+			[
+				"sub",
+				"SublimeREPL: Python"
+			],
+			[
+				"emmet rena",
+				"Emmet: Rename Tag"
+			],
+			[
+				"emmwr",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"orne",
+				"Origami: Create Pane Below"
+			],
+			[
+				"keybin",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"orde",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"oride",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"oriunz",
+				"Origami: Unzoom Current Pane"
+			],
+			[
+				"orz",
+				"Origami: Unzoom Current Pane"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"ssjava",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"orizom",
+				"Origami: Zoom Current Pane"
+			],
+			[
+				"orizo",
+				"Origami: Zoom Current Pane"
+			],
+			[
+				"orile",
+				"Origami: Create Pane on the Left"
+			],
+			[
+				"settus",
+				"Preferences: Settings - User"
+			],
+			[
+				"ormov",
+				"Origami: Move File to Pane Below"
+			],
+			[
+				"ormo",
+				"Origami: Move File to Pane on the Left"
+			],
+			[
+				"sublpyt",
+				"SublimeREPL: Python - virtualenv"
+			],
+			[
+				"glue",
+				"Glue - Launch"
+			],
+			[
+				"oriclonbe",
+				"Origami: Clone File to Pane Below"
+			],
+			[
+				"oriclo",
+				"Origami: Clone File to Pane Below"
+			],
+			[
+				"shell",
+				"SublimeREPL: Shell"
+			],
+			[
+				"django sh",
+				"Django: Shell"
+			],
+			[
+				"tinstall",
+				"Package Control: Install Package"
+			],
+			[
+				"djaset",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"django vir",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"gutter",
+				"GutterColor: Fix Current Color Scheme"
+			],
+			[
+				"color ",
+				"Color Picker"
+			],
+			[
+				"gutt",
+				"GutterColor: Clear Cache"
+			],
+			[
+				"oriunzo",
+				"Origami: Unzoom Current Pane"
+			],
+			[
+				"runser",
+				"Django: Run Server"
+			],
+			[
+				"djangrun",
+				"Django: Run Server"
+			],
+			[
+				"listpa",
+				"Package Control: List Packages"
+			],
+			[
+				"origa",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"Grunt",
+				"Grunt"
+			],
+			[
+				"settius",
+				"Preferences: Settings - User"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"brows",
+				"Preferences: Browse Packages"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"preferbr",
+				"Preferences: Browse Packages"
+			],
+			[
+				"sas",
+				"SassBeautify"
+			],
+			[
+				"sass",
+				"SassBeautify"
+			],
+			[
+				"beau",
+				"SassBeautify"
+			],
+			[
+				"sass b",
+				"SassBeautify"
+			],
+			[
+				"ssahtm",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"pakeins",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Anaconda: Run Current Test"
+			],
+			[
+				"run",
+				"Django: Run Server"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"tes",
+				"Django: Test"
+			],
+			[
+				"django:s",
+				"Django: Custom Command"
+			],
+			[
+				"djante",
+				"Django: Terminal Here"
+			],
+			[
+				"djate",
+				"Django: Test"
+			],
+			[
+				"djanhe",
+				"Django: Help"
+			],
+			[
+				"django vi",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"djavi",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"django:",
+				"Django: Help"
+			],
+			[
+				"help",
+				"Django: Help"
+			],
+			[
+				"djan",
+				"Django: List Migrations"
+			],
+			[
+				"virut",
+				"SublimeREPL: Python - virtualenv"
+			],
+			[
+				"virtual",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"dja",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"sssty",
+				"Set Syntax: Stylus"
+			],
+			[
+				"ssjij",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"jij",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"sesjij",
+				"Set Syntax: Jinja Templates"
+			],
+			[
+				"jija",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"ssjji",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"setsjin",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"ssjin",
+				"Set Syntax: Jinja Templates"
+			],
+			[
+				"python su",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"sublpyth",
+				"SublimeREPL: Python - RUN current file"
+			],
+			[
+				"sublie pyt",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"virt",
+				"SublimeREPL: Python - virtualenv"
+			],
+			[
+				"subrepyt",
+				"SublimeREPL: Python"
+			],
+			[
+				"launch",
+				"Glue - Launch"
+			],
+			[
+				"anacopep",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"sublipyt",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"Sublimepy",
+				"SublimeREPL: Python - IPython"
+			],
+			[
+				"sstjin",
+				"Set Syntax: HTML (Jinja Templates)"
+			],
+			[
+				"setting",
+				"Preferences: Settings - User"
+			]
+		],
+		"width": 514.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/F/work-projects/python/django-projects/MultipleDatePicker"
+	],
+	"file_history":
+	[
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/variables.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/jumbotron.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/become_tutor.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/project.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/home.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/_layouts/base-external.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/project.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/pages/home.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/fonts.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/_layouts/base.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/_navigation.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/pages/become_tutor.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/jumbotron.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/become_tutor.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/home.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/external.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/project.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/functional_tests/base.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/navigation.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/navigation.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/config/settings/common.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/django_quiz/quiz/templates/correct_answer.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/bootstrap/carousel.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/jumbotron.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_carousel.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/context_processors.py",
+		"/F/work-projects/python/django-projects/Tuteria/.editorconfig",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/new-subject-wizard/1-describe-subject.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/_layouts/base-wizard.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/new-subject-wizard/2-set-price.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/new-subject-wizard/3-subject-media.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/new-subject-wizard/0-select-subject.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/edit-subject.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/subjects.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/edit_profile/tutor_profile.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/edit_profile/personal_info.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step2.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/landing.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/_scripts.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step3.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/font-icons.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/models.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/stroke-icon.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step4.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/quizapp/quizapp-v0.2.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/quizapp/templates/quiz_timer.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/exam.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/app/global.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/exam.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/static/registration.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/infographics.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/urls.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_variables.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/wizard-subnav.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/mixins.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/mixins.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/mobile/mobile-header.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/footer/_footer-big.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/footer/_footer-small.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/testimonials.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/fonts.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/stroke-icon.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/skill.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/fileinput.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/edit_profile/edit_media.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/forms.py",
+		"/F/work-projects/python/django-projects/Tuteria/index.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/external.scss",
+		"/F/work-projects/python/django-projects/Tuteria/Gruntfile.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/views.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/static/profile.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step5.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/urls.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/urls.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_labels.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/internal.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/fiver-table.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/header_search_form.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/auth/modal.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_modals.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/modal.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/subject/includes/subject-urls.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/includes/subject_status_count.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/tutor-registration.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/auth/signup.html",
+		"/F/work-projects/python/django-projects/Tuteria/.gitignore",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/views.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/forms.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/includes/subject-description-form.html",
+		"/C/Users/gbozee/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/F/work-projects/python/django-projects/Tuteria/package.json",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/web.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/views.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/variables.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/config/urls.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_glyphicons.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_type.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/font-icons.css",
+		"/F/work-projects/python/django-projects/Tuteria/setup.py",
+		"/F/work-projects/python/django-projects/Tuteria/setup.cfg",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/auth.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/auth.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/angular/angular-file-upload.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/django_quiz/api.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/account/signup.html",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/png/Main/Italic/GeneralPunctuation.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/proxima-nova/proximanova-regular-webfont.svg",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/png/imagedata.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/django_quiz/urls.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/migrations/0011_userprofile_registration_level.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/migrations/0002_user_calender.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/angular/angular-file-upload-shim.min.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/footer.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/testimonials.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/tests.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/mixins/_text-emphasis.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/stroke7pixeden/stroke7pixeden.svg",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/common.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/pixenden/Pe-icon-7-stroke.svg",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/bootstrap/glyphicons-halflings-regular.svg",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/jax/output/HTML-CSS/autoload/mglyph.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/__init__.py",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/typeahead.scss",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/typeahead.css",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/localization/ia/TeX.js",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf",
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/app/tutor_registration.js"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"400px",
+			"$number_1-name",
+			"$sprite",
+			"sprite",
+			"xs-5",
+			"row-space-4",
+			"text",
+			"text-center",
+			"After",
+			"sm",
+			"pe-va",
+			"col-xs-12",
+			"how-it-works",
+			"icon-box-6-item",
+			".boox",
+			"overflow:",
+			"focus",
+			"25",
+			"\n        <div class=\"col-sm-6 row-space-4\">\n            <div class=\"media \">\n                <div class=\"media-photo media-round pull-left text-center\">\n                    <img alt=\"Tanda\" height=\"69\" class=\"img-circle\"\n                    src=\"{% static 'img/user/3.jpg' %}\"\n                    width=\"69\">\n                </div>\n                <div class=\"media-body\">\n                    <div class=\"panel panel-quote panel-light\">\n                        <div class=\"panel-body\">\n                            <p>\n                                \"People who come in contact with us become forever friends that will\n                                return again. They will feel 'at home' more than they do at home.\"\n                            </p>\n\n                            <p class=\"text-muted\">\n                                <span class=\"person\">Tanda,</span>\n                                <span class=\"location\">San Francisco</span>\n                            </p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>",
+			"\n                    <li class=\"list-icon bills-calendar\">Create budgets that make sense today and set you up for success tomorrow.</li>",
+			"<p class=\"h4 line_h15 light_black\">\n                    Learn from over 1000 videos created by our expert teachers on web design, coding, business, and\n                    much\n                    more. Our library is continually refreshed with the latest on web technology so you'll never\n                    fall\n                    behind.\n                </p>",
+			"row-space-bottom-5",
+			"bg-white padd-5",
+			"col-sm-4",
+			"black",
+			"1",
+			"\n                                <i class=\"glyphicon glyphicon",
+			"glyphicon glyphicon",
+			"Math tutors",
+			"label label-lg caption-text",
+			"Hello world",
+			"label label-lg",
+			"style=\"background-color: rgba(0, 0, 0, 0.3); border: rgba(0, 0, 0, 0.3);",
+			"Hello world",
+			"992",
+			"registration",
+			"btn-info",
+			"btn",
+			"button",
+			"modal",
+			"formSubmission",
+			"callback()",
+			"address",
+			"edit_profile_js",
+			"custom_css",
+			"certificate_form",
+			"last_name",
+			"users",
+			"SQUARE_PROFILE_THUMBNAIL",
+			"SUBJECT_THUMBNAIL",
+			"s_count",
+			"pending_skill_count",
+			"#",
+			"has-error",
+			"heading",
+			"form-group",
+			"group",
+			"defaultPreviewSettings",
+			"width",
+			"SQUARE_PROFILE_THUMBNAIL",
+			"000",
+			"readonly",
+			"schedule_set",
+			"id_schedule_set",
+			"incrementForms",
+			"infographics",
+			"totalChars",
+			"textCounter",
+			"multiplier",
+			"('change'",
+			">",
+			"help",
+			"selected_days",
+			"increment",
+			"increment(",
+			"schedule_interview",
+			"30",
+			"4",
+			"re40km",
+			"2",
+			"5",
+			"5k",
+			"re5kmlist = print_result(re5km)",
+			"re5km",
+			"col-xs-2",
+			"xs-2",
+			"hidden-xs",
+			"xs-6",
+			"#top-business",
+			"$(this)",
+			"node",
+			"input",
+			"type=\"checkbox col-sm-3\"",
+			"checkbox",
+			"sr-only",
+			"class=\"control-label",
+			"').",
+			"section-linemo",
+			"section-topline-",
+			"section-topline-1",
+			"section",
+			"icon icon",
+			"tab-style-icon",
+			"aria-selected",
+			"<li>",
+			"role=\"tab\"",
+			"become_tutor",
+			"class:form-control",
+			"control",
+			"class:form-control",
+			"ng_app",
+			"ng-app",
+			"ng-ap",
+			"$small-xs-min",
+			"\n$",
+			"blockname",
+			"#id_number",
+			"toggleLastLanguage",
+			"addLanguageToList",
+			"hideLanguageOptionWhenSelected",
+			"multiple_lang",
+			"addToMultipleSelect",
+			"hideLanguageOptionWhenSelected",
+			"changeFirstOptionElements",
+			"where you",
+			"row-condensed",
+			"row-space-4",
+			"4"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 96.0
+	},
+	"project": "multiple-date-picker.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"proje",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"base.htm",
+				"tuteria\\templates\\_layouts\\base.html"
+			],
+			[
+				"naviga",
+				"tuteria\\templates\\includes\\nav\\_navigation.html"
+			],
+			[
+				"home.htm",
+				"tuteria\\templates\\pages\\home.html"
+			],
+			[
+				"pro.cs",
+				"tuteria\\static\\css\\project.css"
+			],
+			[
+				"home",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"jumb",
+				"tuteria\\static\\css\\src\\jumbotron.css"
+			],
+			[
+				"becom",
+				"tuteria\\static\\css\\become_tutor.css"
+			],
+			[
+				"hom",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"base-ex",
+				"tuteria\\templates\\_layouts\\base-external.html"
+			],
+			[
+				"vari",
+				"tuteria\\static\\sass\\src\\variables.scss"
+			],
+			[
+				"ex",
+				"tuteria\\static\\css\\external.css"
+			],
+			[
+				"font.",
+				"tuteria\\static\\sass\\src\\fonts.scss"
+			],
+			[
+				"font-",
+				"tuteria\\static\\sass\\src\\font-icons.scss"
+			],
+			[
+				"proj",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"info",
+				"tuteria\\static\\sass\\src\\infographics.scss"
+			],
+			[
+				"fon",
+				"tuteria\\static\\css\\src\\fonts.css"
+			],
+			[
+				"font",
+				"tuteria\\static\\sass\\src\\fonts.scss"
+			],
+			[
+				"mixin",
+				"tuteria\\static\\sass\\src\\mixins.scss"
+			],
+			[
+				"home.sc",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"font-i",
+				"tuteria\\static\\sass\\src\\font-icons.scss"
+			],
+			[
+				"",
+				"tuteria\\static\\sass\\src\\font-icons.scss"
+			],
+			[
+				"font-ic",
+				"tuteria\\static\\sass\\src\\font-icons.scss"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"1",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\1-describe-subject.html"
+			],
+			[
+				"set-",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
+			],
+			[
+				"foosmal",
+				"tuteria\\templates\\includes\\footer\\_footer-small.html"
+			],
+			[
+				"base",
+				"tuteria\\templates\\_layouts\\base.html"
+			],
+			[
+				"becom.scs",
+				"tuteria\\static\\sass\\become_tutor.scss"
+			],
+			[
+				"setpri",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
+			],
+			[
+				"authsign",
+				"tuteria\\templates\\includes\\auth\\signup.html"
+			],
+			[
+				"pro.scs",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"proje.sc",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"becom.sc",
+				"tuteria\\static\\sass\\become_tutor.scss"
+			],
+			[
+				"view",
+				"tuteria\\registration\\views.py"
+			],
+			[
+				"regurl",
+				"tuteria\\registration\\urls.py"
+			],
+			[
+				"become.htm",
+				"tuteria\\templates\\pages\\become_tutor.html"
+			],
+			[
+				"script",
+				"tuteria\\templates\\includes\\_scripts.html"
+			],
+			[
+				"urls",
+				"tuteria\\config\\urls.py"
+			],
+			[
+				"scrip",
+				"tuteria\\templates\\includes\\_scripts.html"
+			],
+			[
+				"pro.js",
+				"tuteria\\static\\javascripts\\project.js"
+			],
+			[
+				"usersmode",
+				"tuteria\\users\\models.py"
+			],
+			[
+				"navig",
+				"tuteria\\templates\\includes\\nav\\_navigation.html"
+			],
+			[
+				"navi.sc",
+				"tuteria\\static\\sass\\src\\navigation.scss"
+			],
+			[
+				"mobile",
+				"tuteria\\templates\\includes\\nav\\mobile\\mobile-header.html"
+			],
+			[
+				"nav",
+				"tuteria\\templates\\includes\\nav\\_navigation.html"
+			],
+			[
+				"footsma",
+				"tuteria\\templates\\includes\\footer\\_footer-small.html"
+			],
+			[
+				"footerbi",
+				"tuteria\\templates\\includes\\footer\\_footer-big.html"
+			],
+			[
+				"ext.htm",
+				"tuteria\\templates\\_layouts\\base-external.html"
+			],
+			[
+				"varia",
+				"tuteria\\static\\sass\\src\\variables.scss"
+			],
+			[
+				"testimon",
+				"tuteria\\static\\sass\\src\\testimonials.scss"
+			],
+			[
+				"strokeicon",
+				"tuteria\\static\\css\\src\\stroke-icon.css"
+			],
+			[
+				"font.scs",
+				"tuteria\\static\\sass\\src\\fonts.scss"
+			],
+			[
+				"glyph.scs",
+				"tuteria\\static\\sass\\bootstrap\\src\\_glyphicons.scss"
+			],
+			[
+				"proj.js",
+				"tuteria\\static\\javascripts\\project.js"
+			],
+			[
+				"home.ht",
+				"tuteria\\templates\\pages\\home.html"
+			],
+			[
+				"pro.sc",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"_var",
+				"tuteria\\static\\sass\\bootstrap\\src\\_variables.scss"
+			],
+			[
+				"exter",
+				"tuteria\\static\\css\\external.css"
+			],
+			[
+				"proj.scs",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"exte",
+				"tuteria\\static\\sass\\external.scss"
+			],
+			[
+				"types",
+				"tuteria\\static\\sass\\bootstrap\\src\\_type.scss"
+			],
+			[
+				"_vari",
+				"tuteria\\static\\sass\\bootstrap\\src\\_variables.scss"
+			],
+			[
+				"home.s",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"mix.sc",
+				"tuteria\\static\\sass\\src\\mixins.scss"
+			],
+			[
+				"tutor.css",
+				"tuteria\\static\\css\\become_tutor.css"
+			],
+			[
+				"subnav",
+				"tuteria\\static\\sass\\src\\sub-nav-2.scss"
+			],
+			[
+				"wizard.scs",
+				"tuteria\\static\\sass\\src\\wizard-subnav.scss"
+			],
+			[
+				"home.scs",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"variabl",
+				"tuteria\\static\\sass\\bootstrap\\src\\_variables.scss"
+			],
+			[
+				"ext",
+				"tuteria\\static\\css\\external.css"
+			],
+			[
+				"hme.h",
+				"tuteria\\templates\\pages\\home.html"
+			],
+			[
+				"home.css",
+				"tuteria\\static\\css\\home.css"
+			],
+			[
+				"model",
+				"tuteria\\users\\models.py"
+			],
+			[
+				"navi",
+				"tuteria\\templates\\includes\\nav\\_navigation.html"
+			],
+			[
+				"3-",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\3-subject-media.html"
+			],
+			[
+				"modal",
+				"tuteria\\templates\\includes\\auth\\modal.html"
+			],
+			[
+				"nai.htm",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\3-subject-media.html"
+			],
+			[
+				"project.sc",
+				"tuteria\\static\\sass\\project.scss"
+			],
+			[
+				"search",
+				"tuteria\\templates\\includes\\nav\\header_search_form.html"
+			],
+			[
+				"navig.htm",
+				"tuteria\\templates\\includes\\nav\\_navigation.html"
+			],
+			[
+				"common.p",
+				"tuteria\\config\\settings\\common.py"
+			],
+			[
+				"step3",
+				"tuteria\\registration\\templates\\registration\\tutor\\step3.html"
+			],
+			[
+				"step2",
+				"tuteria\\registration\\templates\\registration\\tutor\\step2.html"
+			],
+			[
+				"tutor_pro",
+				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
+			],
+			[
+				"step",
+				"tuteria\\registration\\templates\\registration\\tutor\\step2.html"
+			],
+			[
+				"profi",
+				"tuteria\\users\\static\\profile.js"
+			],
+			[
+				"edit_tu",
+				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
+			],
+			[
+				"0-",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\0-select-subject.html"
+			],
+			[
+				"skillform",
+				"tuteria\\skills\\forms.py"
+			],
+			[
+				"form",
+				"tuteria\\registration\\forms.py"
+			],
+			[
+				"tutor-",
+				"tuteria\\static\\sass\\tutor-registration.scss"
+			],
+			[
+				"wizar.htm",
+				"tuteria\\templates\\_layouts\\base-wizard.html"
+			],
+			[
+				"tutor-reg",
+				"tuteria\\static\\sass\\tutor-registration.scss"
+			],
+			[
+				"modal.scss",
+				"tuteria\\static\\sass\\src\\modal.scss"
+			],
+			[
+				"modal.scs",
+				"tuteria\\static\\sass\\bootstrap\\src\\_modals.scss"
+			],
+			[
+				"home.",
+				"tuteria\\static\\sass\\home.scss"
+			],
+			[
+				"modal.",
+				"tuteria\\templates\\includes\\auth\\modal.html"
+			],
+			[
+				"skil",
+				"tuteria\\skills\\static\\js\\skill.js"
+			],
+			[
+				"regj",
+				"tuteria\\registration\\static\\registration.js"
+			],
+			[
+				"person",
+				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
+			],
+			[
+				"regis",
+				"tuteria\\registration\\static\\registration.js"
+			],
+			[
+				"regi",
+				"tuteria\\registration\\static\\registration.js"
+			],
+			[
+				"1-",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\1-describe-subject.html"
+			],
+			[
+				"edi",
+				"tuteria\\skills\\templates\\skills\\edit-subject.html"
+			],
+			[
+				"profiin",
+				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
+			],
+			[
+				"2-",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
+			],
+			[
+				"subje",
+				"tuteria\\users\\templates\\users\\subjects.html"
+			],
+			[
+				"tutotr",
+				"tuteria\\static\\sass\\tutor-registration.scss"
+			],
+			[
+				"profiinf",
+				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
+			],
+			[
+				"skill",
+				"tuteria\\skills\\static\\js\\skill.js"
+			],
+			[
+				"edit-su",
+				"tuteria\\skills\\templates\\skills\\edit-subject.html"
+			],
+			[
+				"1-des",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\1-describe-subject.html"
+			],
+			[
+				"profile",
+				"tuteria\\users\\static\\profile.js"
+			],
+			[
+				"2",
+				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
+			],
+			[
+				"tutor_prof",
+				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
+			],
+			[
+				"projec",
+				"tuteria\\static\\javascripts\\project.js"
+			],
+			[
+				"prof",
+				"tuteria\\users\\static\\profile.js"
+			],
+			[
+				"tutor_p",
+				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
+			],
+			[
+				"re",
+				"tuteria\\registration\\static\\registration.js"
+			],
+			[
+				"landi",
+				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
+			],
+			[
+				"lan",
+				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
+			],
+			[
+				"tutorpro",
+				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
+			],
+			[
+				"step4",
+				"tuteria\\registration\\templates\\registration\\tutor\\step4.html"
+			],
+			[
+				"reg",
+				"tuteria\\registration\\static\\registration.js"
+			],
+			[
+				"landin",
+				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
+			],
+			[
+				"views",
+				"tuteria\\registration\\views.py"
+			],
+			[
+				"persona",
+				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"F:\\work-projects\\python\\sv.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 137.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}
