@@ -1,6 +1,38 @@
 .multiple-date-picker{
 	border:2px solid #eeeeee;
 }
+.row-space-4{
+	margin-bottom: 10px;
+}
+.padding-right-0{
+	padding-right:0px;
+}
+@media (max-width: 768px){
+	.row-space-mobile-4{
+		margin-bottom: 8px;		
+	}
+}
+hr{
+	margin-top:0px;
+	margin-bottom: 10px;
+}
+.modal-body{
+	padding-bottom: 0;
+}
+.modal-title{
+	font-size: 14px;
+	font-weight: bold;
+}
+.modal-header{
+	padding:6px 6px 6px 15px;
+}
+.btn.btn-monthly-schedule-button{
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.modal-footer {
+	padding: 5px 15px 5px 5px;
+}
 
 #hourly p{
 	font-size:14px;
@@ -14,6 +46,9 @@
 }
 .booking-text{
 	font-size:80%;
+}
+.padding-right-5{
+	padding-right: 5px;
 }
 #monthly h3{
 	margin-right: 10px;

@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"Month",
+				"MonthlyModalCtrl"
+			],
+			[
+				"selection",
+				"selection"
+			],
+			[
+				"opti",
+				"options"
+			],
+			[
+				"Hour",
+				"HourlyModalCtrl"
+			],
+			[
+				"Modal",
+				"ModallCall"
+			],
+			[
+				"callba",
+				"callback1"
+			],
+			[
+				"sele",
+				"selectedDate"
+			],
+			[
+				"start",
+				"start_time"
+			],
+			[
+				"end",
+				"end_time"
+			],
+			[
+				"weeka",
+				"weekdays"
+			],
+			[
 				"sess",
 				"session"
 			],
@@ -28,10 +68,6 @@
 				"getDaysArray"
 			],
 			[
-				"selection",
-				"selections"
-			],
-			[
 				"date",
 				"dateInstance"
 			],
@@ -46,14 +82,6 @@
 			[
 				"modalIns",
 				"modalInstanceCall"
-			],
-			[
-				"callba",
-				"callback2"
-			],
-			[
-				"sele",
-				"selectedItem"
 			],
 			[
 				"month",
@@ -328,10 +356,6 @@
 				"width"
 			],
 			[
-				"Month",
-				"MonthlyBookingExplanation"
-			],
-			[
 				"boots",
 				"bootstrap/"
 			],
@@ -490,30 +514,6 @@
 			[
 				"Quiz",
 				"QuizService"
-			],
-			[
-				"five",
-				"fiver-table.scss"
-			],
-			[
-				"baco",
-				"background-color"
-			],
-			[
-				"terms",
-				"terms_and_conditions"
-			],
-			[
-				"Sche",
-				"ScheduleDaysClickHandler"
-			],
-			[
-				"impo",
-				"importer	module"
-			],
-			[
-				"add",
-				"add_geo	statement"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 4911,
+				"buffer_size": 8419,
 				"line_ending": "Windows"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "calendar/controller.js",
 			"settings":
 			{
-				"buffer_size": 3556,
+				"buffer_size": 3975,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +547,7 @@
 			"file": "calendar/models.js",
 			"settings":
 			{
-				"buffer_size": 4036,
+				"buffer_size": 5185,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "calendar/service.js",
 			"settings":
 			{
-				"buffer_size": 2230,
+				"buffer_size": 2648,
 				"line_ending": "Windows"
 			}
 		},
@@ -579,7 +579,7 @@
 			"file": "calendar/server.json",
 			"settings":
 			{
-				"buffer_size": 3187,
+				"buffer_size": 6996,
 				"line_ending": "Windows"
 			}
 		}
@@ -1135,6 +1135,7 @@
 	],
 	"file_history":
 	[
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/test/browser/single-test.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/TemplatedPathPlugin.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/template.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/test/toExponential.js",
@@ -1261,8 +1262,7 @@
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/wizard-subnav.scss",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/mixins.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/mixins.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/mobile/mobile-header.html"
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/mixins.scss"
 	],
 	"find":
 	{
@@ -1280,6 +1280,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"HourlyModalCtrl",
+			"MonthlyModalCtrl",
+			"modalInstanceCall",
+			"ModalInstanceCtrl",
+			"selectedDate",
+			"return",
 			"backdrop",
 			"selectedDay",
 			"getDay",
@@ -1401,13 +1407,7 @@
 			"#top-business",
 			"$(this)",
 			"node",
-			"input",
-			"type=\"checkbox col-sm-3\"",
-			"checkbox",
-			"sr-only",
-			"class=\"control-label",
-			"').",
-			"section-linemo"
+			"input"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1450,7 +1450,8 @@
 							"_anf_new": "",
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
 							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 1.0,
@@ -1465,15 +1466,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4911,
+						"buffer_size": 8419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1137,
-								1137
+								4662,
+								4662
 							]
 						],
 						"settings":
@@ -1483,7 +1484,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 230.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1495,15 +1496,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3556,
+						"buffer_size": 3975,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3164,
-								3164
+								2936,
+								2941
 							]
 						],
 						"settings":
@@ -1513,10 +1514,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1462.0,
+						"translation.y": 1286.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1525,28 +1526,29 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4036,
+						"buffer_size": 5185,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2811,
-								2831
+								1252,
+								1263
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
 							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1585.0,
+						"translation.y": 662.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1555,15 +1557,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2230,
+						"buffer_size": 2648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1648,
-								1648
+								373,
+								373
 							]
 						],
 						"settings":
@@ -1573,11 +1575,11 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 897.0,
+						"translation.x": 88.0,
+						"translation.y": 129.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1609,13 +1611,13 @@
 						"translation.y": 1704.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1647,7 +1649,7 @@
 						"translation.y": 1041.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1656,15 +1658,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3556,
+						"buffer_size": 3975,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3080,
-								3080
+								2268,
+								2268
 							]
 						],
 						"settings":
@@ -1673,11 +1675,11 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 4.0,
-						"translation.y": 1431.0,
+						"translation.x": 0.0,
+						"translation.y": 823.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1708,7 +1710,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1717,15 +1719,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2230,
+						"buffer_size": 2648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1836,
-								1836
+								1870,
+								1870
 							]
 						],
 						"settings":
@@ -1739,7 +1741,7 @@
 						"translation.y": 785.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1748,15 +1750,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3187,
+						"buffer_size": 6996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3139,
-								3139
+								6996,
+								6996
 							]
 						],
 						"settings":
@@ -1765,11 +1767,11 @@
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
-						"translation.x": 21697.0,
+						"translation.x": 48360.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

@@ -2,6 +2,9 @@
 <html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Multiple Date Picker</title><!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -13,129 +16,173 @@
 	<div class="container">
 		<div class="row">
 			<div>
-
-			    <script type="text/ng-template" id="myModalContent.html">
-			        <div class="modal-header">
-        	            <button type="button" class="close" ng-click="cancel()"><span
-                    aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			            <h3 class="modal-title">{{selectedDate.weekdayString()}}, {{selectedDate.StringRepresentation("DD, MMMM, YYYY")}}!</h3>			            
-			        </div>
-			        <div class="modal-body">
-			        	<div class="col-xs-12">
-			        		<p>Set preferred start time and end time.</p>
-			        	</div>
-			        	
-			        	<div class="row">
-                            <div class="col-xs-6">
-                            	<div class="form-group">
-	                                <label class="col-xs-5">Start time?</label>
-	                                <div class="col-xs-7">
-	                                	<select ng-model="selectedDate.start_time" class="form-control" name="sss" 
-	                                	ng-options="item for item in dateInstance.getHours()">
-                                        	<option value="">Select</option>
-  										</select>
-  									</div>	                                
-                            	</div>                                
-                            </div>
-                            <div class="col-xs-6">
-                            	<div class="form-group">
-	                                <label class="col-xs-5">End time?</label>
-	                                <div class="col-xs-7">
-	                                	<select class="form-control" name="sss">
-                                        	<option value="">1</option>
-                                            <option value="">4</option>
-                                            <option value="">3</option>
-                                            <option value="">3</option>
-                                            <option value="">2</option> 
-  										</select>
-  									</div>	                                
-                            	</div>                                
-                            </div>
-                        </div>	
-			        </div>
-			        <div class="modal-footer">
-			            <button ng-show="selectedDate.isNew()" class="btn btn-primary" ng-click="ok()">Schedule Session </button>
-			            <button ng-hide="selectedDate.isNew()" class="btn btn-primary" ng-click="ok()">Update Session</button>
-			            <button ng-hide="selectedDate.isNew()" class="btn btn-warning" ng-click="cancel()">Cancel Session</button>
-			        </div>
-			    </script>   
-			</div>
-			<div class="col-sm-6 col-xs-12">				<div role="tabpanel">
-
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#hourly" aria-controls="hourly" role="tab" ng-click="bookingType('hour')" data-toggle="tab">Hourly</a></li>
-						<li ng-show="supports_monthly" role="presentation"><a href="#monthly" aria-controls="monthly" role="tab" ng-click="bookingType('month')" data-toggle="tab">Monthly</a></li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<br>
-						<div role="tabpanel" class="tab-pane active" id="hourly">   
-							<p><strong>Schedule lesson days and times</strong></p> 	
-							<multiple-date-picker day-click="logInfos" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged" week-days-off="[]" days-off="daysOff" days-selected="selectedDays" disallow-back-past-months="true" ></multiple-date-picker>
+				<script type="text/ng-template" id="monthlyModal.html">
+					<div class="modal-header">
+						<button type="button" class="close" ng-click="cancel()"><span
+							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h3 class="modal-title">
+								Set time duration for the following dates.
+							</h3>			            <small>We have found 4 days available for you. tho whwoje hwohe whwoehw </small>
 						</div>
-						<div role="tabpanel" class="tab-pane" id="monthly">    
-							<p><strong>Select from suggested days</strong></p> 	
-							<div class="row ">
-								<div class="col-xs-12 text-center day-selection">			<a href="#" ng-click="toggleSelectedDay($index)" data-ng-repeat="dayOfWeek in days" class=""><h3><span class="label label-default">{{dayOfWeek}}</span></h3></a>			
+						<div class="modal-body">
+
+							<div ng-repeat="dt in pending_sessions" class="">
+								<div class="row">
+									<div class="col-xs-12 col-sm-4">			        		
+										<small>{{dt.weekdayString()}}, {{dt.StringRepresentation("DD, MMMM, YYYY")}}</small>
+									</div>
+									<div class="col-xs-6 col-sm-4">
+										<div class="form-group">
+											<!--<label class="col-xs-5">?</label>-->
+											<select ng-model="dt.start_time" class="form-control input-sm" name="sss" 
+											ng-options="item for item in selections[$index].monthlyStartHours()" ng-change="getEndHours(dt)">
+											<option value="">Start time</option>
+										</select>
+									</div>                                
 								</div>
-							</div>
-							<div class="row-space-top-5">
-							<multiple-date-picker day-click="logInfos" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged" week-days-off="[]" days-off="daysOff" days-selected="selectedDays" disallow-back-past-months="true" ></multiple-date-picker>
-								
-							</div>
-						</div>
-						<div class="row row-space-top-5">
-							<div class="col-xs-6">
-								<strong>How many students</strong>
-							</div>
-							<div class="col-xs-4 pull-right">
-								<select name="" id="" class="form-control input-sm">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-								</select>
-							</div>
-						</div>
-						<div class="">
-							<span class="label label-default">Default</span>
-							<span class="discount-section">&#8358;15000 for each extra student</span>
-						</div>
-						<table class="table table-bordered row-space-top-5" >
-							<tr>
-								<td>&#8358;2000 x 10hrs x 1std</td>
-								<td>&#8358;20,000</td>
-							</tr>
-							<tr>
-								<td>Booking fee (5%)</td>
-								<td>&#8358;1,000</td>
-							</tr>
-							<tr>
-								<td>Total</td>
-								<td>&#8358;21,000</td>
-							</tr>
-						</table>
-						<div>
-							<button class="btn btn-block btn-lg btn-primary">Schedule Lesson</button>
-							<small class="booking-text"><i class="glyphicon glyphicon-lock"></i> Your booking is fully protected</small>
+								<div class="col-xs-6 col-sm-4">
+									<div class="form-group">
+										<input ng-init="dt.end_time='End time'" type="text" disabled readonly ng-model="dt.end_time" class="form-control input-sm"/>
+									</div>                                
+								</div>
+							</div>	
 
-						</div>	
+							<hr ng-hide="$last">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="col-sm-6 col-xs-12 text-danger"><small ng-show="invalid">You must populate all days with start times.</small></div>
+						<div class="col-sm-4 col-sm-offset-2 col-xs-12 padding-right-0">
+							<button class="btn btn-primary center-block btn-block" ng-click="ok()">Schedule Sessions </button>
+						</div>			            
+					</div>
+				</script>
+				<script type="text/ng-template" id="myModalContent.html">
+					<div class="modal-header">
+						<button type="button" class="close" ng-click="cancel()"><span
+							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h3 class="modal-title">{{selectedDate.weekdayString()}}, {{selectedDate.StringRepresentation("DD, MMMM, YYYY")}}!</h3>	<small>Set preferred start time and end time.</small>	            
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-6 col-sm-5">
+									<div class="form-group">                           	
+										<select ng-model="selectedDate.start_time" class="form-control input-sm" name="sss" 
+										ng-options="item for item in getStartHours()" ng-change="getEndHours(selectedDate.start_time)">
+										<option value="">Start time</option>
+									</select>                 
+								</div>                                
+							</div>
+							<div class="col-xs-6 col-sm-5 col-sm-offset-2">
+								<div class="form-group">								
+									<select ng-show="!isMonth" ng-model="selectedDate.end_time" class="form-control input-sm" name="sss"
+										ng-options="item for item in getEndHours(selectedDate.start_time)">
+										<option value="">End time</option>
+									</select>               
+								<input ng-hide="!isMonth" type="text" disabled readonly ng-model="selectedDate.end_time" class="form-control input-sm"/>     
+							</div>                                
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer padding-right-5">
+					<div class="col-xs-12">
+						<div class="row">			    	
+							<div ng-show="isNew" class="col-sm-6 col-xs-12 text-danger"><small ng-show="invalid">Ensure you select a start time and an end time.</small></div>
+
+							<div ng-show="isNew" class="col-sm-4 col-sm-offset-2 col-xs-12"><button class="btn btn-primary btn-block" ng-click="ok()">Schedule Session </button>
+							</div>			            
+							<div ng-hide="isNew" class="row-space-mobile-4 col-sm-5 col-sm-push-5 col-sm-offset-2 col-xs-12">
+								<button  class="btn btn-primary btn-block" ng-click="ok()">Update Session</button>
+							</div>
+							<div ng-hide="isNew" class="col-sm-5 col-sm-pull-7 col-xs-12">			        	
+								<button class="btn btn-warning btn-block" ng-click="cancel()">Cancel Session</button>
+							</div>
+						</div>
 
 					</div>
-
 				</div>
-
-				
-			</div>
+			</script>   
 		</div>
+		<div class="col-sm-6 col-xs-12">				<div role="tabpanel">
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#hourly" aria-controls="hourly" role="tab" ng-click="bookingType('hour')" data-toggle="tab">Hourly</a></li>
+				<li ng-show="supports_monthly" role="presentation"><a href="#monthly" aria-controls="monthly" role="tab" ng-click="bookingType('month')" data-toggle="tab">Monthly</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<br>
+				<div role="tabpanel" class="tab-pane active" id="hourly">   
+					<p><strong>Schedule lesson days and times</strong></p> 	
+					<multiple-date-picker days-selected="hourlySelectedDays" day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged1" week-days-off="[]" days-off="daysOff" disallow-back-past-months="true" ></multiple-date-picker>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="monthly">    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+
+					<p><strong>Select from suggested days</strong></p> 	
+					<div class="row ">
+						<div class="col-xs-12 text-center day-selection">			<a href="#" ng-click="toggleSelectedDay($index)" data-ng-repeat="dayOfWeek in days" class=""><h3><span class="label label-default">{{dayOfWeek}}</span></h3></a>			
+						</div>
+					</div>
+					<div class="row-space-top-5">
+						<multiple-date-picker day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged2" week-days-off="[]" days-off="daysOff" days-selected="selectedDays" disallow-back-past-months="true" ></multiple-date-picker>
+
+					</div>
+				</div>
+				<div class="row row-space-top-5">
+					<div class="col-xs-6">
+						<strong>How many students</strong>
+					</div>
+					<div class="col-xs-4 pull-right">
+						<select name="" id="" class="form-control input-sm">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+				</div>
+				<div class="">
+					<span class="label label-default">Default</span>
+					<span class="discount-section">&#8358;15000 for each extra student</span>
+				</div>
+				<table class="table table-bordered row-space-top-5" >
+					<tr>
+						<td>&#8358;2000 x 10hrs x 1std</td>
+						<td>&#8358;20,000</td>
+					</tr>
+					<tr>
+						<td>Booking fee (5%)</td>
+						<td>&#8358;1,000</td>
+					</tr>
+					<tr>
+						<td>Total</td>
+						<td>&#8358;21,000</td>
+					</tr>
+				</table>
+				<div>
+					<button class="btn btn-block btn-lg btn-primary">Schedule Lesson</button>
+					<small class="booking-text"><i class="glyphicon glyphicon-lock"></i> Your booking is fully protected</small>
+
+				</div>	
+
+			</div>
+
+		</div>
+
+
 	</div>
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<!--<script src="bower_components/angular/angular.js"></script>-->
-	<!--<script src="bower_components/moment/moment.js"></script>-->
-	<script src="vendor.bundle.js"></script>
-	<script src="main.bundle.js"></script>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--<script src="bower_components/angular/angular.js"></script>-->
+<!--<script src="bower_components/moment/moment.js"></script>-->
+<script src="vendor.bundle.js"></script>
+<script src="main.bundle.js"></script>
 </body>
 </html>

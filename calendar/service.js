@@ -9,7 +9,7 @@ var Schedule = Models.Schedule,
 var Services = angular.module('calendar.service',[]);
 
 
-Services.factory('CalendarFactory',['$rootScope','$modal',function($rootScope,$modal){
+Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootScope,$modal,$log){
 	var json = require("./server.json");
 	var hourly_calendar = new Schedule(json.monthly,'month');
 	var monthly_calendar = new Schedule(json.hourly,'hour');
@@ -31,7 +31,7 @@ Services.factory('CalendarFactory',['$rootScope','$modal',function($rootScope,$m
 	function DaysOff(month,cal_type){
 		var existingMonth = getMonth(month,cal_type);
 		if(existingMonth){
-			return existingMonth.getDaysOff();
+			return existingMonth.getDaysOff(cal_type);
 		}
 		var all_days = getDaysArray(month);
 		return _.map(all_days,function(dd){
@@ -49,30 +49,49 @@ Services.factory('CalendarFactory',['$rootScope','$modal',function($rootScope,$m
 			return selected.indexOf(index) > -1;
 		})
 	}
+	function getWeekDay(val){
+		var weekdays= moment.weekdaysShort();
+		var indexx = weekdays.indexOf(val);
+		return moment.weekdays()[indexx];
+	}
 	
 	function getDay(momentDate){
 		var month_instance = monthly_calendar.getMonth(momentDate.format("MMMM"));
 		return month_instance.getDayInstance(momentDate);
 	}
-	// var u = getDay(moment("2015-02-09","YYYY-MM-DD"));
-	// console.log(u.getHours());
-	// var vv = _.map(u.getHours(),function(xxx){
-	// 	return u.getEndHours(xxx);
-	// });
-	// console.log(vv);
 	
 	function getFirstFourDays(month_name,weekday_name){
 		return monthly_calendar.getFirstFourDays(month_name,weekday_name);
 	}
 	
-	function getModal(resloverFunction){
+	function getModal(resloverFunction,modalCtrl,modalTemplate){
 		return $modal.open({
-	      templateUrl: 'myModalContent.html',
-	      controller: 'ModalInstanceCtrl',
+	      templateUrl: modalTemplate,
+	      controller: modalCtrl,
 	      size: 'size',
 	      resolve: resloverFunction
 	    });
 	}
+	$rootScope.$on('BookingAdded',function(event,data){
+		console.log(selections.sessions);
+	});
+	$rootScope.$on('BookingRemoved',function(event,data){
+		console.log(selections.sessions);
+	})
+	function RefreshBookings(){
+		selections.sessions = [];
+	}
+ 	function ModallCall(modalInstance,callback1,callback2){
+		var successCallback = callback1 || function(){};
+		var errorCallback = function (err) {
+	      $log.info('Modal dismissed at: ' + new Date());
+	      var tt = callback2 || function(){};
+	      // if(err==="backdrop click"){
+	      	tt(err);	
+	    };		
+		modalInstance.result.then(successCallback,errorCallback);
+	}
+
 
 	return{
 		response:json,
@@ -83,6 +102,9 @@ Services.factory('CalendarFactory',['$rootScope','$modal',function($rootScope,$m
 		firstFourDays:getFirstFourDays,
 		ScheduleModal:getModal,
 		getDay:getDay,
-		bookings:selections
+		bookings:selections,
+		ModallCall:ModallCall,
+		getWeekDay:getWeekDay,
+		RefreshBookings:RefreshBookings,
 	}
 }]);

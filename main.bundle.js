@@ -22168,102 +22168,248 @@ webpackJsonp([1],{
 	var Session = __webpack_require__(9).Session;
 
 	function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
-		$scope.booking_type = 'hourly';
+		$scope.booking_type = 'hour';
 		$scope.days = [];
+		$scope.month= moment().format("MMMM");
 		$scope.supports_monthly = true;
+		$scope.expected_hours = 16;
+		$scope.selectedDays = [];
+		$scope.hourlySelectedDays = [];
 
 		var m_names = ["January", "February", "March", "April", "May", 
 			"June", "July", "August", "September", "October", "November", "December"];
 	    var presentMonth= new Date().getMonth();
 		$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth]);
+		$scope.$watch('hourlySelectedDays',function(x,v){
+			console.log(x);
+			console.log(v);
+		},true);
+
 		$scope.bookingType = function(b_type){
 			if(b_type === 'month'){
 				var bookable_days = CalendarFactory.getWeekDay(m_names[presentMonth]);
 				console.log(bookable_days);
 				$scope.days = CalendarFactory.weekDaysForMonth(m_names[presentMonth])
+				$scope.hourlySelectedDays = [];
+			}else{			
+				$scope.selectedDays = [];
 			}
+			CalendarFactory.RefreshBookings();
 			$scope.booking_type = b_type;
 			$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth],b_type);
 		}
 
-		function modalInstanceCall(selected_item,callback1,callback2){
-			var successCallback = callback1 || function(){};
-			var errorCallback = function (err) {
-		      $log.info('Modal dismissed at: ' + new Date());
-		      var tt = callback2 || function(){};
-		      // if(err==="backdrop click"){
-		      	tt(err);	
-		    };
-			var modalInstance = CalendarFactory.ScheduleModal(selected_item);
-			modalInstance.result.then(successCallback,errorCallback);
+
+		function ModalCall(selected_item,callback1,callback2,modal_type){
+			var options = {
+				'hour':{ctrl:'HourlyModalCtrl',template:'myModalContent.html'},
+				'month':{ctrl:'MonthlyModalCtrl',template:'monthlyModal.html'},
+			}
+			console.log(modal_type);
+			var selection = options[modal_type]||options['hour'];
+			var modalInstance = CalendarFactory.ScheduleModal(
+				selected_item,selection.ctrl,selection.template);
+			CalendarFactory.ModallCall(modalInstance,callback1,callback2);		
 		}
+
+		 $scope.alerts = [
+		    // { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+		    // { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+		  ];
+
+		  function addAlert(msg,alt_type) {
+		    $scope.alerts.push({ type: alt_type, msg: msg });
+		  };
+
+		  $scope.closeAlert = function(index) {
+		    $scope.alerts.splice(index, 1);
+		  };
+
+		 function addToSelectedDays(date){
+		 	var value = date.valueOf();
+		 	console.log(value);
+		 	if($scope.booking_type ==='month'){
+			 	if($scope.selectedDays.indexOf(value) < 0){
+			 		$scope.selectedDays.push(value);
+			 	}
+			 	console.log($scope.selectedDays);
+			 }else{
+			 	if($scope.hourlySelectedDays.indexOf(value) < 0){
+			 		$scope.hourlySelectedDays.push(value);
+			 	}
+			 }
+		 }
+		 function removeFromSelectedDays(date){
+		 	var value = date.valueOf();
+		 	var m_index =$scope.selectedDays.indexOf(value);
+		 	var h_index = $scope.hourlySelectedDays.indexOf(value)
+		 	if($scope.booking_type ==='month'){
+			 	if(m_index > -1){
+			 		$scope.selectedDays.splice(m_index,1);
+			 	}
+			 }else{
+			 	if(h_index > -1){
+			 		$scope.hourlySelectedDays.splice(h_index,1);
+			 	}
+			 }	
+		 }
 		
 		$scope.toggleSelectedDay = function(index){
+			var week_day = CalendarFactory.getWeekDay($scope.days[index]);
+			var month_selections = CalendarFactory.firstFourDays($scope.month,week_day);
+			var pending_sessions = _.map(month_selections,function(x){
+				return CalendarFactory.bookings.InitializeSession(x.momentDate);
+			});
+			console.log(pending_sessions);
+			if(month_selections){
+	 			ModalCall(
+					{
+						selections:function(){return month_selections;},
+						pending_sessions:function(){return pending_sessions}
+					},
+					function(response){
+						console.log(response.sessions);
+						angular.forEach(response.sessions,function(s){
+							CalendarFactory.bookings.AddBooking(s);
+							$scope.$emit("BookingAdded");
+							addToSelectedDays(moment(s.date));
+						});
+						$scope.days.splice(index,1);
+					},null,'month');
 
-			modalInstanceCall(
-				{
-					items:function(){return $scope.items;},
-					action:function(){return 'populate';}
-				},
-				function(selectedItem){
-					$scope.selected = selectedItem;      
-					$scope.days.splice(index,1);
-				});
+			}else{
+				addAlert("Sorry there are no available days on "+week_day,'danger');
+				$scope.days.splice(index,1);
+			}
 		};
 
-		$scope.logInfos = function(event,date){
+		$scope.dateClick = function(event,date){
 			event.preventDefault();
-			console.log(date);
 			var selectedDay = CalendarFactory.bookings.InitializeSession(date);
-			console.log(selectedDay);
-			modalInstanceCall(
+			var isNew = selectedDay.isNew();
+			ModalCall(
 				{
 					selectedDate:function(){return selectedDay;},
-					action:function(){return 'toggle';}
+					action:function(){return $scope.booking_type;}
 				},
-				function(ss){				
+				function(ss){			
+					console.log(ss.date);
 					CalendarFactory.bookings.AddBooking(ss.date);
-					if(ss.isNewDate){			
-						date.selected= !date.selected;
+					$scope.$emit("BookingAdded");
+					if(isNew){			
+						addToSelectedDays(ss.date.date)
+						// date.selected= !date.selected;
 					}	
 				},function(err){		
 					if(err==="cancel" && date.selected){
 						CalendarFactory.bookings.RemoveBooking(selectedDay);
-						date.selected= !date.selected;
+						$scope.$emit("BookingRemoved");
+						removeFromSelectedDays(selectedDay.date);
 					}
 				}
 			);
 		};
+		
 		$scope.hoverEvent = function(event,date){
 			event.preventDefault();
 			if(event.type === 'mouseover'){
 					}
 		};			
-		$scope.$watch('selectedDays',function(e,v){
-			console.log(e);
-			console.log(v);
-		},true);
 
-		$scope.logMonthChanged = function(newMonth,oldMonth){
+		$scope.logMonthChanged1 = function(newMonth,oldMonth){
 			var new_month= newMonth.format("MMMM");
-			console.log(new_month);
 			$scope.daysOff = CalendarFactory.DaysOff(new_month);		
-			console.log($scope.daysOff);
+		};
+		$scope.logMonthChanged2 = function(newMonth,oldMonth){
+			var new_month= newMonth.format("MMMM");
+			$scope.month = new_month;
+			$scope.days = CalendarFactory.weekDaysForMonth(new_month)
+			$scope.daysOff = CalendarFactory.DaysOff(new_month,'month');		
 		};
 		$scope.selectedDays = [];
 		 $scope.items = ['item1', 'item2', 'item3'];  
 	};
 
-	function ModalInstanceCtrl($scope,$modalInstance,CalendarFactory,selectedDate,action){
+	function HourlyModalCtrl($scope,$modalInstance,CalendarFactory,selectedDate,action){
+		$scope.range = 2;
+		$scope.isMonth= action === "month";
 		$scope.dateInstance = CalendarFactory.getDay(selectedDate.date);
+		$scope.isNew = selectedDate.isNew();
 		$scope.selectedDate = selectedDate;
+		$scope.selectedDate.end_time = selectedDate.end_time || 'End time';
+		console.log(selectedDate);
+		function validate(){
+			if(action === 'hour'){
+				return $scope.selectedDate.end_time !== "" && $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined;	
+			}
+			return $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined && $scope.selectedDate.end_time !== 'End time' && $scope.selectedDate.end_time !== 'Invalid date';
+		}
+		$scope.invalid = false;
 		$scope.ok = function () {
-		    $modalInstance.close({date:$scope.selectedDate,isNewDate:selectedDate.isNew()});
+			if(validate()){
+		    	$modalInstance.close({date:$scope.selectedDate,isNewDate:selectedDate.isNew()});
+			}
+			else{
+				$scope.invalid = true;
+			}
+		};
+
+		$scope.getStartHours = function(){
+			if(action === 'hour'){
+				return $scope.dateInstance.getHours();
+			}else{
+				return $scope.dateInstance.monthlyStartHours($scope.range);
+			}
+		}
+
+		$scope.cancel = function () {
+		    $modalInstance.dismiss('cancel');
+		};
+		
+		$scope.getEndHours = function(time){
+			if(time){
+				if(action === 'hour'){
+					return $scope.dateInstance.getEndHours(time);			
+				}else{
+					var end_time = moment($scope.selectedDate.start_time,"ha").hour()+$scope.range;
+					$scope.selectedDate.end_time =  moment(end_time,"HH").format("ha");
+					return;
+				}
+			}
+			return []
+		}
+	}
+
+	function MonthlyModalCtrl($scope,$modalInstance,CalendarFactory,selections,pending_sessions){
+		$scope.selections = selections;
+		$scope.range = 2;
+		$scope.pending_sessions=pending_sessions;
+		$scope.getEndHours = function(dt){
+			var start_time = dt.start_time;
+			var end_time = moment(dt.start_time,"ha").hour()+$scope.range;
+			dt.end_time = moment(end_time,"HH").format("ha");
+		};
+
+		function validate(){
+			var filled = _.filter($scope.pending_sessions,function(x){
+				return x.end_time === null || x.end_time === "undefined" || x.end_time === undefined || x.end_time === 'End time' || x.end_time === 'Invalid date';
+			});
+			console.log(filled);
+			return filled.length === 0;
+		}
+		$scope.invalid = false;
+		$scope.ok = function () {
+			if(validate()){			
+		    	$modalInstance.close({sessions:$scope.pending_sessions});
+			}else{			
+				$scope.invalid = true;
+			}
 		};
 
 		$scope.cancel = function () {
 		    $modalInstance.dismiss('cancel');
 		};
+
 	}
 
 
@@ -22271,8 +22417,10 @@ webpackJsonp([1],{
 
 	// var App = angular.module('calendar.controller');
 	CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl])
-		.controller('ModalInstanceCtrl',['$scope','$modalInstance','CalendarFactory','selectedDate',
-				'action',ModalInstanceCtrl]);
+		.controller('HourlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selectedDate',
+				'action',HourlyModalCtrl])
+		.controller('MonthlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selections', 'pending_sessions',
+				MonthlyModalCtrl]);
 
 
 /***/ },
@@ -22291,7 +22439,7 @@ webpackJsonp([1],{
 	var Services = angular.module('calendar.service',[]);
 
 
-	Services.factory('CalendarFactory',['$rootScope','$modal',function($rootScope,$modal){
+	Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootScope,$modal,$log){
 		var json = __webpack_require__(93);
 		var hourly_calendar = new Schedule(json.monthly,'month');
 		var monthly_calendar = new Schedule(json.hourly,'hour');
@@ -22313,7 +22461,7 @@ webpackJsonp([1],{
 		function DaysOff(month,cal_type){
 			var existingMonth = getMonth(month,cal_type);
 			if(existingMonth){
-				return existingMonth.getDaysOff();
+				return existingMonth.getDaysOff(cal_type);
 			}
 			var all_days = getDaysArray(month);
 			return _.map(all_days,function(dd){
@@ -22331,30 +22479,49 @@ webpackJsonp([1],{
 				return selected.indexOf(index) > -1;
 			})
 		}
+		function getWeekDay(val){
+			var weekdays= moment.weekdaysShort();
+			var indexx = weekdays.indexOf(val);
+			return moment.weekdays()[indexx];
+		}
 		
 		function getDay(momentDate){
 			var month_instance = monthly_calendar.getMonth(momentDate.format("MMMM"));
 			return month_instance.getDayInstance(momentDate);
 		}
-		// var u = getDay(moment("2015-02-09","YYYY-MM-DD"));
-		// console.log(u.getHours());
-		// var vv = _.map(u.getHours(),function(xxx){
-		// 	return u.getEndHours(xxx);
-		// });
-		// console.log(vv);
 		
 		function getFirstFourDays(month_name,weekday_name){
 			return monthly_calendar.getFirstFourDays(month_name,weekday_name);
 		}
 		
-		function getModal(resloverFunction){
+		function getModal(resloverFunction,modalCtrl,modalTemplate){
 			return $modal.open({
-		      templateUrl: 'myModalContent.html',
-		      controller: 'ModalInstanceCtrl',
+		      templateUrl: modalTemplate,
+		      controller: modalCtrl,
 		      size: 'size',
 		      resolve: resloverFunction
 		    });
 		}
+		$rootScope.$on('BookingAdded',function(event,data){
+			console.log(selections.sessions);
+		});
+		$rootScope.$on('BookingRemoved',function(event,data){
+			console.log(selections.sessions);
+		})
+		function RefreshBookings(){
+			selections.sessions = [];
+		}
+	 	function ModallCall(modalInstance,callback1,callback2){
+			var successCallback = callback1 || function(){};
+			var errorCallback = function (err) {
+		      $log.info('Modal dismissed at: ' + new Date());
+		      var tt = callback2 || function(){};
+		      // if(err==="backdrop click"){
+		      	tt(err);	
+		    };		
+			modalInstance.result.then(successCallback,errorCallback);
+		}
+
 
 		return{
 			response:json,
@@ -22365,7 +22532,10 @@ webpackJsonp([1],{
 			firstFourDays:getFirstFourDays,
 			ScheduleModal:getModal,
 			getDay:getDay,
-			bookings:selections
+			bookings:selections,
+			ModallCall:ModallCall,
+			getWeekDay:getWeekDay,
+			RefreshBookings:RefreshBookings,
 		}
 	}]);
 
@@ -22399,6 +22569,13 @@ webpackJsonp([1],{
 				return moment(r,"HH").format("ha");
 			});
 		},
+		validStartTimes:function(range){
+			var current_times = this.getStartHours();
+			var that  = this;
+			return _.filter(current_times,function(x){
+				return moment(x,"ha").hour()+range <= that.end_time;
+			});;
+		},
 		getEndHours:function(value){
 			//format = "7am"
 			var tt = moment(value,"ha").hour();
@@ -22427,12 +22604,28 @@ webpackJsonp([1],{
 			});
 			return _.flatten(result);
 		},
+		monthlyStartHours:function(range){
+			var r = range || 2;
+			var result = _.map(this.times,function(x){
+				return x.validStartTimes(r);
+			});
+			return _.flatten(result);
+		},
 		getEndHours:function(v){
 			var result = _.map(this.times,function(x){
 				return x.getEndHours(v);
 			}).filter(function(x){return x.length > 0});
 
 			return result[0];
+		},
+		end_time:function(value,interval){
+			var exists = _.findIndex(this.times,function(tt){
+				var hours = t.getStartHours();
+				return hours.indexOf(value) > -1
+			});
+		},
+		validMonthDate:function(interval){
+			return this.monthlyStartHours(interval).length > 0
 		}
 	}
 
@@ -22451,12 +22644,23 @@ webpackJsonp([1],{
 			})
 			return _.uniq(result);
 		},
-		getDaysOff:function(){
-			var available_days = _.map(this.dates,function(x){return x.momentDate.date()});
+		getDaysOff:function(cal,inter){
+			var interval = inter || 1;
+			var cal_type = cal || 'hour';
+			var working_dates;
+			if(cal_type === 'hour'){			
+			 working_dates=this.dates; 	
+			}else{
+				working_dates = _.filter(this.dates,function(x){
+					return x.validMonthDate(interval)
+				});
+			}
+			var available_days = _.map(working_dates,function(x){return x.momentDate.date()});
 			var all_days = getDaysArray(this.month);
 			return all_days.filter(function(dd){
 				return available_days.indexOf(dd.date()) < 0;
 			}).map(function(x){return x.valueOf()});
+			
 		},
 		getDayInstance:function(md){
 			return _.find(this.dates,function(d){
@@ -22517,10 +22721,9 @@ webpackJsonp([1],{
 		}
 	}
 
-	var Session = function(dateInstance,session_type){
+	var Session = function(dateInstance){
 		//fields are date,start_time and end_time
 		_.extend(this,dateInstance);
-		this.session_type = session_type || 'single';
 
 	}
 	Session.prototype = {
@@ -22533,9 +22736,6 @@ webpackJsonp([1],{
 		},
 		isNew:	function(){
 			return this.start_time === null;
-		},
-		isSingleBooking:function(){
-			return this.session_type === 'single';
 		}
 	}
 
@@ -22545,13 +22745,14 @@ webpackJsonp([1],{
 
 	Booking.prototype = {
 		getIndex:function(x){
+			console.log(x);
 			return _.findIndex(this.sessions,function(s){
 				return s.StringRepresentation() ===  x.StringRepresentation();
 			})
 		},
 		AddBooking:function(session){
 			//Add or update
-			var instance = this.getIndex(sessions);
+			var instance = this.getIndex(session);
 			if(instance > -1){
 				this.sessions[instance] = session;
 			}else{
@@ -22561,8 +22762,11 @@ webpackJsonp([1],{
 		RemoveBooking:function(session){
 			var instance = this.getIndex(session);
 			if(instance > -1){
-				this.session.splice(instance,1);
+				this.sessions.splice(instance,1);
 			}
+		},
+		RefreshBookings:function(){
+			this.sessions = [];
 		},
 		InitializeSession:function(date){
 			var instance = _.findIndex(this.sessions,function(x){
@@ -22572,6 +22776,7 @@ webpackJsonp([1],{
 				return sameDay && sameMonth && sameYear;
 			});
 			if(instance > -1){
+				console.log(this.sessions[instance]);
 				return this.sessions[instance];
 			}
 			return new Session({date:date,start_time:null,end_time:null});
