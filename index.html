@@ -59,7 +59,7 @@
 				</script>
 				<script type="text/ng-template" id="myModalContent.html">
 					<div class="modal-header">
-						<button type="button" class="close" ng-click="cancel()"><span
+						<button type="button" class="close" ng-click="cancel('dismiss')"><span
 							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 							<h3 class="modal-title">{{selectedDate.weekdayString()}}, {{selectedDate.StringRepresentation("DD, MMMM, YYYY")}}!</h3>	<small>Set preferred start time and end time.</small>	            
 						</div>
@@ -95,7 +95,7 @@
 								<button  class="btn btn-primary btn-block" ng-click="ok()">Update Session</button>
 							</div>
 							<div ng-hide="isNew" class="col-sm-5 col-sm-pull-7 col-xs-12">			        	
-								<button class="btn btn-warning btn-block" ng-click="cancel()">Cancel Session</button>
+								<button class="btn btn-warning btn-block" ng-click="cancel('cancel')">Cancel Session</button>
 							</div>
 						</div>
 

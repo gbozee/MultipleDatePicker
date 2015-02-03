@@ -22285,6 +22285,8 @@ webpackJsonp([1],{
 
 		$scope.dateClick = function(event,date){
 			event.preventDefault();
+			if(date.selectable){
+				
 			var selectedDay = CalendarFactory.bookings.InitializeSession(date);
 			var isNew = selectedDay.isNew();
 			ModalCall(
@@ -22307,7 +22309,8 @@ webpackJsonp([1],{
 						removeFromSelectedDays(selectedDay.date);
 					}
 				}
-			);
+			);			
+			}
 		};
 		
 		$scope.hoverEvent = function(event,date){
@@ -22362,8 +22365,8 @@ webpackJsonp([1],{
 			}
 		}
 
-		$scope.cancel = function () {
-		    $modalInstance.dismiss('cancel');
+		$scope.cancel = function (context) {
+		    $modalInstance.dismiss(context);
 		};
 		
 		$scope.getEndHours = function(time){

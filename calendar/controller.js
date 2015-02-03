@@ -121,6 +121,8 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 
 	$scope.dateClick = function(event,date){
 		event.preventDefault();
+		if(date.selectable){
+			
 		var selectedDay = CalendarFactory.bookings.InitializeSession(date);
 		var isNew = selectedDay.isNew();
 		ModalCall(
@@ -143,7 +145,8 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 					removeFromSelectedDays(selectedDay.date);
 				}
 			}
-		);
+		);			
+		}
 	};
 	
 	$scope.hoverEvent = function(event,date){
@@ -198,8 +201,8 @@ function HourlyModalCtrl($scope,$modalInstance,CalendarFactory,selectedDate,acti
 		}
 	}
 
-	$scope.cancel = function () {
-	    $modalInstance.dismiss('cancel');
+	$scope.cancel = function (context) {
+	    $modalInstance.dismiss(context);
 	};
 	
 	$scope.getEndHours = function(time){
