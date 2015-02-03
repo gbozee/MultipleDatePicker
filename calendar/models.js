@@ -168,8 +168,11 @@ Schedule.prototype = {
 		});
 
 		//Days are not up to 4 
-		if(av_days.length < 4){
+		if(av_days.length < 3){
 			return null;
+		}
+		if(av_days.length === 3){
+			return av_days
 		}
 		return av_days.slice(0,4);
 	}

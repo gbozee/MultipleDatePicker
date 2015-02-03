@@ -22717,8 +22717,11 @@ webpackJsonp([1],{
 			});
 
 			//Days are not up to 4 
-			if(av_days.length < 4){
+			if(av_days.length < 3){
 				return null;
+			}
+			if(av_days.length === 3){
+				return av_days
 			}
 			return av_days.slice(0,4);
 		}
@@ -33637,36 +33640,6 @@ webpackJsonp([1],{
 				"month": "February"
 			},
 			{
-				"date": "09-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 8
-					},
-					{
-						"start_time": 12,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "09-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 8
-					},
-					{
-						"start_time": 12,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
 				"date": "13-02-2015",
 				"times": [
 					{
@@ -33974,32 +33947,6 @@ webpackJsonp([1],{
 					}
 				],
 				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "06-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "09-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 8
-					},
-					{
-						"start_time": 12,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
 				"month": "February"
 			},
 			{
