@@ -76,13 +76,13 @@
 }
 
 .picker-day:not(.picker-off):not(.picker-empty):hover {
-  background-color: #c6000b;
+  background-color: #337AB7;
   color: #fff;
   cursor: pointer;
 }
 
 .picker-day.picker-selected {
-  background-color: #c6000b;
+  background-color: #337AB7;
   color: #fff;
 }
 

@@ -1,0 +1,35 @@
+.multiple-date-picker{
+	border:2px solid #eeeeee;
+}
+
+#hourly p{
+	font-size:14px;
+	/*font-size: 14px;*/
+}
+.row-space-top-5{
+	margin-top:12px;
+}
+.discount-section{
+	font-size:85%;
+}
+.booking-text{
+	font-size:80%;
+}
+#monthly h3{
+	margin-right: 10px;
+	margin-top:0;
+	font-size: 20px;
+	display:inline-block;
+}
+@media (min-device-width:768px){
+	#monthly h3{
+		margin-right:2px;
+	}
+
+}
+
+
+#monthly .day-selection{
+	text-align: center;
+
+}

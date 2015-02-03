@@ -9,6 +9,7 @@
           See scope declaration below for options you can pass through html directive.
           Feel free to edit and share this piece of code, our idea is to keep simple ;)
  */
+var moment = require('moment');
 angular.module('multipleDatePicker', [])
   .directive('multipleDatePicker', ['$log', function($log){
   "use strict";
@@ -68,9 +69,9 @@ angular.module('multipleDatePicker', [])
     },
     template: '<div class="multiple-date-picker">'+
             '<div class="picker-top-row">'+
-              '<div class="text-center picker-navigate picker-navigate-left-arrow" ng-class="{\'disabled\':disableBackButton}" ng-click="previousMonth()">&lt;</div>'+
+              '<div class="text-center picker-navigate picker-navigate-left-arrow" ng-class="{\'disabled\':disableBackButton}" ng-click="previousMonth()"><i class="glyphicon glyphicon-chevron-left"></i></div>'+
               '<div class="text-center picker-month">{{month.format(\'MMMM YYYY\')}}</div>'+
-              '<div class="text-center picker-navigate picker-navigate-right-arrow" ng-class="{\'disabled\':disableNextButton}" ng-click="nextMonth()">&gt;</div>'+
+              '<div class="text-center picker-navigate picker-navigate-right-arrow" ng-class="{\'disabled\':disableNextButton}" ng-click="nextMonth()"><i class="glyphicon glyphicon-chevron-right"></i></div>'+
             '</div>'+
             '<div class="picker-days-week-row">'+
               '<div class="text-center" ng-repeat="day in daysOfWeek">{{day}}</div>'+
@@ -81,6 +82,7 @@ angular.module('multipleDatePicker', [])
               '<div class="text-center picker-day picker-empty" ng-repeat="x in emptyLastDays">&nbsp;</div>'+
             '</div>'+
           '</div>',
+    // templateUrl:"/templates/mdp.html",
     link: function(scope){
 
       /*utility functions*/
@@ -293,3 +295,5 @@ angular.module('multipleDatePicker', [])
     }
   };
 }]);
+
+// var multipleDatePicker = angular.module('libs.multipleDatePicker',['multipleDatePicker']);

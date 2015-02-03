@@ -4,6 +4,258 @@
 		"selected_items":
 		[
 			[
+				"sess",
+				"session"
+			],
+			[
+				"session",
+				"sessions"
+			],
+			[
+				"resol",
+				"resloverFunction"
+			],
+			[
+				"models",
+				"models.js"
+			],
+			[
+				"getDa",
+				"getDaysArray"
+			],
+			[
+				"getDA",
+				"getDaysArray"
+			],
+			[
+				"selection",
+				"selections"
+			],
+			[
+				"date",
+				"dateInstance"
+			],
+			[
+				"selectedD",
+				"selectedDay"
+			],
+			[
+				"month_in",
+				"month_instance"
+			],
+			[
+				"modalIns",
+				"modalInstanceCall"
+			],
+			[
+				"callba",
+				"callback2"
+			],
+			[
+				"sele",
+				"selectedItem"
+			],
+			[
+				"month",
+				"month"
+			],
+			[
+				"weekdays",
+				"weekdays"
+			],
+			[
+				"months",
+				"months"
+			],
+			[
+				"mont",
+				"months"
+			],
+			[
+				"curr",
+				"currentMonth"
+			],
+			[
+				"prese",
+				"presentMonth"
+			],
+			[
+				"weesh",
+				"weekshort"
+			],
+			[
+				"mome",
+				"moment"
+			],
+			[
+				"weekDa",
+				"weekDaysForMonth:w"
+			],
+			[
+				"momen",
+				"momentDate"
+			],
+			[
+				"Days",
+				"DaysOff"
+			],
+			[
+				"booing",
+				"booking_type"
+			],
+			[
+				"bookin",
+				"booking_type"
+			],
+			[
+				"bowe",
+				"bower_components"
+			],
+			[
+				"mon",
+				"months"
+			],
+			[
+				"getDas",
+				"getDaysOff"
+			],
+			[
+				"pres",
+				"present_month"
+			],
+			[
+				"Cale",
+				"CalendarFactory"
+			],
+			[
+				"Feb",
+				"February"
+			],
+			[
+				"avail",
+				"available_days"
+			],
+			[
+				"week",
+				"weekdays"
+			],
+			[
+				"wee",
+				"weekdays"
+			],
+			[
+				"monthl",
+				"monthly_calendar"
+			],
+			[
+				"calend",
+				"calendar"
+			],
+			[
+				"hourly",
+				"hourly_calendar"
+			],
+			[
+				"hourl",
+				"hourly_calendar"
+			],
+			[
+				"json",
+				"jsonResponse"
+			],
+			[
+				"monthnam",
+				"month_name"
+			],
+			[
+				"jso",
+				"jsonResponse"
+			],
+			[
+				"proto",
+				"proto	Prototype"
+			],
+			[
+				"hour",
+				"hourly"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"Avail",
+				"AvailableDay"
+			],
+			[
+				"Hell",
+				"HelloCtrl"
+			],
+			[
+				"bootstr",
+				"bootstrap.js"
+			],
+			[
+				"bower",
+				"bower_components"
+			],
+			[
+				"optimi",
+				"optimize"
+			],
+			[
+				"Control",
+				"CalenderController"
+			],
+			[
+				"service",
+				"service"
+			],
+			[
+				"muli",
+				"multipleDatePicker"
+			],
+			[
+				"bow",
+				"bowerRooot"
+			],
+			[
+				"just",
+				"justify"
+			],
+			[
+				"tem",
+				"template"
+			],
+			[
+				"servic",
+				"services"
+			],
+			[
+				"controller",
+				"controller"
+			],
+			[
+				"Multi",
+				"MultipleDatePicker"
+			],
+			[
+				"Angular",
+				"AngularPlugin"
+			],
+			[
+				"selected",
+				"selectedDays"
+			],
+			[
+				"prevent",
+				"preventDefault"
+			],
+			[
+				"mu",
+				"multipleDatePicker.js"
+			],
+			[
 				"jumbo",
 				"jumbotron"
 			],
@@ -62,10 +314,6 @@
 			[
 				"like",
 				"linkedin"
-			],
-			[
-				"bootstr",
-				"bootstrap"
 			],
 			[
 				"incl",
@@ -204,20 +452,12 @@
 				"certificate_form"
 			],
 			[
-				"month",
-				"monthly_booking"
-			],
-			[
 				"monthly",
 				"monthly_booking"
 			],
 			[
 				"cal",
 				"calculatePrice"
-			],
-			[
-				"week",
-				"weekly_price"
 			],
 			[
 				"object",
@@ -274,261 +514,137 @@
 			[
 				"add",
 				"add_geo	statement"
-			],
-			[
-				"Goog",
-				"GoogleV3	class"
-			],
-			[
-				"print",
-				"print_result	function"
-			],
-			[
-				"get",
-				"get_query_result	function"
-			],
-			[
-				"start",
-				"start_id"
-			],
-			[
-				"schedul",
-				"schedule_formset"
-			],
-			[
-				"sched",
-				"schedule_formset"
-			],
-			[
-				"forms",
-				"form_sets"
-			],
-			[
-				"selected",
-				"selected_days"
-			],
-			[
-				"selecte",
-				"selected_days"
-			],
-			[
-				"select",
-				"selected_days"
-			],
-			[
-				"selec",
-				"selected_days"
-			],
-			[
-				"formset",
-				"form_sets"
-			],
-			[
-				"sche",
-				"schedule_formset"
-			],
-			[
-				"sch",
-				"schedule_formset"
-			],
-			[
-				"multi",
-				"multiple_lang"
-			],
-			[
-				"font-s",
-				"font-size"
-			],
-			[
-				"bootstrap",
-				"bootstrap_label"
-			],
-			[
-				"pyt",
-				"Python27/"
-			],
-			[
-				"get_user",
-				"get_user_model	function"
-			],
-			[
-				"pro",
-				"production-django"
-			],
-			[
-				"ob",
-				"objects"
-			],
-			[
-				"home",
-				"homenav"
-			],
-			[
-				"ve",
-				"very-small-phones"
-			],
-			[
-				"smal",
-				"small-phones"
-			],
-			[
-				"st",
-				"style-2.css"
-			],
-			[
-				"fo",
-				"formset"
-			],
-			[
-				"numb",
-				"number1"
-			],
-			[
-				"Py",
-				"Python27/"
-			],
-			[
-				"class",
-				"classmethod"
-			],
-			[
-				"topic_",
-				"topic_id"
-			],
-			[
-				"filt",
-				"filter_by"
-			],
-			[
-				"pagi",
-				"paginate"
-			],
-			[
-				"py",
-				"python-env/"
-			],
-			[
-				"th",
-				"bootstrap-theme.min.css"
-			],
-			[
-				"Mongo",
-				"MongoApiService"
-			],
-			[
-				"Mon",
-				"MongoApiService"
-			],
-			[
-				"Medi",
-				"MediaProvider"
-			],
-			[
-				"brea",
-				"breadcrumbs"
-			],
-			[
-				"new",
-				"newItemName"
-			],
-			[
-				"newI",
-				"newItem"
-			],
-			[
-				"an",
-				"AndraLabs"
-			],
-			[
-				"input",
-				"input	input - submit"
-			],
-			[
-				"blo",
-				"blockquote"
-			],
-			[
-				"gree",
-				"greeting"
-			],
-			[
-				"greetin",
-				"greetings"
-			],
-			[
-				"que",
-				"query_params"
-			],
-			[
-				"D",
-				"DEFAULT_GUESTBOOK_NAME"
-			],
-			[
-				"sign",
-				"sign_query_params"
-			],
-			[
-				"max",
-				"max-width"
-			],
-			[
-				"wi",
-				"width"
-			],
-			[
-				"rep",
-				"repeat-x"
-			],
-			[
-				"pos",
-				"position"
-			],
-			[
-				"back",
-				"background-size"
-			],
-			[
-				"flas",
-				"flask_tracking  (module)"
-			],
-			[
-				"Visi",
-				"VisitForm"
-			],
-			[
-				"site",
-				"site_id"
-			],
-			[
-				"fore",
-				"foreach	blade-foreach"
-			],
-			[
-				"course",
-				"course_id"
-			],
-			[
-				"t",
-				"type=  (attribute)"
-			],
-			[
-				"reosl",
-				"resolve"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "webpack.config.js",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 4911,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "calendar/controller.js",
+			"settings":
+			{
+				"buffer_size": 3556,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "calendar/models.js",
+			"settings":
+			{
+				"buffer_size": 4036,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "calendar/service.js",
+			"settings":
+			{
+				"buffer_size": 2230,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "libs/multipleDatePicker.js",
+			"settings":
+			{
+				"buffer_size": 10322,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/mdp.html",
+			"settings":
+			{
+				"buffer_size": 1194,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "calendar/server.json",
+			"settings":
+			{
+				"buffer_size": 3187,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Run Skills Tests",
 	"command_palette":
 	{
-		"height": 185.0,
+		"height": 235.0,
 		"selected_items":
 		[
 			[
 				"reind",
 				"Indentation: Reindent Lines"
+			],
+			[
+				"ori",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"oricrel",
+				"Origami: Create Pane on the Left"
+			],
+			[
+				"origamov",
+				"Origami: Move File to Pane on the Left"
+			],
+			[
+				"orimo",
+				"Origami: Move File to Pane on the Right"
+			],
+			[
+				"sublimeser",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"or",
+				"Origami: Create Pane Below"
+			],
+			[
+				"orides",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"subser",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"gitlo",
+				"Git: Log All"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"orilef",
+				"Origami: Create Pane on the Left"
 			],
 			[
 				"inde",
@@ -549,14 +665,6 @@
 			[
 				"oririg",
 				"Origami: Create Pane on the Right"
-			],
-			[
-				"orilef",
-				"Origami: Create Pane on the Left"
-			],
-			[
-				"orides",
-				"Origami: Destroy Current Pane"
 			],
 			[
 				"origlef",
@@ -591,20 +699,12 @@
 				"JSHint"
 			],
 			[
-				"ori",
-				"Origami: Create Pane Below"
-			],
-			[
 				"orig",
 				"Origami: Destroy Current Pane"
 			],
 			[
 				"livesty",
 				"LiveStyle: Apply Patch"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"SUBRIPY",
@@ -621,10 +721,6 @@
 			[
 				"ssdjano",
 				"Set Syntax: HTML (Django)"
-			],
-			[
-				"reid",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"rei",
@@ -728,10 +824,6 @@
 			],
 			[
 				"in",
-				"Package Control: Install Package"
-			],
-			[
-				"instal",
 				"Package Control: Install Package"
 			],
 			[
@@ -1009,37 +1101,9 @@
 			[
 				"virt",
 				"SublimeREPL: Python - virtualenv"
-			],
-			[
-				"subrepyt",
-				"SublimeREPL: Python"
-			],
-			[
-				"launch",
-				"Glue - Launch"
-			],
-			[
-				"anacopep",
-				"Anaconda: Autoformat PEP8 Errors"
-			],
-			[
-				"sublipyt",
-				"SublimeREPL: Python - Sublime Text Console"
-			],
-			[
-				"Sublimepy",
-				"SublimeREPL: Python - IPython"
-			],
-			[
-				"sstjin",
-				"Set Syntax: HTML (Jinja Templates)"
-			],
-			[
-				"setting",
-				"Preferences: Settings - User"
 			]
 		],
-		"width": 514.0
+		"width": 511.0
 	},
 	"console":
 	{
@@ -1061,10 +1125,86 @@
 	},
 	"expanded_folders":
 	[
-		"/F/work-projects/python/django-projects/MultipleDatePicker"
+		"/F/work-projects/python/django-projects/MultipleDatePicker",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-bootstrap",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-bootstrap/dist",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/css-loader",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/templates"
 	],
 	"file_history":
 	[
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/TemplatedPathPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/template.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/test/toExponential.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/dist/multiple-date-picker.css",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.sublime-project",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.less",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/multipleDatePicker.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/server.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/service.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/Parser.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/bootstrap.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/webpack.config.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/app.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/main.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/controller.js",
+		"/C/Users/gbozee/Downloads/ui-bootstrap-custom-build/ui-bootstrap-custom-0.12.0.js",
+		"/C/Users/gbozee/Downloads/ui-bootstrap-custom-build/ui-bootstrap-custom-tpls-0.12.0.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/Gruntfile.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bundle.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/vendor.bundle.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/index.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/main.bundle.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/bin/convert-argv.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/lodash/internal/charAtCallback.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/test/Documents/Atom_Example.xml",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular-ui-bootstrap/template/accordion/accordion-group.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/node_modules/domhandler/test/cases/19-ignore_empty_tags.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/package.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular-ui-bootstrap/.jshintrc",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/.gitignore",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/ja.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/RequireJsStuffPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/.bin/json5",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/perf/lib/bigdecimal_ICU4J/BigDecimal-all-last.min.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/he.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt/node_modules/hooker/test/hooker_test.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/HotModuleReplacementPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/html-loader/node_modules/html-minifier/dist/htmlminifier.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/demo/myApp.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/node_modules/domhandler/test/cases/04-unescaped_in_script.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/style-loader/url.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/templates/mdp.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/booking.css",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/ta.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/css-loader/node_modules/loader-utils/node_modules/big.js/test/toExponential.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/Template.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/AbstractPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/multipleDatePicker.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/SingleEntryPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/airbnbhome.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/airbnb.css",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/module-dir-and-file/webpack.conf.js",
+		"/C/Users/gbozee/AppData/Roaming/Sublime Text 3/Packages/User/SublimeServer.sublime-settings",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/app.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/multi-module-files/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/local-module/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/dots-for-path-separator/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/basic-module-dependency/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/basic-module/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/alias-namespace/webpack.conf.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/tasks/webpack-scenario.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/demo/webpack.config.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular/angular.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/entry.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/bin/config-optimist.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/web/WebEnvironmentPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/airbnb.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/id.js",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/variables.scss",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/jumbotron.css",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/become_tutor.scss",
@@ -1122,77 +1262,7 @@
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/mixins.css",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/mixins.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/mobile/mobile-header.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/footer/_footer-big.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/footer/_footer-small.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/testimonials.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/fonts.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/stroke-icon.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/skill.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/fileinput.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/edit_profile/edit_media.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/forms.py",
-		"/F/work-projects/python/django-projects/Tuteria/index.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/external.scss",
-		"/F/work-projects/python/django-projects/Tuteria/Gruntfile.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/views.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/static/profile.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step5.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/urls.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/urls.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_labels.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/internal.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/fiver-table.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/header_search_form.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/auth/modal.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_modals.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/modal.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/subject/includes/subject-urls.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/templates/users/includes/subject_status_count.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/tutor-registration.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/auth/signup.html",
-		"/F/work-projects/python/django-projects/Tuteria/.gitignore",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/views.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/forms.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/includes/subject-description-form.html",
-		"/C/Users/gbozee/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
-		"/F/work-projects/python/django-projects/Tuteria/package.json",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/web.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/views.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/variables.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/config/urls.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_glyphicons.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_type.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/font-icons.css",
-		"/F/work-projects/python/django-projects/Tuteria/setup.py",
-		"/F/work-projects/python/django-projects/Tuteria/setup.cfg",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/auth.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/auth.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/angular/angular-file-upload.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/django_quiz/api.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/account/signup.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/png/Main/Italic/GeneralPunctuation.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/proxima-nova/proximanova-regular-webfont.svg",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/png/imagedata.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/django_quiz/urls.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/migrations/0011_userprofile_registration_level.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/migrations/0002_user_calender.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/angular/angular-file-upload-shim.min.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/footer.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/testimonials.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/tests.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/mixins/_text-emphasis.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/stroke7pixeden/stroke7pixeden.svg",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/common.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/pixenden/Pe-icon-7-stroke.svg",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/fonts/bootstrap/glyphicons-halflings-regular.svg",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/jax/output/HTML-CSS/autoload/mglyph.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/__init__.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/typeahead.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/typeahead.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/localization/ia/TeX.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/vendor/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/app/tutor_registration.js"
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/nav/mobile/mobile-header.html"
 	],
 	"find":
 	{
@@ -1210,6 +1280,36 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"backdrop",
+			"selectedDay",
+			"getDay",
+			"MMMM",
+			"ScheduleModal",
+			"\\",
+			"//",
+			"getWorkingDaysOfWeek",
+			"Friday",
+			"all_days",
+			"new_month",
+			"available_days",
+			"log",
+			");\n",
+			"weekdays",
+			"hourly_calendar",
+			"rootScope",
+			"monthSchedule",
+			"ModalInstanceCtrl",
+			"h4",
+			"<h4><span class=\"",
+			"<span class=\"label label-default\">",
+			"87",
+			"+",
+			"\\",
+			"'",
+			"			{",
+			"CalendarFactory",
+			"myApp",
+			"show-sm",
 			"400px",
 			"$number_1-name",
 			"$sprite",
@@ -1307,37 +1407,7 @@
 			"sr-only",
 			"class=\"control-label",
 			"').",
-			"section-linemo",
-			"section-topline-",
-			"section-topline-1",
-			"section",
-			"icon icon",
-			"tab-style-icon",
-			"aria-selected",
-			"<li>",
-			"role=\"tab\"",
-			"become_tutor",
-			"class:form-control",
-			"control",
-			"class:form-control",
-			"ng_app",
-			"ng-app",
-			"ng-ap",
-			"$small-xs-min",
-			"\n$",
-			"blockname",
-			"#id_number",
-			"toggleLastLanguage",
-			"addLanguageToList",
-			"hideLanguageOptionWhenSelected",
-			"multiple_lang",
-			"addToMultipleSelect",
-			"hideLanguageOptionWhenSelected",
-			"changeFirstOptionElements",
-			"where you",
-			"row-condensed",
-			"row-space-4",
-			"4"
+			"section-linemo"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1355,8 +1425,353 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "webpack.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4911,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1137,
+								1137
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 230.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "calendar/controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3164,
+								3164
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1462.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "calendar/models.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4036,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2811,
+								2831
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "calendar/service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1648,
+								1648
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 897.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "libs/multipleDatePicker.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4501,
+								4501
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1704.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "libs/multipleDatePicker.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2983,
+								2983
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1041.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "calendar/controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3080,
+								3080
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 4.0,
+						"translation.y": 1431.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/mdp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1194
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "calendar/service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1836,
+								1836
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 785.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "calendar/server.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3139,
+								3139
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 21697.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1374,6 +1789,12 @@
 		[
 			[
 				0,
+				1,
+				1,
+				2
+			],
+			[
+				0,
 				0,
 				1,
 				1
@@ -1387,6 +1808,7 @@
 		"rows":
 		[
 			0.0,
+			0.5,
 			1.0
 		]
 	},
@@ -1414,6 +1836,174 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"",
+				"calendar\\controller.js"
+			],
+			[
+				"servic",
+				"calendar\\service.js"
+			],
+			[
+				"ser",
+				"calendar\\service.js"
+			],
+			[
+				"control",
+				"calendar\\controller.js"
+			],
+			[
+				"templ.html",
+				"templates\\mdp.html"
+			],
+			[
+				"multipl",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"servi",
+				"calendar\\service.js"
+			],
+			[
+				"ser.js",
+				"calendar\\server.json"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"contro",
+				"calendar\\controller.js"
+			],
+			[
+				"serv",
+				"calendar\\server.json"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"con",
+				"calendar\\controller.js"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"cont",
+				"calendar\\controller.js"
+			],
+			[
+				".jso",
+				"calendar\\server.json"
+			],
+			[
+				"vend",
+				"vendor.bundle.js"
+			],
+			[
+				"main",
+				"main.js"
+			],
+			[
+				"main.bu",
+				"main.bundle.js"
+			],
+			[
+				"bund",
+				"bundle.js"
+			],
+			[
+				"in",
+				"index.html"
+			],
+			[
+				"ven",
+				"vendor.bundle.js"
+			],
+			[
+				"vendo",
+				"vendor.bundle.js"
+			],
+			[
+				"web",
+				"webpack.config.js"
+			],
+			[
+				"bundl",
+				"bundle.js"
+			],
+			[
+				"mul",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"boo",
+				"libs\\bootstrap.js"
+			],
+			[
+				"webpa",
+				"webpack.config.js"
+			],
+			[
+				"ui-bo",
+				"C:\\Users\\gbozee\\Downloads\\ui-bootstrap-custom-build\\ui-bootstrap-custom-0.12.0.js"
+			],
+			[
+				"boot",
+				"libs\\bootstrap.js"
+			],
+			[
+				"bowe",
+				"bower.json"
+			],
+			[
+				"grun",
+				"Gruntfile.js"
+			],
+			[
+				"mult",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"multi",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"muljs",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"contr",
+				"calendar\\controller.js"
+			],
+			[
+				"we",
+				"webpack.config.js"
+			],
+			[
+				"air",
+				"airbnbhome.html"
+			],
+			[
+				"mul.cs",
+				"dist\\multiple-date-picker.css"
+			],
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"mul.js",
+				"multipleDatePicker.js"
+			],
+			[
+				"boe",
+				"bower.json"
+			],
 			[
 				"proje",
 				"tuteria\\static\\sass\\project.scss"
@@ -1496,10 +2086,6 @@
 			],
 			[
 				"font-i",
-				"tuteria\\static\\sass\\src\\font-icons.scss"
-			],
-			[
-				"",
 				"tuteria\\static\\sass\\src\\font-icons.scss"
 			],
 			[
@@ -1761,170 +2347,6 @@
 			[
 				"profi",
 				"tuteria\\users\\static\\profile.js"
-			],
-			[
-				"edit_tu",
-				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
-			],
-			[
-				"0-",
-				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\0-select-subject.html"
-			],
-			[
-				"skillform",
-				"tuteria\\skills\\forms.py"
-			],
-			[
-				"form",
-				"tuteria\\registration\\forms.py"
-			],
-			[
-				"tutor-",
-				"tuteria\\static\\sass\\tutor-registration.scss"
-			],
-			[
-				"wizar.htm",
-				"tuteria\\templates\\_layouts\\base-wizard.html"
-			],
-			[
-				"tutor-reg",
-				"tuteria\\static\\sass\\tutor-registration.scss"
-			],
-			[
-				"modal.scss",
-				"tuteria\\static\\sass\\src\\modal.scss"
-			],
-			[
-				"modal.scs",
-				"tuteria\\static\\sass\\bootstrap\\src\\_modals.scss"
-			],
-			[
-				"home.",
-				"tuteria\\static\\sass\\home.scss"
-			],
-			[
-				"modal.",
-				"tuteria\\templates\\includes\\auth\\modal.html"
-			],
-			[
-				"skil",
-				"tuteria\\skills\\static\\js\\skill.js"
-			],
-			[
-				"regj",
-				"tuteria\\registration\\static\\registration.js"
-			],
-			[
-				"person",
-				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
-			],
-			[
-				"regis",
-				"tuteria\\registration\\static\\registration.js"
-			],
-			[
-				"regi",
-				"tuteria\\registration\\static\\registration.js"
-			],
-			[
-				"1-",
-				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\1-describe-subject.html"
-			],
-			[
-				"edi",
-				"tuteria\\skills\\templates\\skills\\edit-subject.html"
-			],
-			[
-				"profiin",
-				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
-			],
-			[
-				"2-",
-				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
-			],
-			[
-				"subje",
-				"tuteria\\users\\templates\\users\\subjects.html"
-			],
-			[
-				"tutotr",
-				"tuteria\\static\\sass\\tutor-registration.scss"
-			],
-			[
-				"profiinf",
-				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
-			],
-			[
-				"skill",
-				"tuteria\\skills\\static\\js\\skill.js"
-			],
-			[
-				"edit-su",
-				"tuteria\\skills\\templates\\skills\\edit-subject.html"
-			],
-			[
-				"1-des",
-				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\1-describe-subject.html"
-			],
-			[
-				"profile",
-				"tuteria\\users\\static\\profile.js"
-			],
-			[
-				"2",
-				"tuteria\\skills\\templates\\skills\\new-subject-wizard\\2-set-price.html"
-			],
-			[
-				"tutor_prof",
-				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
-			],
-			[
-				"projec",
-				"tuteria\\static\\javascripts\\project.js"
-			],
-			[
-				"prof",
-				"tuteria\\users\\static\\profile.js"
-			],
-			[
-				"tutor_p",
-				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
-			],
-			[
-				"re",
-				"tuteria\\registration\\static\\registration.js"
-			],
-			[
-				"landi",
-				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
-			],
-			[
-				"lan",
-				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
-			],
-			[
-				"tutorpro",
-				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
-			],
-			[
-				"step4",
-				"tuteria\\registration\\templates\\registration\\tutor\\step4.html"
-			],
-			[
-				"reg",
-				"tuteria\\registration\\static\\registration.js"
-			],
-			[
-				"landin",
-				"tuteria\\registration\\templates\\registration\\tutor\\landing.html"
-			],
-			[
-				"views",
-				"tuteria\\registration\\views.py"
-			],
-			[
-				"persona",
-				"tuteria\\users\\templates\\users\\edit_profile\\personal_info.html"
 			]
 		],
 		"width": 0.0
@@ -1936,7 +2358,7 @@
 		[
 			[
 				"",
-				"F:\\work-projects\\python\\sv.sublime-project"
+				"F:\\work-projects\\python\\tuteria\\tuteria\\tuteria-old.sublime-project"
 			]
 		],
 		"width": 380.0
@@ -1956,8 +2378,8 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 137.0,
+	"side_bar_visible": false,
+	"side_bar_width": 320.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
