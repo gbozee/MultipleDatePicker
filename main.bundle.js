@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp([0],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -22151,8 +22151,11 @@ webpackJsonp([1],{
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(6);
-	var multipleDatePicker = __webpack_require__(1)
-	var myApp = angular.module('myApp', ['calendar.controller','multipleDatePicker',
+	__webpack_require__(94);
+	__webpack_require__(95);
+	var multipleDatePicker = __webpack_require__(2)
+	var myApp = angular.module('myApp', ['calendar.controller','multipleDatePicker','calendar.filters',
+		'schedule.controller'
 		]);
 
 
@@ -22162,29 +22165,132 @@ webpackJsonp([1],{
 /***/ 6:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(8);
-	__webpack_require__(2)
-	var moment = __webpack_require__(7);
-	var Session = __webpack_require__(9).Session;
+	__webpack_require__(7);
+	__webpack_require__(3)
+	var moment = __webpack_require__(9);
+	var Session = __webpack_require__(8).Session;
 
 	function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
+		$scope.is_single = true;
+		$scope.invalid = false;	
+		$scope.date_selected = false;
+
+		function validate(){
+			if($scope.is_single){
+				return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+			}
+			var filled = _.reduce($scope.pending_sessions,function(sum,x){
+				return sum && x.isValid(x.end_time);
+			},true);
+			console.log(filled);
+			return filled;			
+			
+		}
+		
+		$scope.cancel = function(val){
+			if(val === 'cancel'){
+				if($scope.is_single){
+					CalendarFactory.bookings.RemoveBooking($scope.selectedDate);
+					$scope.$emit("BookingRemoved");
+					removeFromSelectedDays($scope.selectedDate.date);
+				}
+			}
+			$scope.date_selected = false;
+		};
+		$scope.getEndHours = function(time){		
+			if(time){
+				if($scope.booking_type === 'hour'){
+					return $scope.dateInstance.getEndHours(time);			
+				}else{
+					$scope.selectedDate.calculateEndTime($scope.tutor.hours_per_day);
+					return;
+				}
+			}
+			return []
+		}
+		$scope.getStartHours = function(){
+			if($scope.dateInstance){			
+				if($scope.booking_type === 'hour'){
+					return $scope.dateInstance.getHours();
+				}else{
+					return $scope.dateInstance.getHours($scope.tutor.hours_per_day);
+				}	
+			}
+			return [];
+		}
+
+		$scope.ok = function(){
+			if(validate()){			
+				if($scope.is_single){
+					CalendarFactory.bookings.AddBooking($scope.selectedDate);
+					$scope.$emit("BookingAdded");
+					if($scope.isNew){			
+						addToSelectedDays($scope.selectedDate.date)
+					}
+				}else{			
+					angular.forEach($scope.pending_sessions,function(s){
+						CalendarFactory.bookings.AddBooking(s);
+						$scope.$emit("BookingAdded");
+						addToSelectedDays(moment(s.date));
+					});			
+				}
+				$scope.date_selected = false;
+			}
+		}
+		$scope.h3 = function(){
+			if ($scope.is_single){
+				if($scope.selectedDate){
+					return $scope.selectedDate.weekdayString()+" "+ $scope.selectedDate.ShortRepresentation();
+
+				}
+			}
+			else{
+				if($scope.pending_sessions){						
+					var count = $scope.pending_sessions.length;
+					return "We found "+count+" available "+ $scope.week_day+"s";		
+				}
+			}
+			return ""
+		}
+		$scope.subheading = function(){
+			if($scope.is_single){
+				return "Set preferred start time and end time";
+			}
+			var hr = $scope.tutor.hours_per_day;
+			var s = hr>1 ? "s" : "";
+			return "Each session has a duration of "+hr+"hr"+s+".";
+		}
+		$scope.submit_text = function(){
+			if($scope.is_single){
+				return "Schedule Session";
+			}
+			return "Schedule Sessions";
+		}
+		$scope.error_message= "You must populate all days with start times."
+		$scope.tutor = CalendarFactory.tutor;
 		$scope.booking_type = 'hour';
 		$scope.days = [];
 		$scope.month= moment().format("MMMM");
-		$scope.supports_monthly = true;
-		$scope.expected_hours = 16;
 		$scope.selectedDays = [];
 		$scope.hourlySelectedDays = [];
+		$scope.requiredcount = 16;
+		$scope.booking = CalendarFactory.bookings;
 
 		var m_names = ["January", "February", "March", "April", "May", 
-			"June", "July", "August", "September", "October", "November", "December"];
-	    var presentMonth= new Date().getMonth();
+		"June", "July", "August", "September", "October", "November", "December"];
+		var presentMonth= new Date().getMonth();
 		$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth]);
 		$scope.$watch('hourlySelectedDays',function(x,v){
 			console.log(x);
 			console.log(v);
 		},true);
 
+		$scope.canSubmit = function (){
+			if ($scope.booking_type === 'month'){
+				return $scope.booking.TotalBookedHours() >= $scope.tutor.expected_hours;
+			}
+			return $scope.booking.TotalBookedHours() > 0;
+		}
 		$scope.bookingType = function(b_type){
 			if(b_type === 'month'){
 				var bookable_days = CalendarFactory.getWeekDay(m_names[presentMonth]);
@@ -22193,7 +22299,8 @@ webpackJsonp([1],{
 				$scope.hourlySelectedDays = [];
 			}else{			
 				$scope.selectedDays = [];
-			}
+			} 
+			$scope.can_not_submit = false;
 			CalendarFactory.RefreshBookings();
 			$scope.booking_type = b_type;
 			$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth],b_type);
@@ -22212,48 +22319,45 @@ webpackJsonp([1],{
 			CalendarFactory.ModallCall(modalInstance,callback1,callback2);		
 		}
 
-		 $scope.alerts = [
-		    // { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-		    // { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-		  ];
+		$scope.alerts = [ ];
 
-		  function addAlert(msg,alt_type) {
-		    $scope.alerts.push({ type: alt_type, msg: msg });
-		  };
+		function addAlert(msg,alt_type) {
+			$scope.alerts.push({ type: alt_type, msg: msg });
+		};
 
-		  $scope.closeAlert = function(index) {
-		    $scope.alerts.splice(index, 1);
-		  };
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
 
-		 function addToSelectedDays(date){
-		 	var value = date.valueOf();
-		 	console.log(value);
-		 	if($scope.booking_type ==='month'){
-			 	if($scope.selectedDays.indexOf(value) < 0){
-			 		$scope.selectedDays.push(value);
-			 	}
-			 	console.log($scope.selectedDays);
-			 }else{
-			 	if($scope.hourlySelectedDays.indexOf(value) < 0){
-			 		$scope.hourlySelectedDays.push(value);
-			 	}
-			 }
-		 }
-		 function removeFromSelectedDays(date){
-		 	var value = date.valueOf();
-		 	var m_index =$scope.selectedDays.indexOf(value);
-		 	var h_index = $scope.hourlySelectedDays.indexOf(value)
-		 	if($scope.booking_type ==='month'){
-			 	if(m_index > -1){
-			 		$scope.selectedDays.splice(m_index,1);
-			 	}
-			 }else{
-			 	if(h_index > -1){
-			 		$scope.hourlySelectedDays.splice(h_index,1);
-			 	}
-			 }	
-		 }
-		
+		function addToSelectedDays(date){
+			var value = date.valueOf();
+			console.log(value);
+			if($scope.booking_type ==='month'){
+				if($scope.selectedDays.indexOf(value) < 0){
+					$scope.selectedDays.push(value);
+				}
+				console.log($scope.selectedDays);
+			}else{
+				if($scope.hourlySelectedDays.indexOf(value) < 0){
+					$scope.hourlySelectedDays.push(value);
+				}
+			}
+		}
+		function removeFromSelectedDays(date){
+			var value = date.valueOf();
+			var m_index =$scope.selectedDays.indexOf(value);
+			var h_index = $scope.hourlySelectedDays.indexOf(value)
+			if($scope.booking_type ==='month'){
+				if(m_index > -1){
+					$scope.selectedDays.splice(m_index,1);
+				}
+			}else{
+				if(h_index > -1){
+					$scope.hourlySelectedDays.splice(h_index,1);
+				}
+			}	
+		}
+
 		$scope.toggleSelectedDay = function(index){
 			var week_day = CalendarFactory.getWeekDay($scope.days[index]);
 			var month_selections = CalendarFactory.firstFourDays($scope.month,week_day);
@@ -22262,21 +22366,13 @@ webpackJsonp([1],{
 			});
 			console.log(pending_sessions);
 			if(month_selections){
-	 			ModalCall(
-					{
-						selections:function(){return month_selections;},
-						pending_sessions:function(){return pending_sessions}
-					},
-					function(response){
-						console.log(response.sessions);
-						angular.forEach(response.sessions,function(s){
-							CalendarFactory.bookings.AddBooking(s);
-							$scope.$emit("BookingAdded");
-							addToSelectedDays(moment(s.date));
-						});
-						$scope.days.splice(index,1);
-					},null,'month');
-
+				$scope.is_single = false;
+				$scope.date_selected = true;
+				$scope.isNew = true;
+				$scope.pending_sessions = pending_sessions;
+				$scope.selections = month_selections;
+				$scope.week_day = week_day;
+				$scope.days.splice(index,1);
 			}else{
 				addAlert("Sorry there are no available days on "+week_day,'danger');
 				$scope.days.splice(index,1);
@@ -22286,41 +22382,46 @@ webpackJsonp([1],{
 		$scope.dateClick = function(event,date){
 			event.preventDefault();
 			if(date.selectable){
-				
-			var selectedDay = CalendarFactory.bookings.InitializeSession(date);
-			var isNew = selectedDay.isNew();
-			ModalCall(
-				{
-					selectedDate:function(){return selectedDay;},
-					action:function(){return $scope.booking_type;}
-				},
-				function(ss){			
-					console.log(ss.date);
-					CalendarFactory.bookings.AddBooking(ss.date);
-					$scope.$emit("BookingAdded");
-					if(isNew){			
-						addToSelectedDays(ss.date.date)
-						// date.selected= !date.selected;
-					}	
-				},function(err){		
-					if(err==="cancel" && date.selected){
-						CalendarFactory.bookings.RemoveBooking(selectedDay);
-						$scope.$emit("BookingRemoved");
-						removeFromSelectedDays(selectedDay.date);
-					}
-				}
-			);			
+
+				var selectedDay = CalendarFactory.bookings.InitializeSession(date);
+				var isNew = selectedDay.isNew();
+				$scope.isNew = isNew;
+				$scope.selectedDate = selectedDay;
+				$scope.selectedDate.end_time = selectedDay.end_time || 'End time';
+				$scope.is_single = true;
+				$scope.date_selected=true;
+				$scope.dateInstance = CalendarFactory.getDay(selectedDay.date);
+
 			}
 		};
-		
+		$scope.remaining_hrs = function(){
+			if($scope.booking_type === 'hour'){
+				return "C'mon! Book at least 1 hour with your tutor!";
+			}
+			var tb = $scope.booking.TotalBookedHours();
+			if(tb < 1){
+				return "C'mon! You are required to select at least "+$scope.tutor.expected_hours+"hrs";
+			}
+			var remaining = $scope.tutor.expected_hours-tb;
+			return "You selected "+tb+"hrs. "+remaining+"hrs left";
+
+		}
+		$scope.can_not_submit=false;
+		$scope.submitBooking = function(){
+			if($scope.canSubmit()){
+			}else{
+				$scope.can_not_submit = true
+			}
+		}
+
 		$scope.hoverEvent = function(event,date){
 			event.preventDefault();
 			if(event.type === 'mouseover'){
-					}
+			}
 		};			
 
 		$scope.logMonthChanged1 = function(newMonth,oldMonth){
-			var new_month= newMonth.format("MMMM");
+			var new_month= newMonth.format("MMMM");		
 			$scope.daysOff = CalendarFactory.DaysOff(new_month);		
 		};
 		$scope.logMonthChanged2 = function(newMonth,oldMonth){
@@ -22330,110 +22431,21 @@ webpackJsonp([1],{
 			$scope.daysOff = CalendarFactory.DaysOff(new_month,'month');		
 		};
 		$scope.selectedDays = [];
-		 $scope.items = ['item1', 'item2', 'item3'];  
-	};
-
-	function HourlyModalCtrl($scope,$modalInstance,CalendarFactory,selectedDate,action){
-		$scope.range = 2;
-		$scope.isMonth= action === "month";
-		$scope.dateInstance = CalendarFactory.getDay(selectedDate.date);
-		$scope.isNew = selectedDate.isNew();
-		$scope.selectedDate = selectedDate;
-		$scope.selectedDate.end_time = selectedDate.end_time || 'End time';
-		console.log(selectedDate);
-		function validate(){
-			if(action === 'hour'){
-				return $scope.selectedDate.end_time !== "" && $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined;	
-			}
-			return $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined && $scope.selectedDate.end_time !== 'End time' && $scope.selectedDate.end_time !== 'Invalid date';
-		}
-		$scope.invalid = false;
-		$scope.ok = function () {
-			if(validate()){
-		    	$modalInstance.close({date:$scope.selectedDate,isNewDate:selectedDate.isNew()});
-			}
-			else{
-				$scope.invalid = true;
-			}
-		};
-
-		$scope.getStartHours = function(){
-			if(action === 'hour'){
-				return $scope.dateInstance.getHours();
-			}else{
-				return $scope.dateInstance.monthlyStartHours($scope.range);
-			}
-		}
-
-		$scope.cancel = function (context) {
-		    $modalInstance.dismiss(context);
-		};
-		
-		$scope.getEndHours = function(time){
-			if(time){
-				if(action === 'hour'){
-					return $scope.dateInstance.getEndHours(time);			
-				}else{
-					var end_time = moment($scope.selectedDate.start_time,"ha").hour()+$scope.range;
-					$scope.selectedDate.end_time =  moment(end_time,"HH").format("ha");
-					return;
-				}
-			}
-			return []
-		}
-	}
-
-	function MonthlyModalCtrl($scope,$modalInstance,CalendarFactory,selections,pending_sessions){
-		$scope.selections = selections;
-		$scope.range = 2;
-		$scope.pending_sessions=pending_sessions;
-		$scope.getEndHours = function(dt){
-			var start_time = dt.start_time;
-			var end_time = moment(dt.start_time,"ha").hour()+$scope.range;
-			dt.end_time = moment(end_time,"HH").format("ha");
-		};
-
-		function validate(){
-			var filled = _.filter($scope.pending_sessions,function(x){
-				return x.end_time === null || x.end_time === "undefined" || x.end_time === undefined || x.end_time === 'End time' || x.end_time === 'Invalid date';
-			});
-			console.log(filled);
-			return filled.length === 0;
-		}
-		$scope.invalid = false;
-		$scope.ok = function () {
-			if(validate()){			
-		    	$modalInstance.close({sessions:$scope.pending_sessions});
-			}else{			
-				$scope.invalid = true;
-			}
-		};
-
-		$scope.cancel = function () {
-		    $modalInstance.dismiss('cancel');
-		};
 
 	}
-
-
 	var CalenderController = angular.module('calendar.controller',['calendar.service','ui.bootstrap']);
 
 	// var App = angular.module('calendar.controller');
-	CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl])
-		.controller('HourlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selectedDate',
-				'action',HourlyModalCtrl])
-		.controller('MonthlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selections', 'pending_sessions',
-				MonthlyModalCtrl]);
-
+	CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl]);
 
 /***/ },
 
-/***/ 8:
+/***/ 7:
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(92);
-	var moment = __webpack_require__(7);
-	var Models = __webpack_require__(9)
+	var _ = __webpack_require__(11);
+	var moment = __webpack_require__(9);
+	var Models = __webpack_require__(8)
 	var Schedule = Models.Schedule,
 		Booking = Models.Booking,
 		Session = Models.Session,
@@ -22443,11 +22455,25 @@ webpackJsonp([1],{
 
 
 	Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootScope,$modal,$log){
-		var json = __webpack_require__(93);
+		var json = __webpack_require__(10);
 		var hourly_calendar = new Schedule(json.monthly,'month');
 		var monthly_calendar = new Schedule(json.hourly,'hour');
 		var cal__t = {hour:hourly_calendar,month:monthly_calendar};
-		var selections = new Booking();
+		
+		var tutor ={
+			max_student:4,
+			supports_monthly:true,
+			expected_hours:16,
+			hours_per_day:2,
+			price:3000,
+			// discount:0
+			discount:15
+		}
+		_.extend(tutor,{student_range:function(){return _.range(1,this.max_student+1)},
+			dicounted_price:function(){return this.price*this.discount/100}});
+		console.log(tutor);
+		var selections = new Booking(tutor.price,tutor.discount);
+
 
 
 		function getMonth(month_name,cal_type){
@@ -22514,6 +22540,9 @@ webpackJsonp([1],{
 		function RefreshBookings(){
 			selections.sessions = [];
 		}
+		function TotalBookedHours(){
+			return selections.TotalBookedHours();
+		}
 	 	function ModallCall(modalInstance,callback1,callback2){
 			var successCallback = callback1 || function(){};
 			var errorCallback = function (err) {
@@ -22539,18 +22568,24 @@ webpackJsonp([1],{
 			ModallCall:ModallCall,
 			getWeekDay:getWeekDay,
 			RefreshBookings:RefreshBookings,
+			TotalBookedHours:TotalBookedHours,
+			tutor:tutor,
 		}
 	}]);
 
+
+
 /***/ },
 
-/***/ 9:
+/***/ 8:
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(92);
-	var moment = __webpack_require__(7);
-
+	var _ = __webpack_require__(11);
+	var moment = __webpack_require__(9);
+	var TS = __webpack_require__(97),
+		TimeSlot = TS.TimeSlot;
 	var months = moment.months();
+
 	var getDaysArray = function(month) {
 		var intMonth = months.indexOf(month);
 	  var date = new Date(moment().year(), intMonth, 1);
@@ -22562,16 +22597,7 @@ webpackJsonp([1],{
 	  return result;
 	}
 
-	var TimeSlot = function(time){
-		_.extend(this,time);
-	}
-	TimeSlot.prototype = {
-		getStartHours:function(){
-			var results =  _.range(this.start_time,this.end_time);
-			return _.map(results,function(r){
-				return moment(r,"HH").format("ha");
-			});
-		},
+	var TimeSlotCalendarMixin = {
 		validStartTimes:function(range){
 			var current_times = this.getStartHours();
 			var that  = this;
@@ -22579,19 +22605,8 @@ webpackJsonp([1],{
 				return moment(x,"ha").hour()+range <= that.end_time;
 			});;
 		},
-		getEndHours:function(value){
-			//format = "7am"
-			var tt = moment(value,"ha").hour();
-			if(tt < this.end_time){			
-				var results = _.range(tt+1,this.end_time+1);
-				return _.map(results,function(r){
-					return moment(r,"HH").format("ha");
-				})	
-			}else{
-				return [];
-			}
-		}
 	}
+	_.extend(TimeSlot.prototype,TimeSlotCalendarMixin)
 
 	var AvailableDay = function(response){
 		_.extend(this,response);
@@ -22601,17 +22616,14 @@ webpackJsonp([1],{
 		this.momentDate = moment(this.date,"DD-MM-YYYY");
 	};
 	AvailableDay.prototype={
-		getHours: function(){
-			var result = _.map(this.times,function(x){
-				return x.getStartHours();
-			});
-			return _.flatten(result);
-		},
-		monthlyStartHours:function(range){
-			var r = range || 2;
-			var result = _.map(this.times,function(x){
-				return x.validStartTimes(r);
-			});
+		getHours: function(range){
+			var callback;
+			if(range){
+				callback = function(x){return x.validStartTimes(range);}
+			}else{
+				callback = function(x){return x.getStartHours();}
+			}
+			var result = _.map(this.times,callback);
 			return _.flatten(result);
 		},
 		getEndHours:function(v){
@@ -22628,8 +22640,8 @@ webpackJsonp([1],{
 			});
 		},
 		validMonthDate:function(interval){
-			return this.monthlyStartHours(interval).length > 0
-		}
+			return this.getHours(interval).length > 0
+		},
 	}
 
 
@@ -22650,10 +22662,9 @@ webpackJsonp([1],{
 		getDaysOff:function(cal,inter){
 			var interval = inter || 1;
 			var cal_type = cal || 'hour';
-			var working_dates;
-			if(cal_type === 'hour'){			
-			 working_dates=this.dates; 	
-			}else{
+
+			var working_dates=this.dates; 	
+			if(cal_type !== 'hour'){
 				working_dates = _.filter(this.dates,function(x){
 					return x.validMonthDate(interval)
 				});
@@ -22673,13 +22684,14 @@ webpackJsonp([1],{
 
 	}
 	var Schedule = function(jsonResponse,cal_type){
+		// BaseSchedule.call(this,jsonResponse);
 		var month_groups = _.chain(jsonResponse)
-		.groupBy("month")
-		.pairs()
-		.map(function (currentItem) {
-			return _.object(_.zip(["month", "dates"], currentItem));
-		})
-		.value();
+			.groupBy("month")
+			.pairs()
+			.map(function (currentItem) {
+				return _.object(_.zip(["month", "dates"], currentItem));
+			})
+			.value();
 		this.calendar_typ = cal_type;
 		this.months = _.map(month_groups,function(month){
 			return new Month(month);
@@ -22735,18 +22747,44 @@ webpackJsonp([1],{
 	Session.prototype = {
 		StringRepresentation:function(format){
 			var f = format || "YYYY-MM-DD";
-			return this.date.format(f);
+			return this.date.format(f);		
+		},
+		ShortRepresentation:function(){	
+			var str = moment.monthsShort()[this.date.month()]+" "+this.date.date()+", "+this.date.year();
+			console.log(str);
+			return str;
+
 		},
 		weekdayString:function(){
 			return moment.weekdays()[this.date.weekday()];
 		},
 		isNew:	function(){
 			return this.start_time === null;
+		},
+		hours:function(){
+			return moment(this.end_time,"ha").hours() - moment(this.start_time,"ha").hours();
+		},
+		calculateEndTime:function(hours_per_day){
+			var end_time = moment(this.start_time,"ha").hour()+hours_per_day;
+			this.end_time = moment(end_time,"HH").format("ha");
+		},	
+		isValid:function(new_val){
+			var array = ["",null,"undefined",undefined,'Invalid date','End time']
+			var options = _.filter(array,function(x){
+				return new_val === x;
+			});
+			var toTrue = _.map(options,function(){return false});
+			return _.reduce(toTrue,function(sum,x){
+				return sum && x;
+			},true)
 		}
 	}
 
-	var Booking = function(){
+	var Booking = function(price,discount){
 		this.sessions = [];
+		this.students = 1;
+		this.tutor_price=price;
+		this.discount = discount || 0;
 	};
 
 	Booking.prototype = {
@@ -22765,14 +22803,42 @@ webpackJsonp([1],{
 				this.sessions.push(session);
 			}
 		},
+		TotalBookedHours:function(){
+			return _.reduce(this.sessions,function(sum,s){
+				return sum+s.hours();
+			},0);
+		},
+		Summary:function(){
+			var has_s = this.students >1 ? "s":"";		
+			var booked_hours = this.TotalBookedHours();
+			var hr_s = booked_hours >1 ?"s":"";
+			return "\u20A6"+this.tutor_price+" x "+booked_hours+"hr"+hr_s+" x "+this.students+" student"+has_s;
+		},
+		Total:function(){
+			return (this.tutor_price*this.TotalBookedHours())*((100*this.students)-(this.discount*this.students)+this.discount)/100;
+		},
+		BookingFeePercent:function(){
+			var total = this.Total();
+			var fee = 5;
+			if(total>=20000 && total < 50000){
+				fee = 4;
+			}
+			if(total>=50000){
+				fee = 3;
+			}
+			return fee;	
+		},
+		BookingFee:function(){
+			return this.BookingFeePercent() *this.Total()/100;
+		},
+		TotalPayment:function(){
+			return this.BookingFee()+this.Total();
+		},
 		RemoveBooking:function(session){
 			var instance = this.getIndex(session);
 			if(instance > -1){
 				this.sessions.splice(instance,1);
 			}
-		},
-		RefreshBookings:function(){
-			this.sessions = [];
 		},
 		InitializeSession:function(date){
 			var instance = _.findIndex(this.sessions,function(x){
@@ -22794,10 +22860,1428 @@ webpackJsonp([1],{
 	exports.Booking = Booking;
 	exports.getDaysArray = getDaysArray;
 
+/***/ },
+
+/***/ 10:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+		"monthly": [
+			{
+				"cancelled": false,
+				"date": "10-02-2015",
+				"times": [
+					{
+						"start_time": 8,
+						"end_time": 16
+					}
+				],
+				"weekday": "Tuesday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "13-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "16-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "19-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "20-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "23-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "26-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "27-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "02-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "05-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "06-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "09-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "12-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "13-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "16-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "19-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "20-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "23-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "26-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "27-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "30-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "02-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "03-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "06-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "09-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "10-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "13-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "16-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "17-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "20-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "23-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "27-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "30-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "04-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "07-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "11-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "14-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "18-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "21-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "25-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "28-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "01-06-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "June"
+			},
+			{
+				"cancelled": false,
+				"date": "04-06-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "June"
+			},
+			{
+				"cancelled": false,
+				"date": "06-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "09-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 8
+					},
+					{
+						"start_time": 12,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			}
+		],
+		"hourly": [
+			{
+				"cancelled": false,
+				"date": "10-02-2015",
+				"times": [
+					{
+						"start_time": 8,
+						"end_time": 16
+					}
+				],
+				"weekday": "Tuesday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "13-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "16-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "19-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "20-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "23-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "26-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "27-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "02-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "05-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "06-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "09-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "12-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "13-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "16-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "19-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "20-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "23-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "26-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "27-03-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "30-03-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "March"
+			},
+			{
+				"cancelled": false,
+				"date": "02-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "03-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "06-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "09-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "10-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "13-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "16-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "17-04-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "20-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "23-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "27-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "30-04-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "April"
+			},
+			{
+				"cancelled": false,
+				"date": "04-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "07-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "11-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "14-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "18-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "21-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "25-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "28-05-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "May"
+			},
+			{
+				"cancelled": false,
+				"date": "01-06-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "June"
+			},
+			{
+				"cancelled": false,
+				"date": "04-06-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 14
+					}
+				],
+				"weekday": "Thursday",
+				"month": "June"
+			},
+			{
+				"cancelled": false,
+				"date": "06-02-2015",
+				"times": [
+					{
+						"start_time": 21,
+						"end_time": 23
+					}
+				],
+				"weekday": "Friday",
+				"month": "February"
+			},
+			{
+				"cancelled": false,
+				"date": "09-02-2015",
+				"times": [
+					{
+						"start_time": 7,
+						"end_time": 8
+					},
+					{
+						"start_time": 12,
+						"end_time": 20
+					}
+				],
+				"weekday": "Monday",
+				"month": "February"
+			}
+		],
+		"booked": [
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 9,
+				"end": "02:00 PM",
+				"date": "06-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "09-02-2015"
+			}
+		],
+		"free": [
+			{
+				"cancelled": false,
+				"start": "08:00 AM",
+				"event_id": 21,
+				"end": "04:00 PM",
+				"date": "10-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "13-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "16-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "19-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "20-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "23-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "26-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "27-02-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "02-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "05-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "06-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "09-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "12-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "13-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "16-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "19-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "20-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "23-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "26-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "27-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "30-03-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "02-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "03-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "06-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "09-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "10-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "13-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "16-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "09:30 PM",
+				"event_id": 2,
+				"end": "11:30 PM",
+				"date": "17-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "20-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "23-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "27-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "30-04-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "04-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "07-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "11-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "14-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "18-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "21-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "25-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "28-05-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 18,
+				"end": "08:00 PM",
+				"date": "01-06-2015"
+			},
+			{
+				"cancelled": false,
+				"start": "07:00 AM",
+				"event_id": 20,
+				"end": "02:00 PM",
+				"date": "04-06-2015"
+			}
+		]
+	}
 
 /***/ },
 
-/***/ 92:
+/***/ 11:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -33597,661 +35081,337 @@ webpackJsonp([1],{
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(91)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(93)(module), (function() { return this; }())))
 
 /***/ },
 
-/***/ 93:
+/***/ 94:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-		"monthly": [
-			{
-				"date": "04-02-2015",
-				"times": [
-					{
-						"start_time": 8,
-						"end_time": 10
-					}
-				],
-				"weekday": "Wednesday",
-				"month": "February"
-			},
-			{
-				"date": "06-02-2015",
-				"times": [
-					{
-						"start_time": 12,
-						"end_time": 14
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "06-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "13-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "16-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "20-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "23-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "27-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "02-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "06-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "09-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "13-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "16-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "20-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "23-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "27-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "30-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "03-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "06-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "10-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "13-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "17-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "20-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "27-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "04-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "11-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "18-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "25-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "01-06-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "June"
-			}
-		],
-		"hourly": [
-			{
-				"date": "04-02-2015",
-				"times": [
-					{
-						"start_time": 8,
-						"end_time": 10
-					}
-				],
-				"weekday": "Wednesday",
-				"month": "February"
-			},
-			{
-				"date": "06-02-2015",
-				"times": [
-					{
-						"start_time": 12,
-						"end_time": 14
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "09-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 8
-					},
-					{
-						"start_time": 12,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "13-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "16-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "20-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "23-02-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "February"
-			},
-			{
-				"date": "27-02-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "February"
-			},
-			{
-				"date": "02-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "06-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "09-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "13-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "16-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "20-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "23-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "27-03-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "March"
-			},
-			{
-				"date": "30-03-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "March"
-			},
-			{
-				"date": "03-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "06-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "10-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "13-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "17-04-2015",
-				"times": [
-					{
-						"start_time": 21,
-						"end_time": 23
-					}
-				],
-				"weekday": "Friday",
-				"month": "April"
-			},
-			{
-				"date": "20-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "27-04-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "April"
-			},
-			{
-				"date": "04-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "11-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "18-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "25-05-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "May"
-			},
-			{
-				"date": "01-06-2015",
-				"times": [
-					{
-						"start_time": 7,
-						"end_time": 20
-					}
-				],
-				"weekday": "Monday",
-				"month": "June"
-			}
-		]
+	function isUndefined(no){
+	  return no === "undefined" || no === undefined;
 	}
+	function isObject(A){
+	 return (typeof A === "object") && (A !== null);
+	}
+
+	function currencyFilter($locale) {
+	  var formats = $locale.NUMBER_FORMATS;
+	  return function(amount, currencySymbol, fractionSize) {
+	    if (isUndefined(currencySymbol)) {
+	      currencySymbol = formats.CURRENCY_SYM;
+	    }
+
+	    if (isUndefined(fractionSize)) {
+	      // TODO: read the default value from the locale file
+	      fractionSize = 2;
+	    }
+
+	    // if null or undefined pass it through
+	    return (amount == null)
+	        ? amount
+	        : formatNumber(amount, formats.PATTERNS[1], formats.GROUP_SEP, formats.DECIMAL_SEP, fractionSize).
+	            replace(/\u00A4/g, currencySymbol);
+	  };
+	}
+
+	var DECIMAL_SEP = '.';
+	function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
+	  if (!isFinite(number) || isObject(number)) return '';
+
+	  var isNegative = number < 0;
+	  number = Math.abs(number);
+	  var numStr = number + '',
+	      formatedText = '',
+	      parts = [];
+
+	  var hasExponent = false;
+	  if (numStr.indexOf('e') !== -1) {
+	    var match = numStr.match(/([\d\.]+)e(-?)(\d+)/);
+	    if (match && match[2] == '-' && match[3] > fractionSize + 1) {
+	      numStr = '0';
+	      number = 0;
+	    } else {
+	      formatedText = numStr;
+	      hasExponent = true;
+	    }
+	  }
+
+	  if (!hasExponent) {
+	    var fractionLen = (numStr.split(DECIMAL_SEP)[1] || '').length;
+
+	    // determine fractionSize if it is not specified
+	    if (isUndefined(fractionSize)) {
+	      fractionSize = Math.min(Math.max(pattern.minFrac, fractionLen), pattern.maxFrac);
+	    }
+
+	    // safely round numbers in JS without hitting imprecisions of floating-point arithmetics
+	    // inspired by:
+	    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+	    number = +(Math.round(+(number.toString() + 'e' + fractionSize)).toString() + 'e' + -fractionSize);
+
+	    if (number === 0) {
+	      isNegative = false;
+	    }
+
+	    var fraction = ('' + number).split(DECIMAL_SEP);
+	    var whole = fraction[0];
+	    fraction = fraction[1] || '';
+
+	    var i, pos = 0,
+	        lgroup = pattern.lgSize,
+	        group = pattern.gSize;
+
+	    if (whole.length >= (lgroup + group)) {
+	      pos = whole.length - lgroup;
+	      for (i = 0; i < pos; i++) {
+	        if ((pos - i) % group === 0 && i !== 0) {
+	          formatedText += groupSep;
+	        }
+	        formatedText += whole.charAt(i);
+	      }
+	    }
+
+	    for (i = pos; i < whole.length; i++) {
+	      if ((whole.length - i) % lgroup === 0 && i !== 0) {
+	        formatedText += groupSep;
+	      }
+	      formatedText += whole.charAt(i);
+	    }
+
+	    // format fraction part.
+	    while (fraction.length < fractionSize) {
+	      fraction += '0';
+	    }
+
+	    if (fractionSize && fractionSize !== "0") formatedText += decimalSep + fraction.substr(0, fractionSize);
+	  } else {
+
+	    if (fractionSize > 0 && number > -1 && number < 1) {
+	      formatedText = number.toFixed(fractionSize);
+	    }
+	  }
+
+	  parts.push(isNegative ? pattern.negPre : pattern.posPre);
+	  parts.push(formatedText);
+	  parts.push(isNegative ? pattern.negSuf : pattern.posSuf);
+	  return parts.join('');
+	}
+	angular.module('calendar.filters',[]).filter('specialCurrency',['$locale',currencyFilter]);
+
+/***/ },
+
+/***/ 95:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(96);
+	__webpack_require__(3)
+	var moment = __webpack_require__(9);
+
+	function TutorCalendarCtrl($scope,TutorSchedule){
+		$scope.daysOff = TutorSchedule.schedule.GetDaysOff();
+		$scope.cancelled = [];
+		$scope.news = [];
+		$scope.updates = [];
+		console.log($scope.daysOff);
+		function getIndex(day,array){
+			return _.findIndex(array,function(x){
+				return x.isSame(day,'day');
+			});
+		}
+		function isUndefined(x){
+			return x === "undefined" ||x===undefined;
+		}
+		function cancelOccurrence(date){
+
+		}
+		function updateOccurrence(date){
+			
+		}
+		$scope.availableDays = TutorSchedule.schedule.GetAvailableDays();
+		$scope.dateClick = function(event,date){
+			event.preventDefault();
+			if(date.selected){			
+				if(date.cancel ){	
+					var index = getIndex(date,$scope.cancelled);
+					$scope.cancelled.splice(index,1);
+					date.cancel = false;
+					console.log("revert to selected from cancel");
+				}
+				else if(date.updated){
+					var index= getIndex(date,$scope.updates);
+					$scope.updates.splice(index,1);
+					date.updated=false;
+					console.log("revert to selected from updated");
+				}else{
+					console.log("marked for cancel");
+					//cancel or update
+					$scope.cancelled.push(date);			
+					date.cancel=true;
+
+			}
+		}else{
+			if(date.is_new){;
+				var index2 = getIndex(date,$scope.news)
+				$scope.news.splice(index2,1)
+				date.is_new=false;
+				console.log("revert to deselected");
+			}else{
+				date.is_new = true;
+				$scope.news.push(date);
+				console.log("add new date");	
+			}
+
+		}
+
+	}
+	$scope.hoverEvent = function(event,date){
+
+	}
+	$scope.logMonthChanged = function(new_month,oldMonth){
+
+	}
+	}
+
+	var ScheduleCtrl = angular.module('schedule.controller',['schedule.service','ui.bootstrap']);
+
+	ScheduleCtrl.controller('TutorCalendarCtrl',['$scope','TutorSchedule',TutorCalendarCtrl])
+
+/***/ },
+
+/***/ 96:
+/***/ function(module, exports, __webpack_require__) {
+
+	var Models =__webpack_require__(97),
+		Schedule = Models.TutorSchedule;
+
+	var Services = angular.module('schedule.service',[]);
+
+	Services.factory('TutorSchedule',[function(){
+		var json = __webpack_require__(10)
+		var tutor_schedule = new Schedule(json);
+		console.log(tutor_schedule);
+		return {
+			schedule:tutor_schedule
+		}
+	}])
+
+
+
+/***/ },
+
+/***/ 97:
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(11),
+		moment = __webpack_require__(9);
+
+	var TimeSlot = function(time){
+		_.extend(this,time);
+	}
+	TimeSlot.prototype = {
+		getStartHours:function(){
+			var results =  _.range(this.start_time,this.end_time);
+			return _.map(results,function(r){
+				return moment(r,"HH").format("ha");
+			});
+		},	
+		getEndHours:function(value){
+			//format = "7am"
+			var tt = moment(value,"ha").hour();
+			if(tt < this.end_time){			
+				var results = _.range(tt+1,this.end_time+1);
+				return _.map(results,function(r){
+					return moment(r,"HH").format("ha");
+				})	
+			}else{
+				return [];
+			}
+		}
+	}
+
+	var Day = function(dd){
+		_.extend(this,dd)
+		this.cancelled = false;
+		this.times = new TimeSlot({start:this.start,end:this.end});
+		this.momentDate = moment(this.date,"DD-MM-YYYY");
+	}
+	Day.prototype = {	
+	};
+
+	var TutorSchedule = function(jsonResponse){
+		this.free = _.map(jsonResponse.free,function(x){
+			return new Day(x);
+		});
+		this.booked = _.map(jsonResponse.booked,function(x){
+			return new Day(x);
+		})
+		this.cancelled = [];
+		this.updates = [];
+		this.new_dates = [];
+	}
+
+	TutorSchedule.prototype={
+		getDayInstance:function(md){
+			return _.find(free.dates,function(d){
+				return md.isSame(d.momentDate,'day');
+			})
+		},
+		getDayIndex:function(dd,obj){
+			return _.findIndex(obj,{date:dd.date});
+		},
+		CancelDay:function(date){
+			var day = this.getDayInstance(date);
+			if(this.getDayIndex(day,this.cancelled)<0){
+				day.cancelled = true;
+				this.cancelled.push(day)			
+			}
+		},
+		UpdateDay:function(date){
+			var day = this.getDayInstance(date);
+			if(this.getDayIndex(day,this.updates) < 0){
+				day.old_start=day.start;
+				day.start = date.start;
+				day.end = date.end;
+				this.updates.push(day);
+			}
+		},
+		AddNewDay:function(date){
+			var tuteriad_date = new Day(date);
+			if(this.getDayIndex(tuteriad_date,this.free) < 0){
+				this.new_dates.push(tuteriad_date)
+			}
+		},
+		GetAvailableDays:function(){
+			return _.map(this.free,function(x){
+				return x.momentDate.valueOf();
+			})
+		},
+		GetDaysOff:function(){
+			var today = moment();
+			var previousDays = _.map(_.range(1,today.date()+1),function(x){
+				var d = x+"-"+(today.month()+1)+"-"+today.year();
+				return moment(d,"DD-MM-YYYY").valueOf();
+			});
+			var booked =  _.map(this.booked,function(x){
+				return x.momentDate.valueOf();
+			});
+			return _.union(previousDays,booked);
+		},
+		ProcessSubmission:function(){
+			var occurrences = this.updates.concat(this.cancelled)
+			if(this.new_dates.length > 0 || occurrences > 0){			
+				return {
+					events:this.new_dates,
+					occurrences:occurrences
+				}	
+			}
+			return null;
+		}
+	};
+	exports.TutorSchedule = TutorSchedule;
+	exports.TimeSlot = TimeSlot;
+
 
 /***/ }
 

@@ -12,173 +12,164 @@
 	<link rel="stylesheet" href="booking.css">
 	
 </head>
-<body ng-controller="HelloCtrl">	
+<body  ng-cloak>	
 	<div class="container">
+		
+		
 		<div class="row">
-			<div>
-				<script type="text/ng-template" id="monthlyModal.html">
-					<div class="modal-header">
-						<button type="button" class="close" ng-click="cancel()"><span
-							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-							<h3 class="modal-title">
-								Set time duration for the following dates.
-							</h3>			            <small>We have found 4 days available for you. tho whwoje hwohe whwoehw </small>
-						</div>
-						<div class="modal-body">
-
-							<div ng-repeat="dt in pending_sessions" class="">
-								<div class="row">
-									<div class="col-xs-12 col-sm-4">			        		
-										<small>{{dt.weekdayString()}}, {{dt.StringRepresentation("DD, MMMM, YYYY")}}</small>
-									</div>
-									<div class="col-xs-6 col-sm-4">
-										<div class="form-group">
-											<!--<label class="col-xs-5">?</label>-->
-											<select ng-model="dt.start_time" class="form-control input-sm" name="sss" 
-											ng-options="item for item in selections[$index].monthlyStartHours()" ng-change="getEndHours(dt)">
-											<option value="">Start time</option>
-										</select>
-									</div>                                
-								</div>
-								<div class="col-xs-6 col-sm-4">
-									<div class="form-group">
-										<input ng-init="dt.end_time='End time'" type="text" disabled readonly ng-model="dt.end_time" class="form-control input-sm"/>
-									</div>                                
-								</div>
-							</div>	
-
-							<hr ng-hide="$last">
-						</div>
+			<div ng-controller="HelloCtrl" class="col-sm-4 col-xs-12 booking-calendar">				
+				<div role="tabpanel">				
+		
+				<div ng-show="date_selected" class="custom-time-picker padding-left-right-15">
+					<div class="panel panel-default">
+						<div class="panel-heading">						
+						<button type="button"  class="close pull-right" ng-click="cancel('dismiss')">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h3 class="modal-title">{{h3()}}</h3>	
+						<small>{{subheading(2)}}</small>	            
+						
 					</div>
-					<div class="modal-footer">
-						<div class="col-sm-6 col-xs-12 text-danger"><small ng-show="invalid">You must populate all days with start times.</small></div>
-						<div class="col-sm-4 col-sm-offset-2 col-xs-12 padding-right-0">
-							<button class="btn btn-primary center-block btn-block" ng-click="ok()">Schedule Sessions </button>
-						</div>			            
-					</div>
-				</script>
-				<script type="text/ng-template" id="myModalContent.html">
-					<div class="modal-header">
-						<button type="button" class="close" ng-click="cancel('dismiss')"><span
-							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-							<h3 class="modal-title">{{selectedDate.weekdayString()}}, {{selectedDate.StringRepresentation("DD, MMMM, YYYY")}}!</h3>	<small>Set preferred start time and end time.</small>	            
-						</div>
-						<div class="modal-body">
+					<div class="panel-body">
+						<div ng-show="is_single">
 							<div class="row">
-								<div class="col-xs-6 col-sm-5">
-									<div class="form-group">                           	
-										<select ng-model="selectedDate.start_time" class="form-control input-sm" name="sss" 
+							<div class="col-xs-6">
+								<div class="form-group">
+									<!--<label class="col-xs-5">?</label>-->
+									<select ng-model="selectedDate.start_time" class="form-control input-sm" name="sss" 
 										ng-options="item for item in getStartHours()" ng-change="getEndHours(selectedDate.start_time)">
 										<option value="">Start time</option>
 									</select>                 
 								</div>                                
 							</div>
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2">
-								<div class="form-group">								
-									<select ng-show="!isMonth" ng-model="selectedDate.end_time" class="form-control input-sm" name="sss"
-										ng-options="item for item in getEndHours(selectedDate.start_time)">
-										<option value="">End time</option>
+
+							<div class="col-xs-6">
+								<div class="form-group">							
+									<select ng-show="booking_type === 'hour'" ng-model="selectedDate.end_time" class="form-control input-sm" name="sss"
+									ng-options="item for item in getEndHours(selectedDate.start_time)">
+									<option value="">End time</option>
 									</select>               
-								<input ng-hide="!isMonth" type="text" disabled readonly ng-model="selectedDate.end_time" class="form-control input-sm"/>     
-							</div>                                
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer padding-right-5">
-					<div class="col-xs-12">
-						<div class="row">			    	
-							<div ng-show="isNew" class="col-sm-6 col-xs-12 text-danger"><small ng-show="invalid">Ensure you select a start time and an end time.</small></div>
-
-							<div ng-show="isNew" class="col-sm-4 col-sm-offset-2 col-xs-12"><button class="btn btn-primary btn-block" ng-click="ok()">Schedule Session </button>
-							</div>			            
-							<div ng-hide="isNew" class="row-space-mobile-4 col-sm-5 col-sm-push-5 col-sm-offset-2 col-xs-12">
-								<button  class="btn btn-primary btn-block" ng-click="ok()">Update Session</button>
+									<input ng-hide="booking_type === 'hour'" type="text" disabled readonly ng-model="selectedDate.end_time" class="form-control input-sm"/>     
+								</div>                                
 							</div>
-							<div ng-hide="isNew" class="col-sm-5 col-sm-pull-7 col-xs-12">			        	
-								<button class="btn btn-warning btn-block" ng-click="cancel('cancel')">Cancel Session</button>
-							</div>
+						</div>	
 						</div>
 
+						<div ng-hide="is_single" ng-repeat="dt in pending_sessions">
+				<div class="row">
+					<div class="col-xs-6">			        		
+						<small>{{dt.ShortRepresentation()}}</small>
 					</div>
-				</div>
-			</script>   
-		</div>
-		<div class="col-sm-6 col-xs-12">				<div role="tabpanel">
-
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#hourly" aria-controls="hourly" role="tab" ng-click="bookingType('hour')" data-toggle="tab">Hourly</a></li>
-				<li ng-show="supports_monthly" role="presentation"><a href="#monthly" aria-controls="monthly" role="tab" ng-click="bookingType('month')" data-toggle="tab">Monthly</a></li>
-			</ul>
-
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<br>
-				<div role="tabpanel" class="tab-pane active" id="hourly">   
-					<p><strong>Schedule lesson days and times</strong></p> 	
-					<multiple-date-picker days-selected="hourlySelectedDays" day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged1" week-days-off="[]" days-off="daysOff" disallow-back-past-months="true" ></multiple-date-picker>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="monthly">    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-
-					<p><strong>Select from suggested days</strong></p> 	
-					<div class="row ">
-						<div class="col-xs-12 text-center day-selection">			<a href="#" ng-click="toggleSelectedDay($index)" data-ng-repeat="dayOfWeek in days" class=""><h3><span class="label label-default">{{dayOfWeek}}</span></h3></a>			
-						</div>
-					</div>
-					<div class="row-space-top-5">
-						<multiple-date-picker day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged2" week-days-off="[]" days-off="daysOff" days-selected="selectedDays" disallow-back-past-months="true" ></multiple-date-picker>
-
-					</div>
-				</div>
-				<div class="row row-space-top-5">
 					<div class="col-xs-6">
-						<strong>How many students</strong>
-					</div>
-					<div class="col-xs-4 pull-right">
-						<select name="" id="" class="form-control input-sm">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
+						<div class="form-group">
+							<!--<label class="col-xs-5">?</label>-->
+							<select ng-model="dt.start_time" class="form-control input-sm" name="sss" 
+							ng-options="item for item in selections[$index].getHours()" ng-change="dt.calculateEndTime(tutor.hours_per_day)">
+							<option value="">Start time</option>
 						</select>
-					</div>
+					</div>                                
 				</div>
-				<div class="">
-					<span class="label label-default">Default</span>
-					<span class="discount-section">&#8358;15000 for each extra student</span>
-				</div>
-				<table class="table table-bordered row-space-top-5" >
-					<tr>
-						<td>&#8358;2000 x 10hrs x 1std</td>
-						<td>&#8358;20,000</td>
-					</tr>
-					<tr>
-						<td>Booking fee (5%)</td>
-						<td>&#8358;1,000</td>
-					</tr>
-					<tr>
-						<td>Total</td>
-						<td>&#8358;21,000</td>
-					</tr>
-				</table>
-				<div>
-					<button class="btn btn-block btn-lg btn-primary">Schedule Lesson</button>
-					<small class="booking-text"><i class="glyphicon glyphicon-lock"></i> Your booking is fully protected</small>
-
-				</div>	
-
-			</div>
-
+			</div>	
+			<hr ng-hide="$last">
 		</div>
+		
+					</div>
+					<div class="panel-footer clearfix">
+						<small ng-show="isNew" class="col-sm-6 col-xs-12 text-danger invalid-times" ng-hide="invalid">{{error_message}}</small>
+							<div ng-show="isNew" class=" col-sm-6 col-xs-12">
+								<button class="btn btn-success btn-sm btn-block" ng-click="ok()">{{submit_text()}}</button>
+							</div>		
+						<div ng-hide="isNew" class="row-space-mobile-4 col-sm-6 col-sm-push-6 col-xs-12">
+								<button  class="btn btn-info btn-block" ng-click="ok()">Update Session</button>
+							</div>
+							<div ng-hide="isNew" class="col-sm-6 col-sm-pull-6 col-xs-12">			        	
+								<button class="btn btn-warning btn-block" ng-click="cancel('cancel')">Cancel Session</button>
+							</div>						
+					</div>
+						
+					</div>
+					
+				</div>
+				
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#hourly" aria-controls="hourly" role="tab" ng-click="bookingType('hour')" data-toggle="tab">Hourly</a></li>
+					<li ng-show="tutor.supports_monthly" role="presentation"><a href="#monthly" aria-controls="monthly" role="tab" ng-click="bookingType('month')" data-toggle="tab">Monthly</a></li>
+				</ul>
 
+				<!-- Tab panes -->
+				<div class="tab-content" ng-disabled="true">
+					
+					<br>
+					<div role="tabpanel" class="tab-pane active" id="hourly">   
+						<p><strong>Schedule lesson days and times</strong></p> 	
+						<multiple-date-picker days-selected="hourlySelectedDays" day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged1" week-days-off="[]" days-off="daysOff" disallow-back-past-months="true" ></multiple-date-picker>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="monthly">    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 
+						<p><strong>Select from suggested days</strong></p> 	
+						<div class="row ">
+							<div class="col-xs-12 text-center day-selection">			<a href="#" ng-click="toggleSelectedDay($index)" data-ng-repeat="dayOfWeek in days" class=""><h3><span class="label label-default">{{dayOfWeek}}</span></h3></a>			
+							</div>
+						</div>
+						<div class="row-space-top-5">
+							<multiple-date-picker day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged2" week-days-off="[]" days-off="daysOff" days-selected="selectedDays" disallow-back-past-months="true" ></multiple-date-picker>
+
+						</div>
+						<div class="col-xs-12 visible-hours">
+							<strong class="pull-left">Expected hours:<span class="expected_hours ">{{tutor.expected_hours}}</span></strong>
+							<strong class="pull-right">Selected hours:<span class="selected_hours">{{booking.TotalBookedHours()}}</span></strong>	
+						</div>
+
+					</div>
+						<div ng-class="{'background-gray':date_selected}" class="row-space-top-5">
+							<div class="row ">
+						<div class="col-xs-8">
+							<strong>How many students</strong>
+						</div>
+						<div class="col-xs-4 pull-right">
+							<select ng-disabled="date_selected" ng-model="booking.students" class="form-control input-sm" ng-options="no for no in tutor.student_range()">
+							</select>
+						</div>
+					</div>
+					<div ng-show="tutor.discount > 0">
+						<span class="label label-success">Discount: {{tutor.discount}}%</span>
+						<span class="discount-section">You save &#8358;{{tutor.dicounted_price()}}/hr for each extra student</span>
+					</div>
+					<table ng-show="booking.Total()>0" class="margin-bottom-0 table table-bordered row-space-top-5" >
+						<tr>
+							<td>{{booking.Summary()}}</td>
+							<td class="text-right">{{booking.Total() | specialCurrency:"\u20A6":0}}</td>
+						</tr>
+						<tr>
+							<td>Booking fee ({{booking.BookingFeePercent()}}%) <i popover="This is the fee charged by Tuteria" popover-placement="bottom" popover-trigger="mouseenter" class="glyphicon glyphicon-question-sign"></i></td>
+							<td class="text-right">{{booking.BookingFee()| specialCurrency:"\u20A6":0}}</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td class="text-right">{{booking.TotalPayment() | specialCurrency:"\u20A6":0}}</td>
+						</tr>
+					</table>
+					<div class="margin-top-20">
+						<div ng-hide="canSubmit()">						
+							<small class="booking-text text-danger" ng-show="can_not_submit">{{remaining_hrs()}} </small>
+						</div>
+						<button ng-disabled="date_selected" ng-click="submitBooking()" class="btn btn-block btn-lg btn-primary">Schedule Lesson</button>
+						<small class="booking-text"><i class="glyphicon glyphicon-lock"></i> Your booking is fully protected</small>
+					</div>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5 col-xs-12" ng-controller="TutorCalendarCtrl">
+			<multiple-date-picker days-selected="availableDays" day-click="dateClick" sunday-first-day="true" day-hover="hoverEvent" month-changed="logMonthChanged" week-days-off="[]" days-off="daysOff" disallow-back-past-months="true" ></multiple-date-picker>
+		</div>
 	</div>
 </div>
-</div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script>
 
-</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--<script src="bower_components/angular/angular.js"></script>-->
 <!--<script src="bower_components/moment/moment.js"></script>-->

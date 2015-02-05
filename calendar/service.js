@@ -14,7 +14,21 @@ Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootS
 	var hourly_calendar = new Schedule(json.monthly,'month');
 	var monthly_calendar = new Schedule(json.hourly,'hour');
 	var cal__t = {hour:hourly_calendar,month:monthly_calendar};
-	var selections = new Booking();
+	
+	var tutor ={
+		max_student:4,
+		supports_monthly:true,
+		expected_hours:16,
+		hours_per_day:2,
+		price:3000,
+		// discount:0
+		discount:15
+	}
+	_.extend(tutor,{student_range:function(){return _.range(1,this.max_student+1)},
+		dicounted_price:function(){return this.price*this.discount/100}});
+	console.log(tutor);
+	var selections = new Booking(tutor.price,tutor.discount);
+
 
 
 	function getMonth(month_name,cal_type){
@@ -81,6 +95,9 @@ Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootS
 	function RefreshBookings(){
 		selections.sessions = [];
 	}
+	function TotalBookedHours(){
+		return selections.TotalBookedHours();
+	}
  	function ModallCall(modalInstance,callback1,callback2){
 		var successCallback = callback1 || function(){};
 		var errorCallback = function (err) {
@@ -106,5 +123,8 @@ Services.factory('CalendarFactory',['$rootScope','$modal','$log',function($rootS
 		ModallCall:ModallCall,
 		getWeekDay:getWeekDay,
 		RefreshBookings:RefreshBookings,
+		TotalBookedHours:TotalBookedHours,
+		tutor:tutor,
 	}
 }]);
+

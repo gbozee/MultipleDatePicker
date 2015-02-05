@@ -4,23 +4,126 @@ var moment = require('moment');
 var Session = require('./models.js').Session;
 
 function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
+	$scope.is_single = true;
+	$scope.invalid = false;	
+	$scope.date_selected = false;
+
+	function validate(){
+		if($scope.is_single){
+			return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+		}
+		var filled = _.reduce($scope.pending_sessions,function(sum,x){
+			return sum && x.isValid(x.end_time);
+		},true);
+		console.log(filled);
+		return filled;			
+		
+	}
+	
+	$scope.cancel = function(val){
+		if(val === 'cancel'){
+			if($scope.is_single){
+				CalendarFactory.bookings.RemoveBooking($scope.selectedDate);
+				$scope.$emit("BookingRemoved");
+				removeFromSelectedDays($scope.selectedDate.date);
+			}
+		}
+		$scope.date_selected = false;
+	};
+	$scope.getEndHours = function(time){		
+		if(time){
+			if($scope.booking_type === 'hour'){
+				return $scope.dateInstance.getEndHours(time);			
+			}else{
+				$scope.selectedDate.calculateEndTime($scope.tutor.hours_per_day);
+				return;
+			}
+		}
+		return []
+	}
+	$scope.getStartHours = function(){
+		if($scope.dateInstance){			
+			if($scope.booking_type === 'hour'){
+				return $scope.dateInstance.getHours();
+			}else{
+				return $scope.dateInstance.getHours($scope.tutor.hours_per_day);
+			}	
+		}
+		return [];
+	}
+
+	$scope.ok = function(){
+		if(validate()){			
+			if($scope.is_single){
+				CalendarFactory.bookings.AddBooking($scope.selectedDate);
+				$scope.$emit("BookingAdded");
+				if($scope.isNew){			
+					addToSelectedDays($scope.selectedDate.date)
+				}
+			}else{			
+				angular.forEach($scope.pending_sessions,function(s){
+					CalendarFactory.bookings.AddBooking(s);
+					$scope.$emit("BookingAdded");
+					addToSelectedDays(moment(s.date));
+				});			
+			}
+			$scope.date_selected = false;
+		}
+	}
+	$scope.h3 = function(){
+		if ($scope.is_single){
+			if($scope.selectedDate){
+				return $scope.selectedDate.weekdayString()+" "+ $scope.selectedDate.ShortRepresentation();
+
+			}
+		}
+		else{
+			if($scope.pending_sessions){						
+				var count = $scope.pending_sessions.length;
+				return "We found "+count+" available "+ $scope.week_day+"s";		
+			}
+		}
+		return ""
+	}
+	$scope.subheading = function(){
+		if($scope.is_single){
+			return "Set preferred start time and end time";
+		}
+		var hr = $scope.tutor.hours_per_day;
+		var s = hr>1 ? "s" : "";
+		return "Each session has a duration of "+hr+"hr"+s+".";
+	}
+	$scope.submit_text = function(){
+		if($scope.is_single){
+			return "Schedule Session";
+		}
+		return "Schedule Sessions";
+	}
+	$scope.error_message= "You must populate all days with start times."
+	$scope.tutor = CalendarFactory.tutor;
 	$scope.booking_type = 'hour';
 	$scope.days = [];
 	$scope.month= moment().format("MMMM");
-	$scope.supports_monthly = true;
-	$scope.expected_hours = 16;
 	$scope.selectedDays = [];
 	$scope.hourlySelectedDays = [];
+	$scope.requiredcount = 16;
+	$scope.booking = CalendarFactory.bookings;
 
 	var m_names = ["January", "February", "March", "April", "May", 
-		"June", "July", "August", "September", "October", "November", "December"];
-    var presentMonth= new Date().getMonth();
+	"June", "July", "August", "September", "October", "November", "December"];
+	var presentMonth= new Date().getMonth();
 	$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth]);
 	$scope.$watch('hourlySelectedDays',function(x,v){
 		console.log(x);
 		console.log(v);
 	},true);
 
+	$scope.canSubmit = function (){
+		if ($scope.booking_type === 'month'){
+			return $scope.booking.TotalBookedHours() >= $scope.tutor.expected_hours;
+		}
+		return $scope.booking.TotalBookedHours() > 0;
+	}
 	$scope.bookingType = function(b_type){
 		if(b_type === 'month'){
 			var bookable_days = CalendarFactory.getWeekDay(m_names[presentMonth]);
@@ -29,7 +132,8 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 			$scope.hourlySelectedDays = [];
 		}else{			
 			$scope.selectedDays = [];
-		}
+		} 
+		$scope.can_not_submit = false;
 		CalendarFactory.RefreshBookings();
 		$scope.booking_type = b_type;
 		$scope.daysOff = CalendarFactory.DaysOff(m_names[presentMonth],b_type);
@@ -48,48 +152,45 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 		CalendarFactory.ModallCall(modalInstance,callback1,callback2);		
 	}
 
-	 $scope.alerts = [
-	    // { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-	    // { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-	  ];
+	$scope.alerts = [ ];
 
-	  function addAlert(msg,alt_type) {
-	    $scope.alerts.push({ type: alt_type, msg: msg });
-	  };
+	function addAlert(msg,alt_type) {
+		$scope.alerts.push({ type: alt_type, msg: msg });
+	};
 
-	  $scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
+	$scope.closeAlert = function(index) {
+		$scope.alerts.splice(index, 1);
+	};
 
-	 function addToSelectedDays(date){
-	 	var value = date.valueOf();
-	 	console.log(value);
-	 	if($scope.booking_type ==='month'){
-		 	if($scope.selectedDays.indexOf(value) < 0){
-		 		$scope.selectedDays.push(value);
-		 	}
-		 	console.log($scope.selectedDays);
-		 }else{
-		 	if($scope.hourlySelectedDays.indexOf(value) < 0){
-		 		$scope.hourlySelectedDays.push(value);
-		 	}
-		 }
-	 }
-	 function removeFromSelectedDays(date){
-	 	var value = date.valueOf();
-	 	var m_index =$scope.selectedDays.indexOf(value);
-	 	var h_index = $scope.hourlySelectedDays.indexOf(value)
-	 	if($scope.booking_type ==='month'){
-		 	if(m_index > -1){
-		 		$scope.selectedDays.splice(m_index,1);
-		 	}
-		 }else{
-		 	if(h_index > -1){
-		 		$scope.hourlySelectedDays.splice(h_index,1);
-		 	}
-		 }	
-	 }
-	
+	function addToSelectedDays(date){
+		var value = date.valueOf();
+		console.log(value);
+		if($scope.booking_type ==='month'){
+			if($scope.selectedDays.indexOf(value) < 0){
+				$scope.selectedDays.push(value);
+			}
+			console.log($scope.selectedDays);
+		}else{
+			if($scope.hourlySelectedDays.indexOf(value) < 0){
+				$scope.hourlySelectedDays.push(value);
+			}
+		}
+	}
+	function removeFromSelectedDays(date){
+		var value = date.valueOf();
+		var m_index =$scope.selectedDays.indexOf(value);
+		var h_index = $scope.hourlySelectedDays.indexOf(value)
+		if($scope.booking_type ==='month'){
+			if(m_index > -1){
+				$scope.selectedDays.splice(m_index,1);
+			}
+		}else{
+			if(h_index > -1){
+				$scope.hourlySelectedDays.splice(h_index,1);
+			}
+		}	
+	}
+
 	$scope.toggleSelectedDay = function(index){
 		var week_day = CalendarFactory.getWeekDay($scope.days[index]);
 		var month_selections = CalendarFactory.firstFourDays($scope.month,week_day);
@@ -98,21 +199,13 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 		});
 		console.log(pending_sessions);
 		if(month_selections){
- 			ModalCall(
-				{
-					selections:function(){return month_selections;},
-					pending_sessions:function(){return pending_sessions}
-				},
-				function(response){
-					console.log(response.sessions);
-					angular.forEach(response.sessions,function(s){
-						CalendarFactory.bookings.AddBooking(s);
-						$scope.$emit("BookingAdded");
-						addToSelectedDays(moment(s.date));
-					});
-					$scope.days.splice(index,1);
-				},null,'month');
-
+			$scope.is_single = false;
+			$scope.date_selected = true;
+			$scope.isNew = true;
+			$scope.pending_sessions = pending_sessions;
+			$scope.selections = month_selections;
+			$scope.week_day = week_day;
+			$scope.days.splice(index,1);
 		}else{
 			addAlert("Sorry there are no available days on "+week_day,'danger');
 			$scope.days.splice(index,1);
@@ -122,41 +215,46 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 	$scope.dateClick = function(event,date){
 		event.preventDefault();
 		if(date.selectable){
-			
-		var selectedDay = CalendarFactory.bookings.InitializeSession(date);
-		var isNew = selectedDay.isNew();
-		ModalCall(
-			{
-				selectedDate:function(){return selectedDay;},
-				action:function(){return $scope.booking_type;}
-			},
-			function(ss){			
-				console.log(ss.date);
-				CalendarFactory.bookings.AddBooking(ss.date);
-				$scope.$emit("BookingAdded");
-				if(isNew){			
-					addToSelectedDays(ss.date.date)
-					// date.selected= !date.selected;
-				}	
-			},function(err){		
-				if(err==="cancel" && date.selected){
-					CalendarFactory.bookings.RemoveBooking(selectedDay);
-					$scope.$emit("BookingRemoved");
-					removeFromSelectedDays(selectedDay.date);
-				}
-			}
-		);			
+
+			var selectedDay = CalendarFactory.bookings.InitializeSession(date);
+			var isNew = selectedDay.isNew();
+			$scope.isNew = isNew;
+			$scope.selectedDate = selectedDay;
+			$scope.selectedDate.end_time = selectedDay.end_time || 'End time';
+			$scope.is_single = true;
+			$scope.date_selected=true;
+			$scope.dateInstance = CalendarFactory.getDay(selectedDay.date);
+
 		}
 	};
-	
+	$scope.remaining_hrs = function(){
+		if($scope.booking_type === 'hour'){
+			return "C'mon! Book at least 1 hour with your tutor!";
+		}
+		var tb = $scope.booking.TotalBookedHours();
+		if(tb < 1){
+			return "C'mon! You are required to select at least "+$scope.tutor.expected_hours+"hrs";
+		}
+		var remaining = $scope.tutor.expected_hours-tb;
+		return "You selected "+tb+"hrs. "+remaining+"hrs left";
+
+	}
+	$scope.can_not_submit=false;
+	$scope.submitBooking = function(){
+		if($scope.canSubmit()){
+		}else{
+			$scope.can_not_submit = true
+		}
+	}
+
 	$scope.hoverEvent = function(event,date){
 		event.preventDefault();
 		if(event.type === 'mouseover'){
-				}
+		}
 	};			
 
 	$scope.logMonthChanged1 = function(newMonth,oldMonth){
-		var new_month= newMonth.format("MMMM");
+		var new_month= newMonth.format("MMMM");		
 		$scope.daysOff = CalendarFactory.DaysOff(new_month);		
 	};
 	$scope.logMonthChanged2 = function(newMonth,oldMonth){
@@ -166,97 +264,9 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 		$scope.daysOff = CalendarFactory.DaysOff(new_month,'month');		
 	};
 	$scope.selectedDays = [];
-	 $scope.items = ['item1', 'item2', 'item3'];  
-};
-
-function HourlyModalCtrl($scope,$modalInstance,CalendarFactory,selectedDate,action){
-	$scope.range = 2;
-	$scope.isMonth= action === "month";
-	$scope.dateInstance = CalendarFactory.getDay(selectedDate.date);
-	$scope.isNew = selectedDate.isNew();
-	$scope.selectedDate = selectedDate;
-	$scope.selectedDate.end_time = selectedDate.end_time || 'End time';
-	console.log(selectedDate);
-	function validate(){
-		if(action === 'hour'){
-			return $scope.selectedDate.end_time !== "" && $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined;	
-		}
-		return $scope.selectedDate.end_time !== null && $scope.selectedDate.end_time !== "undefined" && $scope.selectedDate.end_time !== undefined && $scope.selectedDate.end_time !== 'End time' && $scope.selectedDate.end_time !== 'Invalid date';
-	}
-	$scope.invalid = false;
-	$scope.ok = function () {
-		if(validate()){
-	    	$modalInstance.close({date:$scope.selectedDate,isNewDate:selectedDate.isNew()});
-		}
-		else{
-			$scope.invalid = true;
-		}
-	};
-
-	$scope.getStartHours = function(){
-		if(action === 'hour'){
-			return $scope.dateInstance.getHours();
-		}else{
-			return $scope.dateInstance.monthlyStartHours($scope.range);
-		}
-	}
-
-	$scope.cancel = function (context) {
-	    $modalInstance.dismiss(context);
-	};
-	
-	$scope.getEndHours = function(time){
-		if(time){
-			if(action === 'hour'){
-				return $scope.dateInstance.getEndHours(time);			
-			}else{
-				var end_time = moment($scope.selectedDate.start_time,"ha").hour()+$scope.range;
-				$scope.selectedDate.end_time =  moment(end_time,"HH").format("ha");
-				return;
-			}
-		}
-		return []
-	}
-}
-
-function MonthlyModalCtrl($scope,$modalInstance,CalendarFactory,selections,pending_sessions){
-	$scope.selections = selections;
-	$scope.range = 2;
-	$scope.pending_sessions=pending_sessions;
-	$scope.getEndHours = function(dt){
-		var start_time = dt.start_time;
-		var end_time = moment(dt.start_time,"ha").hour()+$scope.range;
-		dt.end_time = moment(end_time,"HH").format("ha");
-	};
-
-	function validate(){
-		var filled = _.filter($scope.pending_sessions,function(x){
-			return x.end_time === null || x.end_time === "undefined" || x.end_time === undefined || x.end_time === 'End time' || x.end_time === 'Invalid date';
-		});
-		console.log(filled);
-		return filled.length === 0;
-	}
-	$scope.invalid = false;
-	$scope.ok = function () {
-		if(validate()){			
-	    	$modalInstance.close({sessions:$scope.pending_sessions});
-		}else{			
-			$scope.invalid = true;
-		}
-	};
-
-	$scope.cancel = function () {
-	    $modalInstance.dismiss('cancel');
-	};
 
 }
-
-
 var CalenderController = angular.module('calendar.controller',['calendar.service','ui.bootstrap']);
 
 // var App = angular.module('calendar.controller');
-CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl])
-	.controller('HourlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selectedDate',
-			'action',HourlyModalCtrl])
-	.controller('MonthlyModalCtrl',['$scope','$modalInstance','CalendarFactory','selections', 'pending_sessions',
-			MonthlyModalCtrl]);
+CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl]);

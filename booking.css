@@ -4,6 +4,15 @@
 .row-space-4{
 	margin-bottom: 10px;
 }
+.margin-bottom-0{
+	margin-bottom: 0;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.margin-top-20{
+	margin-top: 20px;
+}
 .padding-right-0{
 	padding-right:0px;
 }
@@ -39,16 +48,23 @@ hr{
 	/*font-size: 14px;*/
 }
 .row-space-top-5{
-	margin-top:12px;
+	padding-top:12px;
 }
 .discount-section{
-	font-size:85%;
+	font-size: 75%;
 }
 .booking-text{
 	font-size:80%;
 }
 .padding-right-5{
 	padding-right: 5px;
+}
+.visible-hours{
+	font-size: 12px;
+	padding: 10px 5px 5px 5px;
+	margin-bottom: 10px;
+	/* padding-bottom: 5px; */
+	border: 2px solid #eeeeee;
 }
 #monthly h3{
 	margin-right: 10px;
@@ -67,4 +83,101 @@ hr{
 #monthly .day-selection{
 	text-align: center;
 
+}
+
+
+.label-purple {
+    background-color: rgb(152, 69, 152);
+}
+
+.picker-day.picker-cancel{
+	background-color: red;
+	color: #fff;
+}
+.picker-day.picker-new{
+	background-color:green;
+	color:#fff;
+}
+.picker-day.picker-update{
+	background-color: yellow;
+	color:#fff;
+}
+.booking-calendar{
+	position:relative;
+}
+.custom-time-picker{
+	padding-bottom: 0px;
+	position:absolute;	
+	margin-left: auto;
+	margin-right: auto;
+	/* left: 0; */
+	right: 0;
+	
+	width: 100%;
+	z-index: 10;
+	/* padding: 10px 20px 20px 20px; */
+	top: 41px;
+	/* left: 15px; */
+	/* right: 61px; */
+	background: f4f4f4;
+	padding-bottom: 20px;	
+	/* margin-right: 26px; */
+}
+.padding-left-right-15{
+	padding-left: 15px;
+	padding-right: 15px;
+	
+}
+@media (min-width: 768px){	
+	.no-padding{
+		padding-left: 0;
+		padding-right: 0;
+	}	
+
+
+}
+@media (max-width: 768px){
+	.padding-left-right-15{
+		/* padding-left:0px; */
+		/* padding-right:0px; */
+	
+}
+}
+.tab-content{
+	position: relative;
+}
+.time-heading{
+	margin-bottom: 15px;
+}
+.form-group{
+	margin-bottom: 10px;
+}
+
+.start {
+    width: 45%;  padding-right: 10px;  /* display: inline-block; */;
+}
+
+.end {
+    width: 45%;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+
+small.invalid-times {
+	font-size: 75%;
+	/* line-height: 2px; */
+}
+.panel-footer{
+	padding: 20px 0px;
+	/* padding-left: 0; */
+	/* padding-right: 0; */
+}
+
+.custom-time-picker.panel.panel-default {
+    padding-bottom: 0px;
+}
+
+.background-gray {
+    background-color: #F5F5F5;
 }

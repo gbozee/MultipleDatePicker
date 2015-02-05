@@ -4,6 +4,74 @@
 		"selected_items":
 		[
 			[
+				"mind",
+				"m_index"
+			],
+			[
+				"selectedDa",
+				"selectedDays"
+			],
+			[
+				"bookin",
+				"bookings"
+			],
+			[
+				"seled",
+				"selectedDate"
+			],
+			[
+				"Booking",
+				"BookingRemoved"
+			],
+			[
+				"booki",
+				"bookings"
+			],
+			[
+				"hourl",
+				"hourlySelectedDays"
+			],
+			[
+				"seleD",
+				"selectedDays1"
+			],
+			[
+				"isN",
+				"isNew"
+			],
+			[
+				"isNe",
+				"isNewDate"
+			],
+			[
+				"inter",
+				"interval"
+			],
+			[
+				"inte",
+				"interval"
+			],
+			[
+				"sess",
+				"sessions"
+			],
+			[
+				"momen",
+				"moment"
+			],
+			[
+				"weekday",
+				"weekday"
+			],
+			[
+				"weedays",
+				"weekdays"
+			],
+			[
+				"day",
+				"days"
+			],
+			[
 				"Month",
 				"MonthlyModalCtrl"
 			],
@@ -42,10 +110,6 @@
 			[
 				"weeka",
 				"weekdays"
-			],
-			[
-				"sess",
-				"session"
 			],
 			[
 				"session",
@@ -120,19 +184,11 @@
 				"weekDaysForMonth:w"
 			],
 			[
-				"momen",
-				"momentDate"
-			],
-			[
 				"Days",
 				"DaysOff"
 			],
 			[
 				"booing",
-				"booking_type"
-			],
-			[
-				"bookin",
 				"booking_type"
 			],
 			[
@@ -181,10 +237,6 @@
 			],
 			[
 				"hourly",
-				"hourly_calendar"
-			],
-			[
-				"hourl",
 				"hourly_calendar"
 			],
 			[
@@ -462,58 +514,6 @@
 			[
 				"teach",
 				"teachingMethodInput"
-			],
-			[
-				"des",
-				"descriptionInput"
-			],
-			[
-				"desCoun",
-				"descriptionCounter"
-			],
-			[
-				"certific",
-				"certificate_form"
-			],
-			[
-				"monthly",
-				"monthly_booking"
-			],
-			[
-				"cal",
-				"calculatePrice"
-			],
-			[
-				"object",
-				"objects"
-			],
-			[
-				"cer",
-				"certificate_form"
-			],
-			[
-				"filte",
-				"filters"
-			],
-			[
-				"java",
-				"javascripts"
-			],
-			[
-				"notif",
-				"notifyServerOnQuizStart"
-			],
-			[
-				"finis",
-				"finished"
-			],
-			[
-				"callb",
-				"callbackTimer"
-			],
-			[
-				"Quiz",
-				"QuizService"
 			]
 		]
 	},
@@ -531,7 +531,15 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 8419,
+				"buffer_size": 8281,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "booking.css",
+			"settings":
+			{
+				"buffer_size": 929,
 				"line_ending": "Windows"
 			}
 		},
@@ -539,7 +547,7 @@
 			"file": "calendar/controller.js",
 			"settings":
 			{
-				"buffer_size": 3975,
+				"buffer_size": 8381,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +555,7 @@
 			"file": "calendar/models.js",
 			"settings":
 			{
-				"buffer_size": 5185,
+				"buffer_size": 6127,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +563,7 @@
 			"file": "calendar/service.js",
 			"settings":
 			{
-				"buffer_size": 2648,
+				"buffer_size": 3111,
 				"line_ending": "Windows"
 			}
 		},
@@ -579,7 +587,7 @@
 			"file": "calendar/server.json",
 			"settings":
 			{
-				"buffer_size": 6996,
+				"buffer_size": 6444,
 				"line_ending": "Windows"
 			}
 		}
@@ -587,11 +595,15 @@
 	"build_system": "Run Skills Tests",
 	"command_palette":
 	{
-		"height": 235.0,
+		"height": 222.0,
 		"selected_items":
 		[
 			[
 				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
 				"Indentation: Reindent Lines"
 			],
 			[
@@ -648,10 +660,6 @@
 			],
 			[
 				"inde",
-				"Indentation: Reindent Lines"
-			],
-			[
-				"rein",
 				"Indentation: Reindent Lines"
 			],
 			[
@@ -1135,6 +1143,12 @@
 	],
 	"file_history":
 	[
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/server.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/app.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/buildin/amd-define.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/style-loader/addStyles.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/controller.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/test/browser/single-test.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/TemplatedPathPlugin.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/template.js",
@@ -1143,14 +1157,11 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.sublime-project",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.less",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/multipleDatePicker.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/server.json",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/service.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/Parser.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/bootstrap.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/webpack.config.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/app.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/main.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/controller.js",
 		"/C/Users/gbozee/Downloads/ui-bootstrap-custom-build/ui-bootstrap-custom-0.12.0.js",
 		"/C/Users/gbozee/Downloads/ui-bootstrap-custom-build/ui-bootstrap-custom-tpls-0.12.0.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/Gruntfile.js",
@@ -1164,7 +1175,6 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular-ui-bootstrap/template/accordion/accordion-group.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/node_modules/domhandler/test/cases/19-ignore_empty_tags.json",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/package.json",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/bower.json",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular-ui-bootstrap/.jshintrc",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/.gitignore",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/ja.js",
@@ -1260,9 +1270,7 @@
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/urls.py",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_variables.scss",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/wizard-subnav.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/css/src/mixins.css",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/mixins.scss"
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss"
 	],
 	"find":
 	{
@@ -1280,6 +1288,28 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\n{\"",
+			"09-02",
+			"month",
+			"09-02",
+			"getFir",
+			"getEndHours",
+			"getEndHours:function(value)",
+			"selectedDays",
+			"hourlySelectedDays",
+			"selectedDays1",
+			"scope.booking_type",
+			"&&",
+			"!==",
+			"x",
+			"padding",
+			"schedule",
+			"MonthlyModalCtrl",
+			"CalendarFactory",
+			"monthlyStartHours",
+			"start_time",
+			"danger",
+			"index",
 			"HourlyModalCtrl",
 			"MonthlyModalCtrl",
 			"modalInstanceCall",
@@ -1385,29 +1415,7 @@
 			"totalChars",
 			"textCounter",
 			"multiplier",
-			"('change'",
-			">",
-			"help",
-			"selected_days",
-			"increment",
-			"increment(",
-			"schedule_interview",
-			"30",
-			"4",
-			"re40km",
-			"2",
-			"5",
-			"5k",
-			"re5kmlist = print_result(re5km)",
-			"re5km",
-			"col-xs-2",
-			"xs-2",
-			"hidden-xs",
-			"xs-6",
-			"#top-business",
-			"$(this)",
-			"node",
-			"input"
+			"('change'"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1425,7 +1433,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1457,7 +1465,7 @@
 						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1466,15 +1474,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8419,
+						"buffer_size": 8281,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4662,
-								4662
+								856,
+								856
 							]
 						],
 						"settings":
@@ -1484,27 +1492,70 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 630.0,
+						"translation.y": 321.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "booking.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 929,
+						"regions":
+						{
+							"gutter_color_23":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										23,
+										49
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								688,
+								673
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 552.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "calendar/controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3975,
+						"buffer_size": 8381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2936,
-								2941
+								4470,
+								4470
 							]
 						],
 						"settings":
@@ -1514,27 +1565,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1286.0,
+						"translation.y": 2070.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "calendar/models.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5185,
+						"buffer_size": 6127,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1252,
-								1263
+								4535,
+								4535
 							]
 						],
 						"settings":
@@ -1545,27 +1596,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 662.0,
+						"translation.y": 2584.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "calendar/service.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2648,
+						"buffer_size": 3111,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								373,
-								373
+								1892,
+								1908
 							]
 						],
 						"settings":
@@ -1575,15 +1626,15 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 88.0,
-						"translation.y": 129.0,
+						"translation.x": 0.0,
+						"translation.y": 860.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "libs/multipleDatePicker.js",
 					"semi_transient": false,
 					"settings":
@@ -1611,7 +1662,7 @@
 						"translation.y": 1704.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1621,7 +1672,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "libs/multipleDatePicker.js",
 					"semi_transient": false,
 					"settings":
@@ -1633,8 +1684,8 @@
 						"selection":
 						[
 							[
-								2983,
-								2983
+								4851,
+								4851
 							]
 						],
 						"settings":
@@ -1646,27 +1697,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1041.0,
+						"translation.y": 1705.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "calendar/controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3975,
+						"buffer_size": 8381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2268,
-								2268
+								4647,
+								4647
 							]
 						],
 						"settings":
@@ -1675,15 +1726,15 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 823.0,
+						"translation.x": 63.0,
+						"translation.y": 2375.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "templates/mdp.html",
 					"semi_transient": false,
 					"settings":
@@ -1710,24 +1761,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "calendar/service.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2648,
+						"buffer_size": 3111,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1870,
-								1870
+								2024,
+								2024
 							]
 						],
 						"settings":
@@ -1741,24 +1792,24 @@
 						"translation.y": 785.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "calendar/server.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6996,
+						"buffer_size": 6444,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6996,
-								6996
+								3445,
+								3445
 							]
 						],
 						"settings":
@@ -1767,11 +1818,11 @@
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
-						"translation.x": 48360.0,
+						"translation.x": 23510.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1839,6 +1890,18 @@
 		"selected_items":
 		[
 			[
+				"servi",
+				"calendar\\service.js"
+			],
+			[
+				"book",
+				"booking.css"
+			],
+			[
+				"contro",
+				"calendar\\controller.js"
+			],
+			[
 				"",
 				"calendar\\controller.js"
 			],
@@ -1863,20 +1926,12 @@
 				"libs\\multipleDatePicker.js"
 			],
 			[
-				"servi",
-				"calendar\\service.js"
-			],
-			[
 				"ser.js",
 				"calendar\\server.json"
 			],
 			[
 				"inde",
 				"index.html"
-			],
-			[
-				"contro",
-				"calendar\\controller.js"
 			],
 			[
 				"serv",
@@ -2345,10 +2400,6 @@
 			[
 				"step",
 				"tuteria\\registration\\templates\\registration\\tutor\\step2.html"
-			],
-			[
-				"profi",
-				"tuteria\\users\\static\\profile.js"
 			]
 		],
 		"width": 0.0
@@ -2373,7 +2424,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

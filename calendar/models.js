@@ -1,7 +1,9 @@
 var _ = require('lodash');
 var moment = require('moment');
-
+var TS = require('./../schedule/models.js'),
+	TimeSlot = TS.TimeSlot;
 var months = moment.months();
+
 var getDaysArray = function(month) {
 	var intMonth = months.indexOf(month);
   var date = new Date(moment().year(), intMonth, 1);
@@ -13,16 +15,7 @@ var getDaysArray = function(month) {
   return result;
 }
 
-var TimeSlot = function(time){
-	_.extend(this,time);
-}
-TimeSlot.prototype = {
-	getStartHours:function(){
-		var results =  _.range(this.start_time,this.end_time);
-		return _.map(results,function(r){
-			return moment(r,"HH").format("ha");
-		});
-	},
+var TimeSlotCalendarMixin = {
 	validStartTimes:function(range){
 		var current_times = this.getStartHours();
 		var that  = this;
@@ -30,19 +23,8 @@ TimeSlot.prototype = {
 			return moment(x,"ha").hour()+range <= that.end_time;
 		});;
 	},
-	getEndHours:function(value){
-		//format = "7am"
-		var tt = moment(value,"ha").hour();
-		if(tt < this.end_time){			
-			var results = _.range(tt+1,this.end_time+1);
-			return _.map(results,function(r){
-				return moment(r,"HH").format("ha");
-			})	
-		}else{
-			return [];
-		}
-	}
 }
+_.extend(TimeSlot.prototype,TimeSlotCalendarMixin)
 
 var AvailableDay = function(response){
 	_.extend(this,response);
@@ -52,17 +34,14 @@ var AvailableDay = function(response){
 	this.momentDate = moment(this.date,"DD-MM-YYYY");
 };
 AvailableDay.prototype={
-	getHours: function(){
-		var result = _.map(this.times,function(x){
-			return x.getStartHours();
-		});
-		return _.flatten(result);
-	},
-	monthlyStartHours:function(range){
-		var r = range || 2;
-		var result = _.map(this.times,function(x){
-			return x.validStartTimes(r);
-		});
+	getHours: function(range){
+		var callback;
+		if(range){
+			callback = function(x){return x.validStartTimes(range);}
+		}else{
+			callback = function(x){return x.getStartHours();}
+		}
+		var result = _.map(this.times,callback);
 		return _.flatten(result);
 	},
 	getEndHours:function(v){
@@ -79,8 +58,8 @@ AvailableDay.prototype={
 		});
 	},
 	validMonthDate:function(interval){
-		return this.monthlyStartHours(interval).length > 0
-	}
+		return this.getHours(interval).length > 0
+	},
 }
 
 
@@ -101,10 +80,9 @@ Month.prototype = {
 	getDaysOff:function(cal,inter){
 		var interval = inter || 1;
 		var cal_type = cal || 'hour';
-		var working_dates;
-		if(cal_type === 'hour'){			
-		 working_dates=this.dates; 	
-		}else{
+
+		var working_dates=this.dates; 	
+		if(cal_type !== 'hour'){
 			working_dates = _.filter(this.dates,function(x){
 				return x.validMonthDate(interval)
 			});
@@ -124,13 +102,14 @@ Month.prototype = {
 
 }
 var Schedule = function(jsonResponse,cal_type){
+	// BaseSchedule.call(this,jsonResponse);
 	var month_groups = _.chain(jsonResponse)
-	.groupBy("month")
-	.pairs()
-	.map(function (currentItem) {
-		return _.object(_.zip(["month", "dates"], currentItem));
-	})
-	.value();
+		.groupBy("month")
+		.pairs()
+		.map(function (currentItem) {
+			return _.object(_.zip(["month", "dates"], currentItem));
+		})
+		.value();
 	this.calendar_typ = cal_type;
 	this.months = _.map(month_groups,function(month){
 		return new Month(month);
@@ -186,18 +165,44 @@ var Session = function(dateInstance){
 Session.prototype = {
 	StringRepresentation:function(format){
 		var f = format || "YYYY-MM-DD";
-		return this.date.format(f);
+		return this.date.format(f);		
+	},
+	ShortRepresentation:function(){	
+		var str = moment.monthsShort()[this.date.month()]+" "+this.date.date()+", "+this.date.year();
+		console.log(str);
+		return str;
+
 	},
 	weekdayString:function(){
 		return moment.weekdays()[this.date.weekday()];
 	},
 	isNew:	function(){
 		return this.start_time === null;
+	},
+	hours:function(){
+		return moment(this.end_time,"ha").hours() - moment(this.start_time,"ha").hours();
+	},
+	calculateEndTime:function(hours_per_day){
+		var end_time = moment(this.start_time,"ha").hour()+hours_per_day;
+		this.end_time = moment(end_time,"HH").format("ha");
+	},	
+	isValid:function(new_val){
+		var array = ["",null,"undefined",undefined,'Invalid date','End time']
+		var options = _.filter(array,function(x){
+			return new_val === x;
+		});
+		var toTrue = _.map(options,function(){return false});
+		return _.reduce(toTrue,function(sum,x){
+			return sum && x;
+		},true)
 	}
 }
 
-var Booking = function(){
+var Booking = function(price,discount){
 	this.sessions = [];
+	this.students = 1;
+	this.tutor_price=price;
+	this.discount = discount || 0;
 };
 
 Booking.prototype = {
@@ -216,14 +221,42 @@ Booking.prototype = {
 			this.sessions.push(session);
 		}
 	},
+	TotalBookedHours:function(){
+		return _.reduce(this.sessions,function(sum,s){
+			return sum+s.hours();
+		},0);
+	},
+	Summary:function(){
+		var has_s = this.students >1 ? "s":"";		
+		var booked_hours = this.TotalBookedHours();
+		var hr_s = booked_hours >1 ?"s":"";
+		return "\u20A6"+this.tutor_price+" x "+booked_hours+"hr"+hr_s+" x "+this.students+" student"+has_s;
+	},
+	Total:function(){
+		return (this.tutor_price*this.TotalBookedHours())*((100*this.students)-(this.discount*this.students)+this.discount)/100;
+	},
+	BookingFeePercent:function(){
+		var total = this.Total();
+		var fee = 5;
+		if(total>=20000 && total < 50000){
+			fee = 4;
+		}
+		if(total>=50000){
+			fee = 3;
+		}
+		return fee;	
+	},
+	BookingFee:function(){
+		return this.BookingFeePercent() *this.Total()/100;
+	},
+	TotalPayment:function(){
+		return this.BookingFee()+this.Total();
+	},
 	RemoveBooking:function(session){
 		var instance = this.getIndex(session);
 		if(instance > -1){
 			this.sessions.splice(instance,1);
 		}
-	},
-	RefreshBookings:function(){
-		this.sessions = [];
 	},
 	InitializeSession:function(date){
 		var instance = _.findIndex(this.sessions,function(x){
