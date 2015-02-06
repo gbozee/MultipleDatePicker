@@ -166,10 +166,10 @@ hr{
 
 small.invalid-times {
 	font-size: 75%;
-	/* line-height: 2px; */
+	/* line-height: 0px; */
 }
 .panel-footer{
-	padding: 20px 0px;
+	padding: 10px 0px;
 	/* padding-left: 0; */
 	/* padding-right: 0; */
 }
@@ -180,4 +180,10 @@ small.invalid-times {
 
 .background-gray {
     background-color: #F5F5F5;
+}
+
+
+/*Tutor Schedule calendar*/
+.schedule-change-summary{
+	margin-top: 10px;
 }

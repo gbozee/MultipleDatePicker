@@ -4,16 +4,248 @@
 		"selected_items":
 		[
 			[
-				"mind",
-				"m_index"
+				"cand",
+				"cancel('dismiss"
+			],
+			[
+				"reoc",
+				"reoccur_count"
+			],
+			[
+				"reo",
+				"reoccur_count"
+			],
+			[
+				"firs",
+				"first_four_months"
+			],
+			[
+				"getFf",
+				"getDaysforFourMonths"
+			],
+			[
+				"star",
+				"start_time"
+			],
+			[
+				"getFor",
+				"getDaysforFourMonths"
+			],
+			[
+				"sta",
+				"start_month"
+			],
+			[
+				"start",
+				"start_month"
+			],
+			[
+				"update",
+				"updates"
+			],
+			[
+				"upda",
+				"updated"
+			],
+			[
+				"canc",
+				"cancelled"
+			],
+			[
+				"can",
+				"cancelled"
+			],
+			[
+				"new",
+				"news"
+			],
+			[
+				"getStar",
+				"getStartTime"
+			],
+			[
+				"getEnd",
+				"getEndTime"
+			],
+			[
+				"getMom",
+				"getMomentStartTime"
+			],
+			[
+				"getMomE",
+				"getMomentEndTime"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"Cancel",
+				"CancelDay"
+			],
+			[
+				"upd",
+				"updateOccurrence"
+			],
+			[
+				"updat",
+				"updates"
+			],
+			[
+				"Init",
+				"InitializeDayInstance"
+			],
+			[
+				"is",
+				"is_new"
+			],
+			[
+				"selec",
+				"selectedDate"
+			],
+			[
+				"hour_",
+				"hours_per_day"
+			],
+			[
+				"tr",
+				"true"
 			],
 			[
 				"selectedDa",
-				"selectedDays"
+				"selectedDate"
 			],
 			[
 				"bookin",
-				"bookings"
+				"booking_type"
+			],
+			[
+				"selectedD",
+				"selectedDate"
+			],
+			[
+				"Sche",
+				"Schedule"
+			],
+			[
+				"updt",
+				"updates"
+			],
+			[
+				"indx",
+				"index2"
+			],
+			[
+				"cance",
+				"cancelled"
+			],
+			[
+				"cane",
+				"cancelled"
+			],
+			[
+				"previ",
+				"previousDays"
+			],
+			[
+				"getDAyIn",
+				"getDayIndex"
+			],
+			[
+				"getDayIn",
+				"getDayIndex"
+			],
+			[
+				"Day",
+				"Day"
+			],
+			[
+				"Bas",
+				"BaseMonth"
+			],
+			[
+				"BAs",
+				"BaseMonth"
+			],
+			[
+				"BA",
+				"BaseSchedule"
+			],
+			[
+				"Mont",
+				"Month"
+			],
+			[
+				"proto",
+				"proto	Prototype"
+			],
+			[
+				"Time",
+				"TimeSlot"
+			],
+			[
+				"requ",
+				"require"
+			],
+			[
+				"Tut",
+				"TutorSchedule"
+			],
+			[
+				"logMon",
+				"logMonthChanged1"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"avail",
+				"availableDays"
+			],
+			[
+				"Calen",
+				"CalenderController"
+			],
+			[
+				"Tot",
+				"Total"
+			],
+			[
+				"tuto",
+				"tutor_price"
+			],
+			[
+				"hr",
+				"hr_s"
+			],
+			[
+				"student",
+				"students"
+			],
+			[
+				"callb",
+				"callback"
+			],
+			[
+				"hours",
+				"hours_per_day"
+			],
+			[
+				"requr",
+				"requiredcount"
+			],
+			[
+				"Total",
+				"TotalBookedHours"
+			],
+			[
+				"strt",
+				"start_time"
+			],
+			[
+				"mind",
+				"m_index"
 			],
 			[
 				"seled",
@@ -100,10 +332,6 @@
 				"selectedDate"
 			],
 			[
-				"start",
-				"start_time"
-			],
-			[
 				"end",
 				"end_time"
 			],
@@ -134,10 +362,6 @@
 			[
 				"date",
 				"dateInstance"
-			],
-			[
-				"selectedD",
-				"selectedDay"
 			],
 			[
 				"month_in",
@@ -216,10 +440,6 @@
 				"February"
 			],
 			[
-				"avail",
-				"available_days"
-			],
-			[
 				"week",
 				"weekdays"
 			],
@@ -250,10 +470,6 @@
 			[
 				"jso",
 				"jsonResponse"
-			],
-			[
-				"proto",
-				"proto	Prototype"
 			],
 			[
 				"hour",
@@ -298,227 +514,27 @@
 			[
 				"bow",
 				"bowerRooot"
-			],
-			[
-				"just",
-				"justify"
-			],
-			[
-				"tem",
-				"template"
-			],
-			[
-				"servic",
-				"services"
-			],
-			[
-				"controller",
-				"controller"
-			],
-			[
-				"Multi",
-				"MultipleDatePicker"
-			],
-			[
-				"Angular",
-				"AngularPlugin"
-			],
-			[
-				"selected",
-				"selectedDays"
-			],
-			[
-				"prevent",
-				"preventDefault"
-			],
-			[
-				"mu",
-				"multipleDatePicker.js"
-			],
-			[
-				"jumbo",
-				"jumbotron"
-			],
-			[
-				"carou",
-				"carousel"
-			],
-			[
-				"med",
-				"media"
-			],
-			[
-				"four",
-				"four_month"
-			],
-			[
-				"two",
-				"two_weeks"
-			],
-			[
-				"testimo",
-				"testimonial"
-			],
-			[
-				"testi",
-				"testimonial"
-			],
-			[
-				"test",
-				"testimonial"
-			],
-			[
-				"one",
-				"one_on_one"
-			],
-			[
-				"top",
-				"top_businesses"
-			],
-			[
-				"infogr",
-				"infographics_content"
-			],
-			[
-				"acti",
-				"active"
-			],
-			[
-				"carouse",
-				"carousel_item"
-			],
-			[
-				"va",
-				"variables"
-			],
-			[
-				"like",
-				"linkedin"
-			],
-			[
-				"incl",
-				"include	@include"
-			],
-			[
-				"mixin",
-				"mixins"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"boots",
-				"bootstrap/"
-			],
-			[
-				"image",
-				"image_id"
-			],
-			[
-				"bef",
-				"beforeCallback"
-			],
-			[
-				"polic",
-				"policy_form"
-			],
-			[
-				"hid",
-				"hideAddMore"
-			],
-			[
-				"obje",
-				"object"
-			],
-			[
-				"DEscribe",
-				"DescribeForm"
-			],
-			[
-				"SetP",
-				"SkillSetPriceForm"
-			],
-			[
-				"Descr",
-				"DescribeForm"
-			],
-			[
-				"educ",
-				"education_formset"
-			],
-			[
-				"Prefer",
-				"PreferenceForm"
-			],
-			[
-				"Prefe",
-				"PreferenceForm"
-			],
-			[
-				"Pref",
-				"PreferenceForm"
-			],
-			[
-				"TutorRegi",
-				"TutorRegistrationStep2:T"
-			],
-			[
-				"Reg",
-				"Registration"
-			],
-			[
-				"parsle",
-				"parsley"
-			],
-			[
-				"Policy",
-				"PolicyForm"
-			],
-			[
-				"WorEx",
-				"WorkExperienceFormSet"
-			],
-			[
-				"Edu",
-				"EducationFormset"
-			],
-			[
-				"Regis",
-				"RegistrationFormMixin"
-			],
-			[
-				"error",
-				"errors"
-			],
-			[
-				"discount",
-				"discount_price"
-			],
-			[
-				"read",
-				"readonly"
-			],
-			[
-				"certif",
-				"certificates"
-			],
-			[
-				"key",
-				"keyup"
-			],
-			[
-				"type",
-				"typeahead"
-			],
-			[
-				"teach",
-				"teachingMethodInput"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "calendar/filter.js",
+			"settings":
+			{
+				"buffer_size": 3258,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 301,
+				"line_ending": "Windows"
+			}
+		},
 		{
 			"file": "webpack.config.js",
 			"settings":
@@ -528,18 +544,10 @@
 			}
 		},
 		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 8281,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "booking.css",
 			"settings":
 			{
-				"buffer_size": 929,
+				"buffer_size": 2782,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +555,7 @@
 			"file": "calendar/controller.js",
 			"settings":
 			{
-				"buffer_size": 8381,
+				"buffer_size": 8086,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +563,39 @@
 			"file": "calendar/models.js",
 			"settings":
 			{
-				"buffer_size": 6127,
+				"buffer_size": 7356,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "schedule/models.js",
+			"settings":
+			{
+				"buffer_size": 4613,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "schedule/service.js",
+			"settings":
+			{
+				"buffer_size": 337,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "schedule/controller.js",
+			"settings":
+			{
+				"buffer_size": 6274,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 13919,
 				"line_ending": "Windows"
 			}
 		},
@@ -563,7 +603,7 @@
 			"file": "calendar/service.js",
 			"settings":
 			{
-				"buffer_size": 3111,
+				"buffer_size": 3581,
 				"line_ending": "Windows"
 			}
 		},
@@ -571,15 +611,7 @@
 			"file": "libs/multipleDatePicker.js",
 			"settings":
 			{
-				"buffer_size": 10322,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/mdp.html",
-			"settings":
-			{
-				"buffer_size": 1194,
+				"buffer_size": 10407,
 				"line_ending": "Windows"
 			}
 		},
@@ -587,7 +619,7 @@
 			"file": "calendar/server.json",
 			"settings":
 			{
-				"buffer_size": 6444,
+				"buffer_size": 16329,
 				"line_ending": "Windows"
 			}
 		}
@@ -595,12 +627,24 @@
 	"build_system": "Run Skills Tests",
 	"command_palette":
 	{
-		"height": 222.0,
+		"height": 221.0,
 		"selected_items":
 		[
 			[
 				"reind",
 				"Indentation: Reindent Lines"
+			],
+			[
+				"ssjav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jshi",
+				"JSHint"
+			],
+			[
+				"jsh",
+				"JSHint"
 			],
 			[
 				"rein",
@@ -696,14 +740,6 @@
 			],
 			[
 				"jshin",
-				"JSHint"
-			],
-			[
-				"jshi",
-				"JSHint"
-			],
-			[
-				"jsh",
 				"JSHint"
 			],
 			[
@@ -1105,10 +1141,6 @@
 			[
 				"sublie pyt",
 				"SublimeREPL: Python - Sublime Text Console"
-			],
-			[
-				"virt",
-				"SublimeREPL: Python - virtualenv"
 			]
 		],
 		"width": 511.0
@@ -1134,21 +1166,37 @@
 	"expanded_folders":
 	[
 		"/F/work-projects/python/django-projects/MultipleDatePicker",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-bootstrap",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-bootstrap/dist",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/css-loader",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/schedule",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/templates"
 	],
 	"file_history":
 	[
 		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/server.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/lodash/collection/shuffle.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/.bin/shjs.cmd",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/bo.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower.json",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/web/WebEnvironmentPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt/node_modules/dateformat/test/test_weekofyear.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/dependencies/RequireEnsureDependenciesBlock.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/ExtendedAPIPlugin.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/bin/convert-argv.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular/angular.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular/angular-csp.css",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt/node_modules/coffee-script/CNAME",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/sr-cyrl.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/schedule/models.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/schedule/controller.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/test/fixtures/module-with-exclusions.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/service.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/controller.js",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/templates/mdp.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/index.html",
+		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/MemoryOutputFileSystem.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/app.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/buildin/amd-define.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/style-loader/addStyles.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/bower.json",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/controller.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/bower-webpack-plugin/node_modules/loader-utils/node_modules/big.js/test/browser/single-test.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/TemplatedPathPlugin.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/template.js",
@@ -1157,7 +1205,6 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.sublime-project",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/multiple-date-picker.less",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/multipleDatePicker.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/calendar/service.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/Parser.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/libs/bootstrap.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/webpack.config.js",
@@ -1167,9 +1214,7 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/Gruntfile.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bundle.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/vendor.bundle.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/index.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/main.bundle.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/bin/convert-argv.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/lodash/internal/charAtCallback.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/test/Documents/Atom_Example.xml",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular-ui-bootstrap/template/accordion/accordion-group.html",
@@ -1188,7 +1233,6 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/demo/myApp.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/node_modules/domhandler/test/cases/04-unescaped_in_script.json",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/style-loader/url.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/templates/mdp.html",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/booking.css",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/ta.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/css-loader/node_modules/loader-utils/node_modules/big.js/test/toExponential.js",
@@ -1210,10 +1254,8 @@
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/test/scenarios/alias-namespace/webpack.conf.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/tasks/webpack-scenario.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/angular-webpack-plugin/demo/webpack.config.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/angular/angular.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/entry.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/bin/config-optimist.js",
-		"/F/work-projects/python/django-projects/MultipleDatePicker/node_modules/webpack/lib/web/WebEnvironmentPlugin.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/airbnb.js",
 		"/F/work-projects/python/django-projects/MultipleDatePicker/bower_components/moment/locale/id.js",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/variables.scss",
@@ -1256,21 +1298,7 @@
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/landing.html",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/templates/includes/_scripts.html",
 		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step3.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/font-icons.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/users/models.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/stroke-icon.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/templates/registration/tutor/step4.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/quizapp/quizapp-v0.2.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/quizapp/templates/quiz_timer.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/templates/skills/exam.html",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/javascripts/app/global.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/static/js/exam.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/registration/static/registration.js",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/infographics.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/skills/urls.py",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/bootstrap/src/_variables.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/wizard-subnav.scss",
-		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/sub-nav-2.scss"
+		"/F/work-projects/python/django-projects/Tuteria/tuteria/static/sass/src/font-icons.scss"
 	],
 	"find":
 	{
@@ -1288,6 +1316,19 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Reoccur",
+			"getDaysforFourMonths",
+			"TutorSchedule.schedule",
+			"getIndex",
+			"end",
+			"dateInstance",
+			"(isNew)",
+			"date_selected=true",
+			"time",
+			"canSubmit",
+			"$scope.range",
+			"scope.range",
+			"supports_monthly",
 			"\n{\"",
 			"09-02",
 			"month",
@@ -1402,20 +1443,7 @@
 			"has-error",
 			"heading",
 			"form-group",
-			"group",
-			"defaultPreviewSettings",
-			"width",
-			"SQUARE_PROFILE_THUMBNAIL",
-			"000",
-			"readonly",
-			"schedule_set",
-			"id_schedule_set",
-			"incrementForms",
-			"infographics",
-			"totalChars",
-			"textCounter",
-			"multiplier",
-			"('change'"
+			"group"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1433,11 +1461,72 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "calendar/filter.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3228,
+								3213
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 88.0,
+						"translation.y": 1475.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								294,
+								294
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "webpack.config.js",
 					"semi_transient": false,
 					"settings":
@@ -1465,48 +1554,31 @@
 						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8281,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								856,
-								856
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 321.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "booking.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 929,
+						"buffer_size": 2782,
 						"regions":
 						{
+							"gutter_color_1012":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1013,
+										1040
+									]
+								],
+								"scope": "gutter_color"
+							},
 							"gutter_color_23":
 							{
 								"flags": 144,
@@ -1519,13 +1591,52 @@
 									]
 								],
 								"scope": "gutter_color"
+							},
+							"gutter_color_788":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#777777.png",
+								"regions":
+								[
+									[
+										975,
+										1009
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_825":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1012,
+										1039
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_901":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1013,
+										1040
+									]
+								],
+								"scope": "gutter_color"
 							}
 						},
 						"selection":
 						[
 							[
-								688,
-								673
+								239,
+								239
 							]
 						],
 						"settings":
@@ -1535,27 +1646,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 552.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "calendar/controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8381,
+						"buffer_size": 8086,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4470,
-								4470
+								4767,
+								4767
 							]
 						],
 						"settings":
@@ -1565,27 +1676,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2070.0,
+						"translation.y": 2504.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "calendar/models.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6127,
+						"buffer_size": 7356,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4535,
-								4535
+								6195,
+								6195
 							]
 						],
 						"settings":
@@ -1596,189 +1707,152 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2584.0,
+						"translation.y": 3516.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "calendar/service.js",
+					"buffer": 6,
+					"file": "schedule/models.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3111,
+						"buffer_size": 4613,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1892,
-								1908
+								3710,
+								3710
 							]
 						],
 						"settings":
 						{
+							"_anf_new": "",
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 860.0,
+						"translation.y": 2312.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "libs/multipleDatePicker.js",
+					"buffer": 7,
+					"file": "schedule/service.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10322,
+						"buffer_size": 337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4501,
-								4501
+								313,
+								313
 							]
 						],
 						"settings":
 						{
+							"_anf_new": "",
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
-							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1704.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 4,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "libs/multipleDatePicker.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4851,
-								4851
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
-							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1705.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "calendar/controller.js",
+					"buffer": 8,
+					"file": "schedule/controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8381,
+						"buffer_size": 6274,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4647,
-								4647
+								366,
+								388
 							]
 						],
 						"settings":
 						{
+							"_anf_new": "",
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 63.0,
-						"translation.y": 2375.0,
+						"translation.x": 28.0,
+						"translation.y": 70.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "templates/mdp.html",
+					"buffer": 9,
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1194,
+						"buffer_size": 13919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								1194
+								6056,
+								6056
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2280.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 10,
 					"file": "calendar/service.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3111,
+						"buffer_size": 3581,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2024,
-								2024
+								2070,
+								2070
 							]
 						],
 						"settings":
@@ -1789,7 +1863,107 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 785.0,
+						"translation.y": 1084.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "libs/multipleDatePicker.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2190,
+								2190
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 301.0,
+						"translation.y": 984.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 11,
+					"file": "libs/multipleDatePicker.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3326,
+								3326
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 1411.0,
+						"translation.y": 1089.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "calendar/controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2149,
+								2149
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 91.0,
+						"translation.y": 1101.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
@@ -1797,19 +1971,81 @@
 				},
 				{
 					"buffer": 8,
-					"file": "calendar/server.json",
+					"file": "schedule/controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6444,
+						"buffer_size": 6274,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3445,
-								3445
+								1537,
+								1537
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 785.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "calendar/models.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4672,
+								4672
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2285.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "calendar/server.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16329,
+								16329
 							]
 						],
 						"settings":
@@ -1818,11 +2054,492 @@
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
-						"translation.x": 23510.0,
+						"translation.x": 113691.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "booking.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2782,
+						"regions":
+						{
+							"gutter_color_1013":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1014":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_103":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										52,
+										52
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1045":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1080":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1143":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1213":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										1014,
+										1041
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1277":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1278":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1309":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1344":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1372":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1373,
+										1386
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1373":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1373,
+										1386
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1407":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1437":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1438,
+										1450
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1438":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1438,
+										1450
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1477":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/rgb(152, 69, 152).png",
+								"regions":
+								[
+									[
+										1278,
+										1318
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1506":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1507,
+										1519
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1507":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										1507,
+										1519
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_167":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										52,
+										52
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1670":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#cccccc.png",
+								"regions":
+								[
+									[
+										1694,
+										1715
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_168":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										52,
+										52
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_1685":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#cccccc.png",
+								"regions":
+								[
+									[
+										1709,
+										1730
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_23":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#eeeeee.png",
+								"regions":
+								[
+									[
+										23,
+										49
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_237":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fff.png",
+								"regions":
+								[
+									[
+										52,
+										52
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2669":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EEE.png",
+								"regions":
+								[
+									[
+										2703,
+										2703
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2670":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EEE.png",
+								"regions":
+								[
+									[
+										2673,
+										2700
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2671":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#F5F5F5.png",
+								"regions":
+								[
+									[
+										2673,
+										2703
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2673":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#F5F5F5.png",
+								"regions":
+								[
+									[
+										2673,
+										2703
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2745":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#F5F5F5.png",
+								"regions":
+								[
+									[
+										2673,
+										2703
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								2780,
+								2780
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2727.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13919,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1632,
+								1632
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 569.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "calendar/service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								217,
+								217
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Flatland Dark (SL).gcfix.tmTheme",
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
 					"type": "text"
 				}
 			]
@@ -1890,32 +2607,88 @@
 		"selected_items":
 		[
 			[
-				"servi",
-				"calendar\\service.js"
+				"",
+				"index.html"
 			],
 			[
-				"book",
+				"multi",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"model",
+				"calendar\\models.js"
+			],
+			[
+				"mul",
+				"libs\\multipleDatePicker.js"
+			],
+			[
+				"bo.cs",
 				"booking.css"
+			],
+			[
+				"in",
+				"index.html"
+			],
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"mode",
+				"schedule\\models.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"con",
+				"schedule\\controller.js"
 			],
 			[
 				"contro",
 				"calendar\\controller.js"
 			],
 			[
-				"",
+				"cont",
+				"calendar\\controller.js"
+			],
+			[
+				"contr",
+				"schedule\\controller.js"
+			],
+			[
+				"ser",
+				"calendar\\server.json"
+			],
+			[
+				"servi",
+				"calendar\\service.js"
+			],
+			[
+				"mod",
+				"calendar\\models.js"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"book",
+				"booking.css"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"control",
 				"calendar\\controller.js"
 			],
 			[
 				"servic",
 				"calendar\\service.js"
-			],
-			[
-				"ser",
-				"calendar\\service.js"
-			],
-			[
-				"control",
-				"calendar\\controller.js"
 			],
 			[
 				"templ.html",
@@ -1930,28 +2703,8 @@
 				"calendar\\server.json"
 			],
 			[
-				"inde",
-				"index.html"
-			],
-			[
 				"serv",
 				"calendar\\server.json"
-			],
-			[
-				"index",
-				"index.html"
-			],
-			[
-				"con",
-				"calendar\\controller.js"
-			],
-			[
-				"app",
-				"app.js"
-			],
-			[
-				"cont",
-				"calendar\\controller.js"
 			],
 			[
 				".jso",
@@ -1974,10 +2727,6 @@
 				"bundle.js"
 			],
 			[
-				"in",
-				"index.html"
-			],
-			[
 				"ven",
 				"vendor.bundle.js"
 			],
@@ -1992,10 +2741,6 @@
 			[
 				"bundl",
 				"bundle.js"
-			],
-			[
-				"mul",
-				"libs\\multipleDatePicker.js"
 			],
 			[
 				"boo",
@@ -2026,16 +2771,8 @@
 				"libs\\multipleDatePicker.js"
 			],
 			[
-				"multi",
-				"libs\\multipleDatePicker.js"
-			],
-			[
 				"muljs",
 				"libs\\multipleDatePicker.js"
-			],
-			[
-				"contr",
-				"calendar\\controller.js"
 			],
 			[
 				"we",
@@ -2048,10 +2785,6 @@
 			[
 				"mul.cs",
 				"dist\\multiple-date-picker.css"
-			],
-			[
-				"ind",
-				"index.html"
 			],
 			[
 				"mul.js",
@@ -2350,10 +3083,6 @@
 				"tuteria\\static\\css\\home.css"
 			],
 			[
-				"model",
-				"tuteria\\users\\models.py"
-			],
-			[
 				"navi",
 				"tuteria\\templates\\includes\\nav\\_navigation.html"
 			],
@@ -2388,18 +3117,6 @@
 			[
 				"step3",
 				"tuteria\\registration\\templates\\registration\\tutor\\step3.html"
-			],
-			[
-				"step2",
-				"tuteria\\registration\\templates\\registration\\tutor\\step2.html"
-			],
-			[
-				"tutor_pro",
-				"tuteria\\users\\templates\\users\\edit_profile\\tutor_profile.html"
-			],
-			[
-				"step",
-				"tuteria\\registration\\templates\\registration\\tutor\\step2.html"
 			]
 		],
 		"width": 0.0
@@ -2411,7 +3128,7 @@
 		[
 			[
 				"",
-				"F:\\work-projects\\python\\tuteria\\tuteria\\tuteria-old.sublime-project"
+				"F:\\work-projects\\python\\django-projects\\Tuteria\\tuteria-wk.sublime-project"
 			]
 		],
 		"width": 380.0
@@ -2424,7 +3141,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

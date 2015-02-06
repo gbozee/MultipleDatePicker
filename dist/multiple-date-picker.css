@@ -49,6 +49,7 @@
 }
 
 .picker-days-row>div {
+  font-weight: 600;
   width: 14.28%;
   display: inline-block;
 }

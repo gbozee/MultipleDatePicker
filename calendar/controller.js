@@ -10,15 +10,18 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 
 	function validate(){
 		if($scope.is_single){
-			return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+			if($scope.selectedDate){
+				return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+
+			}
 		}
 		var filled = _.reduce($scope.pending_sessions,function(sum,x){
 			return sum && x.isValid(x.end_time);
 		},true);
-		console.log(filled);
 		return filled;			
 		
 	}
+	$scope.validate = validate;
 	
 	$scope.cancel = function(val){
 		if(val === 'cancel'){
@@ -68,7 +71,9 @@ function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
 				});			
 			}
 			$scope.date_selected = false;
+			$scope.invalid = false;
 		}
+		$scope.invalid=true;
 	}
 	$scope.h3 = function(){
 		if ($scope.is_single){

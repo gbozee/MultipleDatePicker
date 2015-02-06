@@ -230,7 +230,7 @@ Booking.prototype = {
 		var has_s = this.students >1 ? "s":"";		
 		var booked_hours = this.TotalBookedHours();
 		var hr_s = booked_hours >1 ?"s":"";
-		return "\u20A6"+this.tutor_price+" x "+booked_hours+"hr"+hr_s+" x "+this.students+" student"+has_s;
+		return "\u20A6"+this.tutor_price+" x "+booked_hours+"hour"+hr_s+" x "+this.students+" student"+has_s;
 	},
 	Total:function(){
 		return (this.tutor_price*this.TotalBookedHours())*((100*this.students)-(this.discount*this.students)+this.discount)/100;

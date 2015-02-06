@@ -22177,15 +22177,18 @@ webpackJsonp([0],{
 
 		function validate(){
 			if($scope.is_single){
-				return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+				if($scope.selectedDate){
+					return $scope.selectedDate.isValid($scope.selectedDate.end_time);
+
+				}
 			}
 			var filled = _.reduce($scope.pending_sessions,function(sum,x){
 				return sum && x.isValid(x.end_time);
 			},true);
-			console.log(filled);
 			return filled;			
 			
 		}
+		$scope.validate = validate;
 		
 		$scope.cancel = function(val){
 			if(val === 'cancel'){
@@ -22235,7 +22238,9 @@ webpackJsonp([0],{
 					});			
 				}
 				$scope.date_selected = false;
+				$scope.invalid = false;
 			}
+			$scope.invalid=true;
 		}
 		$scope.h3 = function(){
 			if ($scope.is_single){
@@ -22812,7 +22817,7 @@ webpackJsonp([0],{
 			var has_s = this.students >1 ? "s":"";		
 			var booked_hours = this.TotalBookedHours();
 			var hr_s = booked_hours >1 ?"s":"";
-			return "\u20A6"+this.tutor_price+" x "+booked_hours+"hr"+hr_s+" x "+this.students+" student"+has_s;
+			return "\u20A6"+this.tutor_price+" x "+booked_hours+"hour"+hr_s+" x "+this.students+" student"+has_s;
 		},
 		Total:function(){
 			return (this.tutor_price*this.TotalBookedHours())*((100*this.students)-(this.discount*this.students)+this.discount)/100;
@@ -35207,70 +35212,210 @@ webpackJsonp([0],{
 	__webpack_require__(96);
 	__webpack_require__(3)
 	var moment = __webpack_require__(9);
+	__webpack_require__(98);
 
 	function TutorCalendarCtrl($scope,TutorSchedule){
 		$scope.daysOff = TutorSchedule.schedule.GetDaysOff();
 		$scope.cancelled = [];
+		$scope.action = 'create';
 		$scope.news = [];
 		$scope.updates = [];
+		$scope.date_selected = false;
+		$scope.h3 = function(){
+			if($scope.selectedDate){			
+				return $scope.dateInstance.weekdayString()+" "+ $scope.dateInstance.ShortRepresentation();
+			}
+		}
+		$scope.getStartHours = function(){
+			if($scope.selectedDate){	
+				return $scope.dateInstance.getHours();	
+			}
+		}
+		$scope.getEndHours = function(time){		
+			if(time){
+				if($scope.dateInstance){
+					return $scope.dateInstance.getEndHours(time);			
+				}
+			}
+			return []
+		}
+
+		function validate(){
+			if($scope.dateInstance){
+				return $scope.dateInstance.isValid($scope.selectedDate.end_time);		
+
+			}
+		}
+		$scope.new_occurrences = function(){
+			return _.reduce($scope.news,function(sum,x){
+				return sum+x.reoccur_count;
+			},0)
+		}
+
+		$scope.ok = function(action){
+			if(validate()){
+				if(action === 'update') {
+					console.log("marked for update");
+					$scope.selectedDate.date.updated=true;
+					console.log($scope.updates);
+					if(getIndex($scope.selectedDate,$scope.updates)<0){
+						$scope.updates.push($scope.selectedDate);
+					}
+
+					if($scope.selectedDate.date.cancel){
+						var index= getIndex($scope.selectedDate,$scope.cancelled);
+						$scope.cancelled.splice(index,1);
+						$scope.selectedDate.date.cancel=false;
+					}
+				}
+				if(action === 'create'){
+					$scope.selectedDate.date.is_new = true;
+					if(getIndex($scope.selectedDate,$scope.news)<0){
+						if($scope.selectedDate.reoccur){
+							var presnt_date = $scope.selectedDate.date.format("DD-MM-YYYY");
+							var first_four_months = getDaysforFourMonths($scope.selectedDate.date);
+							$scope.selectedDate.date = moment(presnt_date,"DD-MM-YYYY");
+							$scope.selectedDate.reoccur_count = first_four_months.length;						
+						}
+						else{
+							$scope.selectedDate.reoccur_count = 1;
+						}
+						$scope.news.push($scope.selectedDate);	
+					}
+					console.log("add new date");	
+				}
+				console.log($scope.news);
+				console.log($scope.updates);
+				console.log($scope.cancelled);
+				$scope.date_selected = false;			
+			}
+			else{
+				$scope.invalid = true;
+			}
+		}
+		
+		$scope.subheading = function(){
+			return ""
+		}
+		function check(){
+				if($scope.selectedDate.date.updated){
+					var index= getIndex($scope.selectedDate,$scope.updates);
+					$scope.updates.splice(index,1);
+					$scope.selectedDate.date.updated=false;
+					console.log("revert to selected from updated");			
+				}
+				if($scope.selectedDate.date.is_new){;
+					var index2 = getIndex($scope.selectedDate,$scope.news)
+					$scope.news.splice(index2,1)
+					$scope.selectedDate.date.is_new=false;
+					console.log("revert to deselected");
+				}
+		}
+		$scope.cancel = function(x){
+			if(x==='cancel'){
+					console.log("marked for cancel");
+					if(getIndex($scope.selectedDate,$scope.cancelled)<0){					
+						$scope.cancelled.push($scope.selectedDate);				
+					}
+					$scope.selectedDate.date.cancel=true;				
+					check();
+			}else{			
+				if($scope.selectedDate.date.cancel ){	
+					console.log("revert cancel");
+					var index = getIndex($scope.selectedDate,$scope.cancelled);
+					$scope.cancelled.splice(index,1);
+					$scope.selectedDate.date.cancel = false;
+					console.log("revert to selected from cancel");
+				}
+				check();
+				// if($scope.selectedDate.date.updated){
+				// 	var index= getIndex($scope.selectedDate.date,$scope.updates);
+				// 	$scope.updates.splice(index,1);
+				// 	TutorSchedule.schedule.updates.splce(index,1);
+				// 	$scope.selectedDate.date.updated=false;
+				// 	console.log("revert to selected from updated");			
+				// }
+				// if($scope.selectedDate.date.is_new){;
+				// 	var index2 = getIndex($scope.selectedDate.date,$scope.news)
+				// 	$scope.news.splice(index2,1)
+				// 	$scope.selectedDate.date.is_new=false;
+				// 	console.log("revert to deselected");
+				// }
+			}
+			$scope.date_selected = false;
+			console.log($scope.cancelled);
+			console.log($scope.updates);
+			console.log($scope.news);
+		}
 		console.log($scope.daysOff);
 		function getIndex(day,array){
 			return _.findIndex(array,function(x){
-				return x.isSame(day,'day');
+				return x.date.isSame(day.date,'day');
 			});
 		}
 		function isUndefined(x){
 			return x === "undefined" ||x===undefined;
 		}
-		function cancelOccurrence(date){
+		function cancelOccurrence(date){		
 
 		}
 		function updateOccurrence(date){
-			
+		}
+		function getDaysforFourMonths(date,format){
+			var f = format || 'week'
+			var start = date.format("DD-MM-YYYY");
+			var end = date.month(4).format("DD-MM-YYYY");
+			var start_range = moment(start,"DD-MM-YYYY");
+			var end_range = moment(end,"DD-MM-YYYY");
+			var range = moment.range(start_range,end_range)
+			var result = [];
+			range.by(f,function(x){
+				result.push(x);
+			})
+			return result;
 		}
 		$scope.availableDays = TutorSchedule.schedule.GetAvailableDays();
 		$scope.dateClick = function(event,date){
 			event.preventDefault();
-			if(date.selected){			
-				if(date.cancel ){	
-					var index = getIndex(date,$scope.cancelled);
-					$scope.cancelled.splice(index,1);
-					date.cancel = false;
-					console.log("revert to selected from cancel");
-				}
-				else if(date.updated){
-					var index= getIndex(date,$scope.updates);
-					$scope.updates.splice(index,1);
-					date.updated=false;
-					console.log("revert to selected from updated");
+			if(date.selectable){
+				var day_instance;			
+				$scope.selectedDate = {date:date}
+				if(date.selected){	
+					if(date.cancel){
+						var index = getIndex($scope.selectedDate,$scope.cancelled);
+						if(index>-1){
+							$scope.selectedDate = $scope.cancelled[index];
+						}
+					}
+					if(date.updated){
+						var index2 = getIndex($scope.selectedDate,$scope.updates);
+						if(index2>-1){
+							$scope.selectedDate = $scope.updates[index2]
+						};
+					}
+					if(date.is_new){
+						var index3 = getIndex($scope.selectedDate,$scope.news);
+						if(index3>-1){
+							$scope.selectedDate = $scope.news[index3]
+						};	
+					}
+					day_instance = TutorSchedule.schedule.getDayInstance(date);
+					$scope.selectedDate.start_time = day_instance.getStartTime();
+					$scope.selectedDate.end_time = day_instance.getEndTime();		
 				}else{
-					console.log("marked for cancel");
-					//cancel or update
-					$scope.cancelled.push(date);			
-					date.cancel=true;
-
+					day_instance = TutorSchedule.schedule.InitializeDayInstance(date)
+				}
+				$scope.dateInstance = day_instance;
+				$scope.date_selected = true;
+				$scope.isNew = day_instance.isNew();
 			}
-		}else{
-			if(date.is_new){;
-				var index2 = getIndex(date,$scope.news)
-				$scope.news.splice(index2,1)
-				date.is_new=false;
-				console.log("revert to deselected");
-			}else{
-				date.is_new = true;
-				$scope.news.push(date);
-				console.log("add new date");	
-			}
+		}
+		$scope.hoverEvent = function(event,date){
 
 		}
+		$scope.logMonthChanged = function(new_month,oldMonth){
 
-	}
-	$scope.hoverEvent = function(event,date){
-
-	}
-	$scope.logMonthChanged = function(new_month,oldMonth){
-
-	}
+		}
 	}
 
 	var ScheduleCtrl = angular.module('schedule.controller',['schedule.service','ui.bootstrap']);
@@ -35305,22 +35450,39 @@ webpackJsonp([0],{
 
 	var _ = __webpack_require__(11),
 		moment = __webpack_require__(9);
-
+	function momenttime(x){
+		var y = x;
+		if (typeof x === "string"){
+			y= moment(x,"hh:mm A").hour();;
+		}
+		return y;
+	}
 	var TimeSlot = function(time){
 		_.extend(this,time);
+		this.start = this.start_time||this.start;
+		this.end = this.end_time || this.end;
 	}
 	TimeSlot.prototype = {
+		getMomentStartTime:function(){
+			return momenttime(this.start)
+		},
+		getMomentEndTime:function(){
+			return momenttime(this.end);
+		},
 		getStartHours:function(){
-			var results =  _.range(this.start_time,this.end_time);
+			var x = this.getMomentStartTime();
+			var y = this.getMomentEndTime();
+			var results =  _.range(x,y);
 			return _.map(results,function(r){
 				return moment(r,"HH").format("ha");
 			});
 		},	
 		getEndHours:function(value){
 			//format = "7am"
+			var end = this.getMomentEndTime();
 			var tt = moment(value,"ha").hour();
-			if(tt < this.end_time){			
-				var results = _.range(tt+1,this.end_time+1);
+			if(tt < end){			
+				var results = _.range(tt+1,end+1);
 				return _.map(results,function(r){
 					return moment(r,"HH").format("ha");
 				})	
@@ -35332,13 +35494,53 @@ webpackJsonp([0],{
 
 	var Day = function(dd){
 		_.extend(this,dd)
-		this.cancelled = false;
+		this.cancelled = false;	
 		this.times = new TimeSlot({start:this.start,end:this.end});
 		this.momentDate = moment(this.date,"DD-MM-YYYY");
 	}
 	Day.prototype = {	
-	};
+		getMomentInstance:function(){
+			var x = this.date;
+			if(typeof this.date === "string"){
+				x = this.momentDate
+			}
+			return x;
+		},
+		ShortRepresentation:function(){	
+			var x = this.getMomentInstance()
+			var str = moment.monthsShort()[x.month()]+" "+x.date()+", "+x.year();
+			return str;
 
+		},
+		weekdayString:function(){
+			return moment.weekdays()[this.getMomentInstance().weekday()];
+		},
+		getEndHours:function(value){
+			return this.times.getEndHours(value);
+		},
+		getStartTime:function(){
+			return moment(this.times.start,"hh:mm A").format("ha");
+		},
+		getEndTime:function(){
+			return moment(this.times.end,"hh:mm A").format("ha");
+		},
+		getHours:function(){
+			return this.times.getStartHours();
+		},
+		isNew:function(){
+			return this.is_new === true;
+		},
+		isValid:function(new_val){
+			var array = ["",null,"undefined",undefined,'Invalid date','End time']
+			var options = _.filter(array,function(x){
+				return new_val === x;
+			});
+			var toTrue = _.map(options,function(){return false});
+			return _.reduce(toTrue,function(sum,x){
+				return sum && x;
+			},true)
+		}
+	};
 	var TutorSchedule = function(jsonResponse){
 		this.free = _.map(jsonResponse.free,function(x){
 			return new Day(x);
@@ -35350,31 +35552,52 @@ webpackJsonp([0],{
 		this.updates = [];
 		this.new_dates = [];
 	}
-
+	function toOriginalTimeFormat(x){
+		return moment(x,"ha").format("hh:mm A");
+	}
 	TutorSchedule.prototype={
 		getDayInstance:function(md){
-			return _.find(free.dates,function(d){
+			var dd = _.find(this.free,function(d){
 				return md.isSame(d.momentDate,'day');
 			})
+			return dd;
+		},
+		getGenericDayInstance:function(md){
+			return _.find(this.new_dates,function(d){
+				return md.isSame(d.momentDate,'day');
+			})
+
+		},
+		InitializeDayInstance:function(md){
+			var inst = this.getGenericDayInstance(md);
+				if(inst){
+					return inst;
+				}
+				return new Day({date:md,start:1,end:24,is_new:true});
 		},
 		getDayIndex:function(dd,obj){
 			return _.findIndex(obj,{date:dd.date});
 		},
 		CancelDay:function(date){
-			var day = this.getDayInstance(date);
+			var day = this.getDayInstance(date.date);
 			if(this.getDayIndex(day,this.cancelled)<0){
 				day.cancelled = true;
 				this.cancelled.push(day)			
 			}
 		},
 		UpdateDay:function(date){
-			var day = this.getDayInstance(date);
+			var day = this.getDayInstance(date.date);
 			if(this.getDayIndex(day,this.updates) < 0){
 				day.old_start=day.start;
-				day.start = date.start;
-				day.end = date.end;
+				day.start = toOriginalTimeFormat(date.start_time);
+				day.end = toOriginalTimeFormat(date.end_time);
 				this.updates.push(day);
 			}
+		},
+		getUpdatedDayInstance:function(day){
+			return _.find(this.updates,function(x){
+
+			})
 		},
 		AddNewDay:function(date){
 			var tuteriad_date = new Day(date);
@@ -35411,6 +35634,317 @@ webpackJsonp([0],{
 	};
 	exports.TutorSchedule = TutorSchedule;
 	exports.TimeSlot = TimeSlot;
+
+
+/***/ },
+
+/***/ 98:
+/***/ function(module, exports, __webpack_require__) {
+
+	(function(root, factory) {
+	    if(true) {
+	        module.exports = factory(__webpack_require__(9));
+	    }
+	    else if(typeof define === 'function' && define.amd) {
+	        define(['moment'], factory);
+	    }
+	    else {
+	        root.moment = factory(root.moment);
+	    }
+	}(this, function(moment) {
+	var DateRange, INTERVALS;
+
+	INTERVALS = {
+	  year: true,
+	  month: true,
+	  week: true,
+	  day: true,
+	  hour: true,
+	  minute: true,
+	  second: true
+	};
+
+	/**
+	  * DateRange class to store ranges and query dates.
+	  * @typedef {!Object}
+	*
+	*/
+
+
+	DateRange = (function() {
+	  /**
+	    * DateRange instance.
+	    *
+	    * @param {(Moment|Date)} start Start of interval
+	    * @param {(Moment|Date)} end   End of interval
+	    *
+	    * @constructor
+	  *
+	  */
+
+	  function DateRange(start, end) {
+	    this.start = moment(start);
+	    this.end = moment(end);
+	  }
+
+	  /**
+	    * Determine if the current interval contains a given moment/date/range.
+	    *
+	    * @param {(Moment|Date|DateRange)} other Date to check
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.contains = function(other) {
+	    if (other instanceof DateRange) {
+	      return this.start <= other.start && this.end >= other.end;
+	    } else {
+	      return (this.start <= other && other <= this.end);
+	    }
+	  };
+
+	  /**
+	    * @private
+	  *
+	  */
+
+
+	  DateRange.prototype._by_string = function(interval, hollaback) {
+	    var current, _results;
+	    current = moment(this.start);
+	    _results = [];
+	    while (this.contains(current)) {
+	      hollaback.call(this, current.clone());
+	      _results.push(current.add(1, interval));
+	    }
+	    return _results;
+	  };
+
+	  /**
+	    * @private
+	  *
+	  */
+
+
+	  DateRange.prototype._by_range = function(range_interval, hollaback) {
+	    var i, l, _i, _results;
+	    l = Math.floor(this / range_interval);
+	    if (l === Infinity) {
+	      return this;
+	    }
+	    _results = [];
+	    for (i = _i = 0; 0 <= l ? _i <= l : _i >= l; i = 0 <= l ? ++_i : --_i) {
+	      _results.push(hollaback.call(this, moment(this.start.valueOf() + range_interval.valueOf() * i)));
+	    }
+	    return _results;
+	  };
+
+	  /**
+	    * Determine if the current date range overlaps a given date range.
+	    *
+	    * @param {!DateRange} range Date range to check
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.overlaps = function(range) {
+	    return this.intersect(range) !== null;
+	  };
+
+	  /**
+	    * Determine the intersecting periods from one or more date ranges.
+	    *
+	    * @param {!DateRange} other A date range to intersect with this one
+	    *
+	    * @return {!DateRange|null}
+	  *
+	  */
+
+
+	  DateRange.prototype.intersect = function(other) {
+	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+	    if (((this.start <= (_ref1 = other.start) && _ref1 < (_ref = this.end)) && _ref < other.end)) {
+	      return new DateRange(other.start, this.end);
+	    } else if (((other.start < (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 <= this.end)) {
+	      return new DateRange(this.start, other.end);
+	    } else if (((other.start < (_ref5 = this.start) && _ref5 < (_ref4 = this.end)) && _ref4 < other.end)) {
+	      return this;
+	    } else if (((this.start <= (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 <= this.end)) {
+	      return other;
+	    } else {
+	      return null;
+	    }
+	  };
+
+	  /**
+	    * Subtract one range from another.
+	    *
+	    * @param {!DateRange} other A date range to substract from this one
+	    *
+	    * @return {!DateRange[]}
+	  *
+	  */
+
+
+	  DateRange.prototype.subtract = function(other) {
+	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+	    if (this.intersect(other) === null) {
+	      return [this];
+	    } else if (((other.start <= (_ref1 = this.start) && _ref1 < (_ref = this.end)) && _ref <= other.end)) {
+	      return [];
+	    } else if (((other.start <= (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 < this.end)) {
+	      return [new DateRange(other.end, this.end)];
+	    } else if (((this.start < (_ref5 = other.start) && _ref5 < (_ref4 = this.end)) && _ref4 <= other.end)) {
+	      return [new DateRange(this.start, other.start)];
+	    } else if (((this.start < (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 < this.end)) {
+	      return [new DateRange(this.start, other.start), new DateRange(other.end, this.end)];
+	    }
+	  };
+
+	  /**
+	    * Iterate over the date range by a given date range, executing a function
+	    * for each sub-range.
+	    *
+	    * @param {(!DateRange|String)} range     Date range to be used for iteration
+	    *                                        or shorthand string (shorthands:
+	    *                                        http://momentjs.com/docs/#/manipulating/add/)
+	    * @param {!function(Moment)}   hollaback Function to execute for each sub-range
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.by = function(range, hollaback) {
+	    if (typeof range === 'string') {
+	      this._by_string(range, hollaback);
+	    } else {
+	      this._by_range(range, hollaback);
+	    }
+	    return this;
+	  };
+
+	  /**
+	    * Date range in milliseconds. Allows basic coercion math of date ranges.
+	    *
+	    * @return {!number}
+	  *
+	  */
+
+
+	  DateRange.prototype.valueOf = function() {
+	    return this.end - this.start;
+	  };
+
+	  /**
+	    * Date range toDate
+	    *
+	    * @return {!Array}
+	  *
+	  */
+
+
+	  DateRange.prototype.toDate = function() {
+	    return [this.start.toDate(), this.end.toDate()];
+	  };
+
+	  /**
+	    * Determine if this date range is the same as another.
+	    *
+	    * @param {!DateRange} other Another date range to compare to
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.isSame = function(other) {
+	    return this.start.isSame(other.start) && this.end.isSame(other.end);
+	  };
+
+	  /**
+	    * The difference of the end vs start.
+	    *
+	    * @param {number} unit Unit of difference, if no unit is passed in
+	    *                      milliseconds are returned. E.g.: `"days"`,
+	    *                      `"months"`, etc...
+	    *
+	    * @return {!number}
+	  *
+	  */
+
+
+	  DateRange.prototype.diff = function(unit) {
+	    if (unit == null) {
+	      unit = void 0;
+	    }
+	    return this.end.diff(this.start, unit);
+	  };
+
+	  return DateRange;
+
+	})();
+
+	/**
+	  * Build a date range.
+	  *
+	  * @param {(Moment|Date)} start Start of range
+	  * @param {(Moment|Date)} end   End of range
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!DateRange}
+	*
+	*/
+
+
+	moment.fn.range = function(start, end) {
+	  if (start in INTERVALS) {
+	    return new DateRange(moment(this).startOf(start), moment(this).endOf(start));
+	  } else {
+	    return new DateRange(start, end);
+	  }
+	};
+
+	/**
+	  * Build a date range.
+	  *
+	  * @param {(Moment|Date)} start Start of range
+	  * @param {(Moment|Date)} end   End of range
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!DateRange}
+	*
+	*/
+
+
+	moment.range = function(start, end) {
+	  return new DateRange(start, end);
+	};
+
+	/**
+	  * Check if the current moment is within a given date range.
+	  *
+	  * @param {!DateRange} range Date range to check
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!boolean}
+	*
+	*/
+
+
+	moment.fn.within = function(range) {
+	  return range.contains(this._d);
+	};
+
+	    return moment;
+	}));
 
 
 /***/ }
