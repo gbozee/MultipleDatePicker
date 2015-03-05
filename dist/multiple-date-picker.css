@@ -77,7 +77,7 @@
 }
 
 .picker-day:not(.picker-off):not(.picker-empty):hover {
-  background-color: #337AB7;
+  background-color: #E58A11;
   color: #fff;
   cursor: pointer;
 }
