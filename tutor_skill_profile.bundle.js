@@ -3,7 +3,7 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	var angular = __webpack_require__(3);
-	var app = __webpack_require__(5);
+	var app = __webpack_require__(4);
 
 /***/ },
 /* 1 */,
@@ -14,27 +14,25 @@ webpackJsonp([0],[
 	module.exports = angular;
 
 /***/ },
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(5);
+	__webpack_require__(6);
 	__webpack_require__(7);
-	__webpack_require__(8);
-	__webpack_require__(9);
-	var multipleDatePicker = __webpack_require__(10);
+	var multipleDatePicker = __webpack_require__(8);
 	var myApp = angular.module('myApp', ['calendar.controller','multipleDatePicker','calendar.filters',
 		'schedule.controller']);
 
 
 
 /***/ },
-/* 6 */,
-/* 7 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(11);
-	__webpack_require__(2)
-	var moment = __webpack_require__(4);
+	__webpack_require__(1)
+	var moment = __webpack_require__(10);
 	var Session = __webpack_require__(12).Session;
 
 	function HelloCtrl($scope,CalendarFactory,$modal,$log,$window){
@@ -311,7 +309,7 @@ webpackJsonp([0],[
 	CalenderController.controller('HelloCtrl',	['$scope','CalendarFactory','$modal','$log','$window',HelloCtrl]);
 
 /***/ },
-/* 8 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	function isUndefined(no){
@@ -426,14 +424,15 @@ webpackJsonp([0],[
 	angular.module('calendar.filters',[]).filter('specialCurrency',['$locale',currencyFilter]);
 
 /***/ },
-/* 9 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(13);
-	__webpack_require__(2)
-	var moment = __webpack_require__(4);
-	var _= __webpack_require__(1);
-	__webpack_require__(17);
+	__webpack_require__(9);
+	var Day = __webpack_require__(13).Day
+	__webpack_require__(1)
+	var moment = __webpack_require__(10);
+	var _= __webpack_require__(2);
+	__webpack_require__(15);
 
 	function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 		$scope.current_scheduled_dates = TutorSchedule.schedule.CurrentlyBookedDates();
@@ -455,7 +454,6 @@ webpackJsonp([0],[
 			var result = []
 			for(var i=0;i<count;i++){
 				var temp= date.clone();
-				console.log(temp);
 				result.push(temp.add(7*i,'days'))
 			}
 			return result;
@@ -532,10 +530,10 @@ webpackJsonp([0],[
 						}
 						$scope.news.push($scope.selectedDate);	
 					}				
-					updateColors($scope.news.allDates(),'is_new');
+					console.log("add new date");					
+					updateNewDates();
 					$scope.ds.generate();
-					console.log("add new date");	
-
+					TutorSchedule.schedule.SyncNewDays($scope.news);
 				}
 				console.log($scope.news);
 				console.log($scope.updates);
@@ -599,6 +597,10 @@ webpackJsonp([0],[
 				}
 				check();
 			}
+
+			updateNewDates();						
+			$scope.ds.generate();
+			TutorSchedule.schedule.SyncNewDays($scope.news);
 			$scope.date_selected = false;
 			console.log($scope.cancelled);
 			console.log($scope.updates);
@@ -633,7 +635,7 @@ webpackJsonp([0],[
 		}
 		$scope.availableDays = TutorSchedule.schedule.GetAvailableDays();
 		$scope.noneAvailableDays= TutorSchedule.schedule.CurrentlyBookedDates();
-			$scope.ds= {};
+		$scope.ds= {};
 
 		console.log("NonAVailable");
 		console.log($scope.noneAvailableDays);
@@ -662,60 +664,64 @@ webpackJsonp([0],[
 							$scope.selectedDate = $scope.news[index3]
 						};	
 					}
-					console.log(date);
 					day_instance = TutorSchedule.schedule.getDayInstance(date);
-					$scope.selectedDate.start_time = day_instance.getStartTime();
-					$scope.selectedDate.end_time = day_instance.getEndTime();			
-				}else{		
-					day_instance = TutorSchedule.schedule.InitializeDayInstance(date)			
-					
+					console.log(day_instance);
+					if(day_instance){						
+						$scope.selectedDate.start_time = day_instance.getStartTime();
+						$scope.selectedDate.end_time = day_instance.getEndTime();					
+
+						$scope.date_selected = true;
+					}else{					
+						
+					}
+				}else{	
+					// var index4 = _.findIndex($scope.news,function(x){
+					// 	return x.date.format("DD-MM-YYYY") == date.format("DD-MM-YYYY")
+					// })
+					// console.log(index4);
+					// if(index4 > -1){
+					// 	var val= $scope.news[index4];
+					// 	_.extend(val,{is_new:true});
+					// 	day_instance = new Day(val);
+
+					// 	$scope.date_selected = true;
+					// }	
+					// else{
+
+					// 	$scope.date_selected = false;
+					// }	
+					day_instance = TutorSchedule.schedule.InitializeDayInstance(date)	
+
+					console.log(day_instance);		
+					$scope.selectedDate = day_instance;
+					$scope.date_selected = true;				
+					date.is_new=true;
 				}
-				$scope.dateInstance = day_instance;
-				$scope.date_selected = true;
-				$scope.isNew = day_instance.isNew();
-				console.log($scope.dateInstance);
+				if(day_instance){				
+					$scope.dateInstance = day_instance;
+					$scope.isNew = day_instance.isNew();
+					console.log($scope.dateInstance);	
+				}
 				
 
 			}
 		}
 		$scope.hoverEvent = function(event,date){
-			
-
 		}
 
-		function updateColors(arr,status){
-			var newDays = arr;
-			for(var i =0 ;i<newDays.length;i++){
-				//Very slow
-				var temp = newDays[i];
-				var index = _.findIndex($scope.ds.convertedDaysSelected,function(x){
-					return x.format("DD-MM-YYYY") === temp.format("DD-MM-YYYY");
-				})
-				if(index < 0){
-					$scope.ds.convertedDaysSelected.push(temp);	
-				}else{
-					$scope.ds.convertedDaysSelected[index][status]=true;
-					$scope.ds.convertedDaysSelected[index].selected=true;
-					
-				}
-			}
+		function updateNewDates(){
+			$scope.ds.newDays = $scope.news.allDates();
+			$scope.ds.cancelledDays = $scope.cancelled.allDates();
+			$scope.ds.updatedDays = $scope.updates.allDates();
 		}
 		
 		$scope.logMonthChanged = function(new_month,oldMonth){
-			//$scope.availableDays= $scope.availableDays.concat($scope.news.valueDates(),
-			//	$scope.cancelled.valueDates(),$scope.updates.valueDates());
-
-	$scope.ds.generate();
-	updateColors($scope.news.allDates(),'is_new');
-	updateColors($scope.cancelled.allDates(),'cancel');
-	updateColors($scope.updates.allDates(),'updated');
-
-			//$scope.ds.generate();
-			
+			updateNewDates();
+			$scope.ds.generate();		
 		}
 		$scope.$watch('ds',function(x){
 			console.log(x.convertedDaysSelected);
-				console.log(x.daysOff);
+			console.log(x.daysOff);
 		});
 
 	}
@@ -725,7 +731,7 @@ webpackJsonp([0],[
 	ScheduleCtrl.controller('TutorCalendarCtrl',['$scope','$timeout','TutorSchedule',TutorCalendarCtrl])
 
 /***/ },
-/* 10 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -739,7 +745,7 @@ webpackJsonp([0],[
 	          See scope declaration below for options you can pass through html directive.
 	          Feel free to edit and share this piece of code, our idea is to keep simple ;)
 	 */
-	var moment = __webpack_require__(4);
+	var moment = __webpack_require__(10);
 	angular.module('multipleDatePicker', [])
 	  .directive('multipleDatePicker', ['$log', function($log){
 	  "use strict";
@@ -809,7 +815,7 @@ webpackJsonp([0],[
 	            '</div>'+
 	            '<div class="picker-days-row">'+
 	              '<div class="text-center picker-day picker-empty" ng-repeat="x in emptyFirstDays">&nbsp;</div>'+
-	              '<div class="text-center picker-day" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" ng-class="{\'picker-selected\':day.selected,\'picker-cancel\':day.cancel && day.selected,\'picker-update\':day.updated && day.selected,\'picker-new\':day.is_new && day.selected, \'picker-off\':!day.selectable, \'today\':day.today}">{{day ? day.format(\'D\') : \'\'}}</div>'+
+	              '<div class="text-center picker-day" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" ng-class="{\'picker-selected\':day.selected,\'picker-cancel\':day.cancel,\'picker-update\':day.updated,\'picker-new\':day.is_new, \'picker-off\':!day.selectable, \'today\':day.today}">{{day ? day.format(\'D\') : \'\'}}</div>'+
 	              '<div class="text-center picker-day picker-empty" ng-repeat="x in emptyLastDays">&nbsp;</div>'+
 	            '</div>'+
 	          '</div>',
@@ -877,6 +883,9 @@ webpackJsonp([0],[
 	      scope.disableBackButton = false;
 	      scope.disableNextButton = false;      
 	      scope.daysOfWeek = getDaysOfWeek();
+	      scope.newDays = scope.newDays || [];
+	      scope.cancelledDays = scope.cancelledDays || [];
+	      scope.updatedDays = scope.updatedDays || [];
 
 	      /**
 	       * Called when user clicks a date
@@ -981,21 +990,21 @@ webpackJsonp([0],[
 	        });
 	      };
 
-	      scope.isNew= function(scope,date){
-	      	return scope.convertedDaysSelected.some(function(d){
-	      		return date.isSame(d,'day') && d.is_new;
-	      	});
+	      scope.isNew = function(scope,date){
+	       return scope.newDays.some(function(d){
+	         return date.isSame(d,'day');
+	       });
+
 	      }
 	      scope.isCancelled = function(scope,date){
-	      	return scope.convertedDaysSelected.some(function(d){
-	      		return date.isSame(d,'day') && d.cancel;
-	      	});
+	        return scope.cancelledDays.some(function(d){
+	          return date.isSame(d,'day');
+	        }) 
 	      }
 	      scope.isUpdated = function(scope,date){
-	      	return scope.convertedDaysSelected.some(function(d){
-
-	      		return date.isSame(d,'day') && d.updated;
-	      	});
+	        return scope.updatedDays.some(function(d){
+	          return date.isSame(d,'day');
+	        }) 
 	      }
 
 	      /*Generate the calendar*/
@@ -1052,11 +1061,32 @@ webpackJsonp([0],[
 	// var multipleDatePicker = angular.module('libs.multipleDatePicker',['multipleDatePicker']);
 
 /***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Models =__webpack_require__(13),
+		Schedule = Models.TutorSchedule;
+
+	var Services = angular.module('schedule.service',[]);
+
+	Services.factory('TutorSchedule',[function(){
+		var json = __webpack_require__(16)
+		var tutor_schedule = new Schedule(json);
+		console.log(tutor_schedule);
+		return {
+			schedule:tutor_schedule
+		}
+	}])
+
+
+
+/***/ },
+/* 10 */,
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(1);
-	var moment = __webpack_require__(4);
+	var _ = __webpack_require__(2);
+	var moment = __webpack_require__(10);
 	var Models = __webpack_require__(12)
 	var Schedule = Models.Schedule,
 		Booking = Models.Booking,
@@ -1191,9 +1221,9 @@ webpackJsonp([0],[
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(1);
-	var moment = __webpack_require__(4);
-	var TS = __webpack_require__(15),
+	var _ = __webpack_require__(2);
+	var moment = __webpack_require__(10);
+	var TS = __webpack_require__(13),
 		TimeSlot = TS.TimeSlot;
 	var months = moment.months();
 
@@ -1475,29 +1505,8 @@ webpackJsonp([0],[
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Models =__webpack_require__(15),
-		Schedule = Models.TutorSchedule;
-
-	var Services = angular.module('schedule.service',[]);
-
-	Services.factory('TutorSchedule',[function(){
-		var json = __webpack_require__(16)
-		var tutor_schedule = new Schedule(json);
-		console.log(tutor_schedule);
-		return {
-			schedule:tutor_schedule
-		}
-	}])
-
-
-
-/***/ },
-/* 14 */,
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(1),
-		moment = __webpack_require__(4);
+	var _ = __webpack_require__(2),
+		moment = __webpack_require__(10);
 	function momenttime(x){
 		var y = x;
 		if (typeof x === "string"){
@@ -1542,6 +1551,10 @@ webpackJsonp([0],[
 
 	var Day = function(dd){
 		_.extend(this,dd)
+		if(this.is_new){
+			this.start = 1;
+			this.end = 23;
+		}
 		this.cancelled = false;	
 		this.times = new TimeSlot({start:this.start,end:this.end});
 		this.momentDate = moment(this.date,"DD-MM-YYYY");
@@ -1616,6 +1629,13 @@ webpackJsonp([0],[
 			})
 
 		},
+		SyncNewDays:function(days_to_sync){
+			this.new_dates = _.map(days_to_sync,function(x){
+				var dd = new Day(x);
+				dd.is_new = true;
+				return dd;
+			})
+		},
 		InitializeDayInstance:function(md){
 			var inst = this.getGenericDayInstance(md);
 				if(inst){
@@ -1632,6 +1652,12 @@ webpackJsonp([0],[
 				day.cancelled = true;
 				this.cancelled.push(day)			
 			}
+		},
+		SyncUpdateDays:function(arr){
+			for (var i = arr.length - 1; i >= 0; i--) {
+				this.UpdateDay(arr[i]);
+			};
+			console.log(this.updates);
 		},
 		UpdateDay:function(date){
 			var day = this.getDayInstance(date.date);
@@ -1682,6 +1708,317 @@ webpackJsonp([0],[
 	};
 	exports.TutorSchedule = TutorSchedule;
 	exports.TimeSlot = TimeSlot;
+	exports.Day = Day
+
+/***/ },
+/* 14 */,
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function(root, factory) {
+	    if(true) {
+	        module.exports = factory(__webpack_require__(10));
+	    }
+	    else if(typeof define === 'function' && define.amd) {
+	        define(['moment'], factory);
+	    }
+	    else {
+	        root.moment = factory(root.moment);
+	    }
+	}(this, function(moment) {
+	var DateRange, INTERVALS;
+
+	INTERVALS = {
+	  year: true,
+	  month: true,
+	  week: true,
+	  day: true,
+	  hour: true,
+	  minute: true,
+	  second: true
+	};
+
+	/**
+	  * DateRange class to store ranges and query dates.
+	  * @typedef {!Object}
+	*
+	*/
+
+
+	DateRange = (function() {
+	  /**
+	    * DateRange instance.
+	    *
+	    * @param {(Moment|Date)} start Start of interval
+	    * @param {(Moment|Date)} end   End of interval
+	    *
+	    * @constructor
+	  *
+	  */
+
+	  function DateRange(start, end) {
+	    this.start = moment(start);
+	    this.end = moment(end);
+	  }
+
+	  /**
+	    * Determine if the current interval contains a given moment/date/range.
+	    *
+	    * @param {(Moment|Date|DateRange)} other Date to check
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.contains = function(other) {
+	    if (other instanceof DateRange) {
+	      return this.start <= other.start && this.end >= other.end;
+	    } else {
+	      return (this.start <= other && other <= this.end);
+	    }
+	  };
+
+	  /**
+	    * @private
+	  *
+	  */
+
+
+	  DateRange.prototype._by_string = function(interval, hollaback) {
+	    var current, _results;
+	    current = moment(this.start);
+	    _results = [];
+	    while (this.contains(current)) {
+	      hollaback.call(this, current.clone());
+	      _results.push(current.add(1, interval));
+	    }
+	    return _results;
+	  };
+
+	  /**
+	    * @private
+	  *
+	  */
+
+
+	  DateRange.prototype._by_range = function(range_interval, hollaback) {
+	    var i, l, _i, _results;
+	    l = Math.floor(this / range_interval);
+	    if (l === Infinity) {
+	      return this;
+	    }
+	    _results = [];
+	    for (i = _i = 0; 0 <= l ? _i <= l : _i >= l; i = 0 <= l ? ++_i : --_i) {
+	      _results.push(hollaback.call(this, moment(this.start.valueOf() + range_interval.valueOf() * i)));
+	    }
+	    return _results;
+	  };
+
+	  /**
+	    * Determine if the current date range overlaps a given date range.
+	    *
+	    * @param {!DateRange} range Date range to check
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.overlaps = function(range) {
+	    return this.intersect(range) !== null;
+	  };
+
+	  /**
+	    * Determine the intersecting periods from one or more date ranges.
+	    *
+	    * @param {!DateRange} other A date range to intersect with this one
+	    *
+	    * @return {!DateRange|null}
+	  *
+	  */
+
+
+	  DateRange.prototype.intersect = function(other) {
+	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+	    if (((this.start <= (_ref1 = other.start) && _ref1 < (_ref = this.end)) && _ref < other.end)) {
+	      return new DateRange(other.start, this.end);
+	    } else if (((other.start < (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 <= this.end)) {
+	      return new DateRange(this.start, other.end);
+	    } else if (((other.start < (_ref5 = this.start) && _ref5 < (_ref4 = this.end)) && _ref4 < other.end)) {
+	      return this;
+	    } else if (((this.start <= (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 <= this.end)) {
+	      return other;
+	    } else {
+	      return null;
+	    }
+	  };
+
+	  /**
+	    * Subtract one range from another.
+	    *
+	    * @param {!DateRange} other A date range to substract from this one
+	    *
+	    * @return {!DateRange[]}
+	  *
+	  */
+
+
+	  DateRange.prototype.subtract = function(other) {
+	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+	    if (this.intersect(other) === null) {
+	      return [this];
+	    } else if (((other.start <= (_ref1 = this.start) && _ref1 < (_ref = this.end)) && _ref <= other.end)) {
+	      return [];
+	    } else if (((other.start <= (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 < this.end)) {
+	      return [new DateRange(other.end, this.end)];
+	    } else if (((this.start < (_ref5 = other.start) && _ref5 < (_ref4 = this.end)) && _ref4 <= other.end)) {
+	      return [new DateRange(this.start, other.start)];
+	    } else if (((this.start < (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 < this.end)) {
+	      return [new DateRange(this.start, other.start), new DateRange(other.end, this.end)];
+	    }
+	  };
+
+	  /**
+	    * Iterate over the date range by a given date range, executing a function
+	    * for each sub-range.
+	    *
+	    * @param {(!DateRange|String)} range     Date range to be used for iteration
+	    *                                        or shorthand string (shorthands:
+	    *                                        http://momentjs.com/docs/#/manipulating/add/)
+	    * @param {!function(Moment)}   hollaback Function to execute for each sub-range
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.by = function(range, hollaback) {
+	    if (typeof range === 'string') {
+	      this._by_string(range, hollaback);
+	    } else {
+	      this._by_range(range, hollaback);
+	    }
+	    return this;
+	  };
+
+	  /**
+	    * Date range in milliseconds. Allows basic coercion math of date ranges.
+	    *
+	    * @return {!number}
+	  *
+	  */
+
+
+	  DateRange.prototype.valueOf = function() {
+	    return this.end - this.start;
+	  };
+
+	  /**
+	    * Date range toDate
+	    *
+	    * @return {!Array}
+	  *
+	  */
+
+
+	  DateRange.prototype.toDate = function() {
+	    return [this.start.toDate(), this.end.toDate()];
+	  };
+
+	  /**
+	    * Determine if this date range is the same as another.
+	    *
+	    * @param {!DateRange} other Another date range to compare to
+	    *
+	    * @return {!boolean}
+	  *
+	  */
+
+
+	  DateRange.prototype.isSame = function(other) {
+	    return this.start.isSame(other.start) && this.end.isSame(other.end);
+	  };
+
+	  /**
+	    * The difference of the end vs start.
+	    *
+	    * @param {number} unit Unit of difference, if no unit is passed in
+	    *                      milliseconds are returned. E.g.: `"days"`,
+	    *                      `"months"`, etc...
+	    *
+	    * @return {!number}
+	  *
+	  */
+
+
+	  DateRange.prototype.diff = function(unit) {
+	    if (unit == null) {
+	      unit = void 0;
+	    }
+	    return this.end.diff(this.start, unit);
+	  };
+
+	  return DateRange;
+
+	})();
+
+	/**
+	  * Build a date range.
+	  *
+	  * @param {(Moment|Date)} start Start of range
+	  * @param {(Moment|Date)} end   End of range
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!DateRange}
+	*
+	*/
+
+
+	moment.fn.range = function(start, end) {
+	  if (start in INTERVALS) {
+	    return new DateRange(moment(this).startOf(start), moment(this).endOf(start));
+	  } else {
+	    return new DateRange(start, end);
+	  }
+	};
+
+	/**
+	  * Build a date range.
+	  *
+	  * @param {(Moment|Date)} start Start of range
+	  * @param {(Moment|Date)} end   End of range
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!DateRange}
+	*
+	*/
+
+
+	moment.range = function(start, end) {
+	  return new DateRange(start, end);
+	};
+
+	/**
+	  * Check if the current moment is within a given date range.
+	  *
+	  * @param {!DateRange} range Date range to check
+	  *
+	  * @this {Moment}
+	  *
+	  * @return {!boolean}
+	*
+	*/
+
+
+	moment.fn.within = function(range) {
+	  return range.contains(this._d);
+	};
+
+	    return moment;
+	}));
 
 
 /***/ },
@@ -3101,316 +3438,6 @@ webpackJsonp([0],[
 			}
 		]
 	}
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(root, factory) {
-	    if(true) {
-	        module.exports = factory(__webpack_require__(4));
-	    }
-	    else if(typeof define === 'function' && define.amd) {
-	        define(['moment'], factory);
-	    }
-	    else {
-	        root.moment = factory(root.moment);
-	    }
-	}(this, function(moment) {
-	var DateRange, INTERVALS;
-
-	INTERVALS = {
-	  year: true,
-	  month: true,
-	  week: true,
-	  day: true,
-	  hour: true,
-	  minute: true,
-	  second: true
-	};
-
-	/**
-	  * DateRange class to store ranges and query dates.
-	  * @typedef {!Object}
-	*
-	*/
-
-
-	DateRange = (function() {
-	  /**
-	    * DateRange instance.
-	    *
-	    * @param {(Moment|Date)} start Start of interval
-	    * @param {(Moment|Date)} end   End of interval
-	    *
-	    * @constructor
-	  *
-	  */
-
-	  function DateRange(start, end) {
-	    this.start = moment(start);
-	    this.end = moment(end);
-	  }
-
-	  /**
-	    * Determine if the current interval contains a given moment/date/range.
-	    *
-	    * @param {(Moment|Date|DateRange)} other Date to check
-	    *
-	    * @return {!boolean}
-	  *
-	  */
-
-
-	  DateRange.prototype.contains = function(other) {
-	    if (other instanceof DateRange) {
-	      return this.start <= other.start && this.end >= other.end;
-	    } else {
-	      return (this.start <= other && other <= this.end);
-	    }
-	  };
-
-	  /**
-	    * @private
-	  *
-	  */
-
-
-	  DateRange.prototype._by_string = function(interval, hollaback) {
-	    var current, _results;
-	    current = moment(this.start);
-	    _results = [];
-	    while (this.contains(current)) {
-	      hollaback.call(this, current.clone());
-	      _results.push(current.add(1, interval));
-	    }
-	    return _results;
-	  };
-
-	  /**
-	    * @private
-	  *
-	  */
-
-
-	  DateRange.prototype._by_range = function(range_interval, hollaback) {
-	    var i, l, _i, _results;
-	    l = Math.floor(this / range_interval);
-	    if (l === Infinity) {
-	      return this;
-	    }
-	    _results = [];
-	    for (i = _i = 0; 0 <= l ? _i <= l : _i >= l; i = 0 <= l ? ++_i : --_i) {
-	      _results.push(hollaback.call(this, moment(this.start.valueOf() + range_interval.valueOf() * i)));
-	    }
-	    return _results;
-	  };
-
-	  /**
-	    * Determine if the current date range overlaps a given date range.
-	    *
-	    * @param {!DateRange} range Date range to check
-	    *
-	    * @return {!boolean}
-	  *
-	  */
-
-
-	  DateRange.prototype.overlaps = function(range) {
-	    return this.intersect(range) !== null;
-	  };
-
-	  /**
-	    * Determine the intersecting periods from one or more date ranges.
-	    *
-	    * @param {!DateRange} other A date range to intersect with this one
-	    *
-	    * @return {!DateRange|null}
-	  *
-	  */
-
-
-	  DateRange.prototype.intersect = function(other) {
-	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
-	    if (((this.start <= (_ref1 = other.start) && _ref1 < (_ref = this.end)) && _ref < other.end)) {
-	      return new DateRange(other.start, this.end);
-	    } else if (((other.start < (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 <= this.end)) {
-	      return new DateRange(this.start, other.end);
-	    } else if (((other.start < (_ref5 = this.start) && _ref5 < (_ref4 = this.end)) && _ref4 < other.end)) {
-	      return this;
-	    } else if (((this.start <= (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 <= this.end)) {
-	      return other;
-	    } else {
-	      return null;
-	    }
-	  };
-
-	  /**
-	    * Subtract one range from another.
-	    *
-	    * @param {!DateRange} other A date range to substract from this one
-	    *
-	    * @return {!DateRange[]}
-	  *
-	  */
-
-
-	  DateRange.prototype.subtract = function(other) {
-	    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
-	    if (this.intersect(other) === null) {
-	      return [this];
-	    } else if (((other.start <= (_ref1 = this.start) && _ref1 < (_ref = this.end)) && _ref <= other.end)) {
-	      return [];
-	    } else if (((other.start <= (_ref3 = this.start) && _ref3 < (_ref2 = other.end)) && _ref2 < this.end)) {
-	      return [new DateRange(other.end, this.end)];
-	    } else if (((this.start < (_ref5 = other.start) && _ref5 < (_ref4 = this.end)) && _ref4 <= other.end)) {
-	      return [new DateRange(this.start, other.start)];
-	    } else if (((this.start < (_ref7 = other.start) && _ref7 < (_ref6 = other.end)) && _ref6 < this.end)) {
-	      return [new DateRange(this.start, other.start), new DateRange(other.end, this.end)];
-	    }
-	  };
-
-	  /**
-	    * Iterate over the date range by a given date range, executing a function
-	    * for each sub-range.
-	    *
-	    * @param {(!DateRange|String)} range     Date range to be used for iteration
-	    *                                        or shorthand string (shorthands:
-	    *                                        http://momentjs.com/docs/#/manipulating/add/)
-	    * @param {!function(Moment)}   hollaback Function to execute for each sub-range
-	    *
-	    * @return {!boolean}
-	  *
-	  */
-
-
-	  DateRange.prototype.by = function(range, hollaback) {
-	    if (typeof range === 'string') {
-	      this._by_string(range, hollaback);
-	    } else {
-	      this._by_range(range, hollaback);
-	    }
-	    return this;
-	  };
-
-	  /**
-	    * Date range in milliseconds. Allows basic coercion math of date ranges.
-	    *
-	    * @return {!number}
-	  *
-	  */
-
-
-	  DateRange.prototype.valueOf = function() {
-	    return this.end - this.start;
-	  };
-
-	  /**
-	    * Date range toDate
-	    *
-	    * @return {!Array}
-	  *
-	  */
-
-
-	  DateRange.prototype.toDate = function() {
-	    return [this.start.toDate(), this.end.toDate()];
-	  };
-
-	  /**
-	    * Determine if this date range is the same as another.
-	    *
-	    * @param {!DateRange} other Another date range to compare to
-	    *
-	    * @return {!boolean}
-	  *
-	  */
-
-
-	  DateRange.prototype.isSame = function(other) {
-	    return this.start.isSame(other.start) && this.end.isSame(other.end);
-	  };
-
-	  /**
-	    * The difference of the end vs start.
-	    *
-	    * @param {number} unit Unit of difference, if no unit is passed in
-	    *                      milliseconds are returned. E.g.: `"days"`,
-	    *                      `"months"`, etc...
-	    *
-	    * @return {!number}
-	  *
-	  */
-
-
-	  DateRange.prototype.diff = function(unit) {
-	    if (unit == null) {
-	      unit = void 0;
-	    }
-	    return this.end.diff(this.start, unit);
-	  };
-
-	  return DateRange;
-
-	})();
-
-	/**
-	  * Build a date range.
-	  *
-	  * @param {(Moment|Date)} start Start of range
-	  * @param {(Moment|Date)} end   End of range
-	  *
-	  * @this {Moment}
-	  *
-	  * @return {!DateRange}
-	*
-	*/
-
-
-	moment.fn.range = function(start, end) {
-	  if (start in INTERVALS) {
-	    return new DateRange(moment(this).startOf(start), moment(this).endOf(start));
-	  } else {
-	    return new DateRange(start, end);
-	  }
-	};
-
-	/**
-	  * Build a date range.
-	  *
-	  * @param {(Moment|Date)} start Start of range
-	  * @param {(Moment|Date)} end   End of range
-	  *
-	  * @this {Moment}
-	  *
-	  * @return {!DateRange}
-	*
-	*/
-
-
-	moment.range = function(start, end) {
-	  return new DateRange(start, end);
-	};
-
-	/**
-	  * Check if the current moment is within a given date range.
-	  *
-	  * @param {!DateRange} range Date range to check
-	  *
-	  * @this {Moment}
-	  *
-	  * @return {!boolean}
-	*
-	*/
-
-
-	moment.fn.within = function(range) {
-	  return range.contains(this._d);
-	};
-
-	    return moment;
-	}));
-
 
 /***/ }
 ]);

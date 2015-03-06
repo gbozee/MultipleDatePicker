@@ -44,6 +44,10 @@ TimeSlot.prototype = {
 
 var Day = function(dd){
 	_.extend(this,dd)
+	if(this.is_new){
+		this.start = 1;
+		this.end = 23;
+	}
 	this.cancelled = false;	
 	this.times = new TimeSlot({start:this.start,end:this.end});
 	this.momentDate = moment(this.date,"DD-MM-YYYY");
@@ -118,6 +122,13 @@ TutorSchedule.prototype={
 		})
 
 	},
+	SyncNewDays:function(days_to_sync){
+		this.new_dates = _.map(days_to_sync,function(x){
+			var dd = new Day(x);
+			dd.is_new = true;
+			return dd;
+		})
+	},
 	InitializeDayInstance:function(md){
 		var inst = this.getGenericDayInstance(md);
 			if(inst){
@@ -134,6 +145,12 @@ TutorSchedule.prototype={
 			day.cancelled = true;
 			this.cancelled.push(day)			
 		}
+	},
+	SyncUpdateDays:function(arr){
+		for (var i = arr.length - 1; i >= 0; i--) {
+			this.UpdateDay(arr[i]);
+		};
+		console.log(this.updates);
 	},
 	UpdateDay:function(date){
 		var day = this.getDayInstance(date.date);
@@ -184,3 +201,4 @@ TutorSchedule.prototype={
 };
 exports.TutorSchedule = TutorSchedule;
 exports.TimeSlot = TimeSlot;
+exports.Day = Day

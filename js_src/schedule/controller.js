@@ -1,4 +1,5 @@
 require("./service.js");
+var Day = require('./models.js').Day
 require('angular-bootstrap/ui-bootstrap-tpls.min.js')
 var moment = require('moment');
 var _= require('lodash');
@@ -24,7 +25,6 @@ function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 		var result = []
 		for(var i=0;i<count;i++){
 			var temp= date.clone();
-			console.log(temp);
 			result.push(temp.add(7*i,'days'))
 		}
 		return result;
@@ -101,10 +101,10 @@ function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 					}
 					$scope.news.push($scope.selectedDate);	
 				}				
-				updateColors($scope.news.allDates(),'is_new');
+				console.log("add new date");					
+				updateNewDates();
 				$scope.ds.generate();
-				console.log("add new date");	
-
+				TutorSchedule.schedule.SyncNewDays($scope.news);
 			}
 			console.log($scope.news);
 			console.log($scope.updates);
@@ -168,6 +168,10 @@ function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 			}
 			check();
 		}
+
+		updateNewDates();						
+		$scope.ds.generate();
+		TutorSchedule.schedule.SyncNewDays($scope.news);
 		$scope.date_selected = false;
 		console.log($scope.cancelled);
 		console.log($scope.updates);
@@ -202,7 +206,7 @@ function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 	}
 	$scope.availableDays = TutorSchedule.schedule.GetAvailableDays();
 	$scope.noneAvailableDays= TutorSchedule.schedule.CurrentlyBookedDates();
-		$scope.ds= {};
+	$scope.ds= {};
 
 	console.log("NonAVailable");
 	console.log($scope.noneAvailableDays);
@@ -231,60 +235,64 @@ function TutorCalendarCtrl($scope,$timeout,TutorSchedule){
 						$scope.selectedDate = $scope.news[index3]
 					};	
 				}
-				console.log(date);
 				day_instance = TutorSchedule.schedule.getDayInstance(date);
-				$scope.selectedDate.start_time = day_instance.getStartTime();
-				$scope.selectedDate.end_time = day_instance.getEndTime();			
-			}else{		
-				day_instance = TutorSchedule.schedule.InitializeDayInstance(date)			
-				
+				console.log(day_instance);
+				if(day_instance){						
+					$scope.selectedDate.start_time = day_instance.getStartTime();
+					$scope.selectedDate.end_time = day_instance.getEndTime();					
+
+					$scope.date_selected = true;
+				}else{					
+					
+				}
+			}else{	
+				// var index4 = _.findIndex($scope.news,function(x){
+				// 	return x.date.format("DD-MM-YYYY") == date.format("DD-MM-YYYY")
+				// })
+				// console.log(index4);
+				// if(index4 > -1){
+				// 	var val= $scope.news[index4];
+				// 	_.extend(val,{is_new:true});
+				// 	day_instance = new Day(val);
+
+				// 	$scope.date_selected = true;
+				// }	
+				// else{
+
+				// 	$scope.date_selected = false;
+				// }	
+				day_instance = TutorSchedule.schedule.InitializeDayInstance(date)	
+
+				console.log(day_instance);		
+				$scope.selectedDate = day_instance;
+				$scope.date_selected = true;				
+				date.is_new=true;
 			}
-			$scope.dateInstance = day_instance;
-			$scope.date_selected = true;
-			$scope.isNew = day_instance.isNew();
-			console.log($scope.dateInstance);
+			if(day_instance){				
+				$scope.dateInstance = day_instance;
+				$scope.isNew = day_instance.isNew();
+				console.log($scope.dateInstance);	
+			}
 			
 
 		}
 	}
 	$scope.hoverEvent = function(event,date){
-		
-
 	}
 
-	function updateColors(arr,status){
-		var newDays = arr;
-		for(var i =0 ;i<newDays.length;i++){
-			//Very slow
-			var temp = newDays[i];
-			var index = _.findIndex($scope.ds.convertedDaysSelected,function(x){
-				return x.format("DD-MM-YYYY") === temp.format("DD-MM-YYYY");
-			})
-			if(index < 0){
-				$scope.ds.convertedDaysSelected.push(temp);	
-			}else{
-				$scope.ds.convertedDaysSelected[index][status]=true;
-				$scope.ds.convertedDaysSelected[index].selected=true;
-				
-			}
-		}
+	function updateNewDates(){
+		$scope.ds.newDays = $scope.news.allDates();
+		$scope.ds.cancelledDays = $scope.cancelled.allDates();
+		$scope.ds.updatedDays = $scope.updates.allDates();
 	}
 	
 	$scope.logMonthChanged = function(new_month,oldMonth){
-		//$scope.availableDays= $scope.availableDays.concat($scope.news.valueDates(),
-		//	$scope.cancelled.valueDates(),$scope.updates.valueDates());
-
-$scope.ds.generate();
-updateColors($scope.news.allDates(),'is_new');
-updateColors($scope.cancelled.allDates(),'cancel');
-updateColors($scope.updates.allDates(),'updated');
-
-		//$scope.ds.generate();
-		
+		updateNewDates();
+		$scope.ds.generate();		
 	}
 	$scope.$watch('ds',function(x){
 		console.log(x.convertedDaysSelected);
-			console.log(x.daysOff);
+		console.log(x.daysOff);
 	});
 
 }

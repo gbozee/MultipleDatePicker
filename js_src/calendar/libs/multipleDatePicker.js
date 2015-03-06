@@ -79,7 +79,7 @@ angular.module('multipleDatePicker', [])
             '</div>'+
             '<div class="picker-days-row">'+
               '<div class="text-center picker-day picker-empty" ng-repeat="x in emptyFirstDays">&nbsp;</div>'+
-              '<div class="text-center picker-day" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" ng-class="{\'picker-selected\':day.selected,\'picker-cancel\':day.cancel && day.selected,\'picker-update\':day.updated && day.selected,\'picker-new\':day.is_new && day.selected, \'picker-off\':!day.selectable, \'today\':day.today}">{{day ? day.format(\'D\') : \'\'}}</div>'+
+              '<div class="text-center picker-day" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" ng-class="{\'picker-selected\':day.selected,\'picker-cancel\':day.cancel,\'picker-update\':day.updated,\'picker-new\':day.is_new, \'picker-off\':!day.selectable, \'today\':day.today}">{{day ? day.format(\'D\') : \'\'}}</div>'+
               '<div class="text-center picker-day picker-empty" ng-repeat="x in emptyLastDays">&nbsp;</div>'+
             '</div>'+
           '</div>',
@@ -147,6 +147,9 @@ angular.module('multipleDatePicker', [])
       scope.disableBackButton = false;
       scope.disableNextButton = false;      
       scope.daysOfWeek = getDaysOfWeek();
+      scope.newDays = scope.newDays || [];
+      scope.cancelledDays = scope.cancelledDays || [];
+      scope.updatedDays = scope.updatedDays || [];
 
       /**
        * Called when user clicks a date
@@ -251,21 +254,21 @@ angular.module('multipleDatePicker', [])
         });
       };
 
-      scope.isNew= function(scope,date){
-      	return scope.convertedDaysSelected.some(function(d){
-      		return date.isSame(d,'day') && d.is_new;
-      	});
+      scope.isNew = function(scope,date){
+       return scope.newDays.some(function(d){
+         return date.isSame(d,'day');
+       });
+
       }
       scope.isCancelled = function(scope,date){
-      	return scope.convertedDaysSelected.some(function(d){
-      		return date.isSame(d,'day') && d.cancel;
-      	});
+        return scope.cancelledDays.some(function(d){
+          return date.isSame(d,'day');
+        }) 
       }
       scope.isUpdated = function(scope,date){
-      	return scope.convertedDaysSelected.some(function(d){
-
-      		return date.isSame(d,'day') && d.updated;
-      	});
+        return scope.updatedDays.some(function(d){
+          return date.isSame(d,'day');
+        }) 
       }
 
       /*Generate the calendar*/
